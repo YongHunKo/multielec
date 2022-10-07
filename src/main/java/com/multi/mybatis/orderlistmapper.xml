@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.OrderlistMapper">
+	
+	<select id="select" parameterType="integer" resultType="OrderlistDTO">
+		SELECT * FROM orderlist WHERE orderid=#{orderid}
+	</select>
+	<select id="selectall" resultType="OrderlistDTO">
+		SELECT * FROM orderlist
+	</select>
+	<insert id="insert" parameterType="OrderlistDTO">
+		INSERT INTO orderlist VALUES (#{orderid},#{custid},#{cnt},#{orderdate},#{totalprice})
+	</insert>
+	<update id="update" parameterType="OrderlistDTO">
+		UPDATE orderlist SET custid=#{custid}, cnt=#{cnt}, orderdate=#{orderdate}, totalprice=#{totalprice} WHERE orderid=#{orderid}
+	</update>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM orderlist WHERE orderid=#{orderid}
+	</delete>
+	
+</mapper>
