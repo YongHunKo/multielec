@@ -14,10 +14,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO cate VALUES (#{cateid},#{topid},#{catelist})
 	</insert>
 	<update id="update" parameterType="CateDTO">
-		UPDATE cate SET topid=#{topid}, catelist=#{catelist} WHERE CateID=#{cateid}
+		UPDATE cate SET topid=#{topid}, catelist=#{catelist} WHERE cateid=#{cateid}
 	</update>
 	<delete id="delete" parameterType="Integer">
-		DELETE FROM cate WHERE id=#{id}
+		DELETE FROM cate WHERE cateid=#{cateid}
 	</delete>
 	
 </mapper>

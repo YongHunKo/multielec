@@ -14,10 +14,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO cust VALUES (#{id},#{pwd},#{name},#{gender},#{age},#{custrdate},#{birth},#{tel},#{addr})
 	</insert>
 	<update id="update" parameterType="custDTO">
-		UPDATE cust SET pwd=#{pwd}, tel=#{tel}, addr=#{addr},  WHERE ID=#{id}
+		UPDATE cust SET pwd=#{pwd}, tel=#{tel}, addr=#{addr},  WHERE custid=#{custid}
 	</update>
 	<delete id="delete" parameterType="String">
-		DELETE FROM cust WHERE id=#{id}
+		DELETE FROM cust WHERE custid=#{custid}
 	</delete>
 	
 </mapper>
