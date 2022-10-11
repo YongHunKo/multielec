@@ -6,19 +6,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.CartMapper">
 	<select id="select" parameterType="Integer" resultType="CartDTO">
 	
-		SELECT ca.cartid, cu.custid, it.itemid, ca.cnt
-		FROM cart ca
-		INNER JOIN item it ON ca.itemid = it.itemid
-		INNER JOIN cust cu ON ca.custid = cu.custid
+		SELECT * FROM cart
 		WHERE ca.cartid= #{cartid}
 		
 	</select>
 	
-	<select id="cartall" parameterType="String" resultType="CartDTO">
-		SELECT ca.cartid, cu.custid, it.itemid, ca.cnt
-		FROM cart ca
-		INNER JOIN item it ON ca.itemid = it.itemid
-		INNER JOIN cust cu ON ca.custid = cu.custid
+	<select id="selectall" parameterType="String" resultType="CartDTO">
+		SELECT * FROM cart
 		
 	</select>
 	

@@ -19,9 +19,6 @@ public class CartDTO {
 	private Integer itemid;
 	private Integer cnt;
 	
-	
-	
-	
-	
+
 
 }
