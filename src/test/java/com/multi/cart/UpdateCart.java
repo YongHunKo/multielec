@@ -24,6 +24,5 @@ class UpdateCart {
 		}
 		System.out.println("updated");
 	}
-
 }
 

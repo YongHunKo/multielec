@@ -24,5 +24,4 @@ class SelectCart {
 			e.printStackTrace();
 		}
 	}
-
 }

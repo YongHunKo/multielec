@@ -24,6 +24,5 @@ class InsertCart {
 		}
 		System.out.println("inserted");
 	}
-
 }
 
