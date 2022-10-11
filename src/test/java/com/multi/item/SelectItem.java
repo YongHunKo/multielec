@@ -17,6 +17,7 @@ class SelectItem {
 		ItemDTO item = null;
 		try {
 			item = service.get(2);
+			System.out.println(item);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
