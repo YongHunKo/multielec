@@ -10,7 +10,7 @@ import com.multi.service.OrderdetailService;
 import com.multi.service.OrderlistService;
 
 @SpringBootTest
-class InsertOrderlist {
+class InsertOrderdetail {
 	@Autowired
 	OrderdetailService service;
 
