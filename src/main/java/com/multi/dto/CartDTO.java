@@ -20,5 +20,4 @@ public class CartDTO {
 	private Integer cnt;
 	
 
-
 }
