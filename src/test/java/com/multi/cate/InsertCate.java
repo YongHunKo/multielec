@@ -15,7 +15,7 @@ class InsertCate {
 	@Test
 	void contextLoads() {
 	    try {
-            service.register(new CateDTO(1, 0, "음향기기"));
+            service.register(new CateDTO(1, null, "음향기기"));
             System.out.println("insert_OK");
         } catch (Exception e) {
             // TODO Auto-generated catch block

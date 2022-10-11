@@ -12,12 +12,12 @@ import lombok.ToString;
 @Setter
 @ToString
 public class OrderdetailDTO {
-    private int orderdetailno;
-    private int orderid;
-    private int itemid;
+    private Integer orderdetailno;
+    private Integer orderid;
+    private Integer itemid;
     private String orderitem;
     private String shipsearch;
-    private int itemprice;
-    private int itemcnt;
+    private Integer itemprice;
+    private Integer itemcnt;
 
 }

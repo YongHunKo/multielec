@@ -19,7 +19,7 @@ public class CustDTO {
 	private String custname;
 	// 필수입력데이터 고객id, pwd, 이름
 	private String gender;
-	private int age;
+	private Integer age;
 	private Date custrdate;
 	private Date birth;
 	private String tel;
