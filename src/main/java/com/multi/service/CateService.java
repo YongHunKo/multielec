@@ -13,6 +13,7 @@ public class CateService implements MyService<Integer, CateDTO>{
 
 	@Autowired
 	CateMapper mapper;
+	
 	@Override
 	public void register(CateDTO v) throws Exception {
 		mapper.insert(v);
