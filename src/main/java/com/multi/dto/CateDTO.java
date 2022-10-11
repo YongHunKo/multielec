@@ -12,7 +12,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class CateDTO {
-	private int cateid;
+	private Integer cateid;
 	private Integer topid;
 	private String catelist;
 
