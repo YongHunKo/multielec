@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- 어디를 통해서 들어오는지! -->
+
 <mapper namespace="com.multi.mapper.CartMapper">
 	<select id="select" parameterType="Integer" resultType="CartDTO">
 	
