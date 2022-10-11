@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ReviewMapper">
+
+	
+	<select id="select" parameterType="Integer" resultType="ReviewDTO">
+		SELECT re.rvid, it.itemid, cu.custid, re.rvtxt, re.rvdate
+ 		FROM review re
+ 		INNER JOIN item it ON re.itemid = it.itemid
+		INNER JOIN cust cu ON re.custid = cu.custid
+		WHERE rvid = #{rvid}
+		
+		
+	</select>
+	<select id="selectall" resultType="ReviewDTO">
+		SELECT re.rvid, it.itemid, cu.custid, re.rvtxt, re.rvdate  
+ 		FROM review re
+		INNER JOIN item it ON re.itemid = it.itemid
+		INNER JOIN cust cu ON re.custid = cu.custid
+	
+		
+	</select>
+	<insert id="insert" parameterType="ReviewDTO">
+		INSERT INTO review VALUES (NULL, #{itemid}, #{custid}, #{rvtxt}, #{rvdate})
+	</insert>
+	<update id="update" parameterType="ReviewDTO">
+		UPDATE review SET itemid = #{itemid}, custid = #{custid},  
+		rvtxt=#{rvtxt}, rvdate=#{rvdate} WHERE rvid = #{rvid}
+		
+	</update>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM review WHERE rvid = #{rvid}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
+
