@@ -8,7 +8,7 @@ import com.multi.dto.OrderlistDTO;
 import com.multi.service.OrderlistService;
 
 @SpringBootTest
-class MultielecApplicationTests {
+class UpdateOrderlist {
 
 	@Autowired
 	OrderlistService service;
