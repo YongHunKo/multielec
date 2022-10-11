@@ -1,6 +1,4 @@
-package com.multi.DTO;
-
-import java.util.Date;
+package com.multi.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,11 +11,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class OrderlistDTO {
-	private int orderid;
-	private String custid;
-	private int cnt;
-	private Date orderdate;
-	private int totalprice;
+public class CateDTO {
+	private int cateid;
+	private int topid;
+	private String catelist;
 
 }

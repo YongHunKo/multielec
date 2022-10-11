@@ -1,4 +1,4 @@
-package com.multi.DTO;
+package com.multi.dto;
 
 import java.util.Date;
 

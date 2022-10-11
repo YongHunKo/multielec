@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.DTO.CateDTO;
+import com.multi.dto.CateDTO;
 import com.multi.service.CateService;
 
 @SpringBootTest

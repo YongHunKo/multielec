@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.multi.DTO.CateDTO;
+import com.multi.dto.CateDTO;
 import com.multi.frame.MyService;
 import com.multi.mapper.CateMapper;
 @Service
