@@ -6,12 +6,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.CartMapper">
 	<select id="select" parameterType="Integer" resultType="CartDTO">
 	
-		SELECT * FROM cart
-		WHERE ca.cartid= #{cartid}
+		SELECT * FROM cart WHERE cartid= #{cartid}
 		
 	</select>
 	
-	<select id="selectall" parameterType="String" resultType="CartDTO">
+	<select id="selectall" resultType="CartDTO">
 		SELECT * FROM cart
 		
 	</select>
@@ -21,7 +20,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</insert>
 	
 	<update id="update" parameterType="CartDTO">
-		UPDATE cart SET custid=#{custid},itemid=#{itemid}, cnt=#{cnt} WHERE cartid=#{cartid}
+		UPDATE cart SET custid=#{custid}, itemid=#{itemid}, cnt=#{cnt} WHERE cartid=#{cartid}
 	</update>
 	<delete id="delete" parameterType="Integer">
 		DELETE FROM cart WHERE cartid=#{cartid}
