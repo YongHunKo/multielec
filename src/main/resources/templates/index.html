@@ -67,9 +67,20 @@
                             <button type="submit" class="site-btn">SEARCH</button>
                         </form>
                     </div>
-                </div>                
-                         
-
+                </div>
+                
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul th:if="${session.logincust == null}">
+                            <li><a href="/login">로그인</a></li>
+                            <li><a href="/register">회원가입</a></li>
+                        </ul>
+                        <ul th:if="${session.logincust != null}">
+                            <li><a th:href="@{/custdetail(id=${session.logincust.id})}" th:text="${session.logincust.name}">접속한 사용자 이름</a></li>
+                            <li><a href="/logout">로그아웃</a></li>
+                        </ul>                        
+                    </div>
+                </div>                                
                 
             </div>
             <div class="humberger__open">
