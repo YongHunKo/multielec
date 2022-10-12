@@ -50,4 +50,16 @@ public class MobileController {
 		}
 		return "index";
 	}
+	@RequestMapping("/itemdetail")
+	public String itemdetail(Model model, Integer itemid) {
+		ItemDTO list = null;
+		try {
+			list = service.get(itemid);
+			model.addAttribute("itemdetail",list);
+			model.addAttribute("center","/mobile/detail");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
 }

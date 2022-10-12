@@ -1,21 +1,27 @@
-
+<script>
+$(document).ready(function(){
+	$('reigster_form > button').click(function(){
+		$('#register_')
+	});
+});
+</script>
 <div class="container">
 	<form id="register_form">
 		<div class="form-group">
 			<label for="id">ID:</label>
-			<input type="text" class="form-control" id="id" placeholder="아이디 입력" name="id">
+			<input type="text" class="form-control" id="custid" placeholder="아이디 입력" name="custid">
 		</div>
 		<div class="form-group">
 			<label for="pwd">PWD:</label>
-			<input type="password" class="form-control" id="pwd" placeholder="비밀번호 입력" name="pwd">
+			<input type="password" class="form-control" id="pwd" placeholder="비밀번호 입력" name="custpwd">
 		</div>
 		<div class="form-group">
 			<label for="pwd">PWD2:</label>
-			<input type="password" class="form-control" id="pwd2" placeholder="비밀번호 확인" name="pwd2">
+			<input type="password" class="form-control" id="custpwd2" placeholder="비밀번호 확인" name="custpwd2">
 		</div>
 		<div class="form-group">
 			<label for="name">name:</label>
-			<input type="text" class="form-control" id="name" placeholder="이름 입력" name="name">
+			<input type="text" class="form-control" id="custname" placeholder="이름 입력" name="custname">
 		</div>
 		<div class="form-group">
 			<label for="gender">gender:</label>
@@ -27,15 +33,15 @@
 		</div>
 		<div class="form-group">
 			<label for="birth">birth:</label>
-			<input type="text" class="form-control" id="age" name="age">
+			<input type="text" class="form-control" id="birth" name="birth">
 		</div>
 		<div class="form-group">
 			<label for="tel">tel:</label>
-			<input type="text" class="form-control" id="age" name="age">
+			<input type="text" class="form-control" id="tel" name="tel">
 		</div>
 		<div class="form-group">
 			<label for="addr">addr:</label>
-			<input type="text" class="form-control" id="age" name="age">
+			<input type="text" class="form-control" id="addr" name="addr">
 		</div>
 	</form>
 	<button class="btn btn-default">회원가입</button>
