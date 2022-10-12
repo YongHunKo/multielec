@@ -34,4 +34,9 @@ public class ItemService implements MyService<Integer, ItemDTO>{
         // TODO Auto-generated method stub
         return mapper.selectall();
     }
+    
+    public List<ItemDTO> finditem(Integer cateid) throws Exception {
+    	// TODO Auto-generated method stub
+    	return mapper.finditem(cateid);
+    }
 }
