@@ -4,15 +4,21 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CustDTO;
+import com.multi.dto.ItemDTO;
 import com.multi.service.CustService;
+import com.multi.service.ItemService;
 
 @Controller
 public class MainController {
 	@Autowired
 	CustService custservice;
+	@Autowired
+	ItemService itemservice;
+	
 	@RequestMapping("/")
 	public String main() {
 		return "index";
@@ -42,6 +48,19 @@ public class MainController {
 			session.invalidate();
 		}
 		return "redirect:";
+	}
+	
+	@RequestMapping("/itemdetail")
+	public String itemdetail(Model model, Integer itemid) {
+		ItemDTO list = null;
+		try {
+			list = itemservice.get(itemid);
+			model.addAttribute("itemdetail",list);
+			model.addAttribute("center","/detail");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
 	}
 	
 }
