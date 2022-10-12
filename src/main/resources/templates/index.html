@@ -32,6 +32,29 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
     
+<script>
+function enterkey(){
+	if(window.event.keyCode == 13){
+		$('#login_form').attr({
+			'method':'post',
+			'action':'/loginimpl'
+		});
+		$('#login_form').submit();
+	};
+};
+
+$(document).ready(function(){
+	$('#login_btn').click(function(){
+		$('#login_form').attr({
+			'method':'post',
+			'action':'/loginimpl'
+		});
+		$('#login_form').submit();
+		
+	});
+});
+</script>    
+    
 </head>
 
 <body>
@@ -72,8 +95,8 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul th:if="${session.logincust == null}">
-                            <li><a href="/login">로그인</a></li>
-                            <li><a href="/register">회원가입</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#loginModal">로그인</a></li>
+                            <li><a href="/cust/register">회원가입</a></li>
                         </ul>
                         <ul th:if="${session.logincust != null}">
                             <li><a th:href="@{/custdetail(id=${session.logincust.id})}" th:text="${session.logincust.name}">접속한 사용자 이름</a></li>
@@ -273,7 +296,58 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    
+    <!-- Login Modal-->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">로그인</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
 
+                    <form id="login_form" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="ID"
+                                aria-label="ID" aria-describedby="basic-addon2" name="id" onkeyup="enterkey()">
+                            <input type="passward" class="form-control bg-light border-0 small" placeholder="PWD"
+                                aria-label="PWD" aria-describedby="basic-addon2"name="pwd" onkeyup="enterkey()">
+
+                        </div>
+                    </form>
+                
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a id="login_btn" class="btn btn-primary" href="#">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">정말 로그아웃 하시겠습니까?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="/logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </body>
