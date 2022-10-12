@@ -1,5 +1,7 @@
 package com.multi.dto;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +20,9 @@ public class CartDTO {
 	private String custid;
 	private Integer itemid;
 	private Integer cnt;
+
 	
+	private String itemname;
+	private Integer price;
+	private String img;
 }

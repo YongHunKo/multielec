@@ -42,6 +42,9 @@ public class CartService implements MyService<Integer,CartDTO>{
 		return mapper.selectall();
 	}
 	
+	public List<CartDTO> cartall(String custid) throws Exception {
+		return mapper.cartall(custid);
+	}
 	
 
 }

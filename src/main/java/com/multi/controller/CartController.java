@@ -17,18 +17,18 @@ public class CartController {
 	CartService cart_service;
 
 	
-//	@RequestMapping("/cart")
-//	public String cart(Model model, String custid) {
-//		List<CartDTO> list = null;
-//		try {
-//			list = cart_service.cartall(custid);
-//			model.addAttribute("mycart",list);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		model.addAttribute("center", "cart");
-//		return "index";
-//	}
+	@RequestMapping("/cart")
+	public String cart(Model model, String custid) {
+		List<CartDTO> list = null;
+		try {
+			list = cart_service.cartall(custid);
+			model.addAttribute("mycart",list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("center", "cart");
+		return "index";
+	}
 	 
 
 	@RequestMapping("/deletecart")

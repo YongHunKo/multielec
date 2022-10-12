@@ -15,7 +15,7 @@ class InsertCart {
 	
 	@Test
 	void contextLoads() {
-		CartDTO cart = new CartDTO(null, "id11", 13, 3);
+		CartDTO cart = new CartDTO(null, "id11", 13, 3, null, null, null);
 		try {
 			service.register(cart);
 		} catch (Exception e) {
