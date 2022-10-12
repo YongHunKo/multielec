@@ -1,0 +1,27 @@
+ <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>IMGNAME</th>
+                        <th>itemid</th>
+                        <th>itemname</th>
+                        <th>price</th>
+                        <th>likecnt</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="i : ${list}">
+                        <td >
+                        	img
+                        </td>
+                        <td th:text="${i.itemid}">id</a></td>
+                        <td th:text="${i.itemname}">name</td>
+                        <td th:text="${i.price}">price</td>
+                        <td th:text="${i.likecnt}">likecnt</td>
+                    </tr>          
+                </tbody>
+            </table>
+        </div>
+    </div>
