@@ -12,4 +12,5 @@ import com.multi.frame.MyMapper;
 public interface ItemMapper extends MyMapper<Integer, ItemDTO>{
 	List<ItemDTO> finditem(Integer cateid) throws Exception;
 
+	public List<ItemDTO> searchitem(String txt) throws Exception;
 }

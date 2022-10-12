@@ -1,5 +1,7 @@
 package com.multi.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CustDTO;
 import com.multi.dto.ItemDTO;
+import com.multi.mapper.ItemMapper;
 import com.multi.service.CustService;
 import com.multi.service.ItemService;
 
@@ -18,9 +21,24 @@ public class MainController {
 	CustService custservice;
 	@Autowired
 	ItemService itemservice;
+	@Autowired
+	ItemMapper itemmapper;
 	
 	@RequestMapping("/")
 	public String main() {
+		return "index";
+	}
+	
+	@RequestMapping("/searchimpl")
+	public String searchimpl(Model model, String txt) {
+		List<ItemDTO> list = null;
+		try {
+			list = itemmapper.searchitem(txt);
+			model.addAttribute("list", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("center", "search");
 		return "index";
 	}
 	

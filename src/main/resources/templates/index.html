@@ -52,6 +52,15 @@ $(document).ready(function(){
 		$('#login_form').submit();
 		
 	});
+	
+	$('#search_btn').click(function() {
+		$('#search_form').attr({
+			'method':'post',
+			'action':'/searchimpl',
+		});
+		$('#search_form').submit();
+	});
+	
 });
 </script>    
     
@@ -85,9 +94,9 @@ $(document).ready(function(){
                 
                 <div class="hero__search">
                     <div class="hero__search__form">
-                        <form action="#">
-                            <input type="text" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
+                        <form id="search_form" >
+                            <input id="search_input" type="text" placeholder="What do yo u need?">
+                            <button id="search_btn" type="button" class="site-btn">SEARCH</button>
                         </form>
                     </div>
                 </div>
