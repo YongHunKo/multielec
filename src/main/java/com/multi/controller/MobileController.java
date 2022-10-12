@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.multi.dto.ItemDTO;
 import com.multi.service.ItemService;
 
-@Controller("/")
+@Controller
 public class MobileController {
 	@Autowired
 	ItemService service;
