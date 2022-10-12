@@ -408,12 +408,18 @@ ol {
 }
 
 .header__logo {
-	padding: 15px 0;
+	padding: 30px 0 1px 0;
 }
 
 .header__logo a {
 	display: inline-block;
-	width: 200px
+	width: 220px
+	
+}
+
+.header__blank a {
+	display: inline-block;
+	height: 80px
 }
 
 .header__menu {
@@ -565,6 +571,10 @@ ol {
 	padding-bottom: 50px;
 }
 
+.hero__blank{
+	height: 40px;
+}
+
 .hero.hero-normal {
 	padding-bottom: 30px;
 }
@@ -585,7 +595,10 @@ ol {
 
 .hero.hero-normal .hero__search {
 	margin-bottom: 0;
-}
+} 
+
+
+/* main */
 
 .hero__categories__all {
 	background: #FE6B00;
@@ -593,18 +606,113 @@ ol {
 	padding: 10px 25px 10px 40px;
 	cursor: pointer;
 }
-
 .hero__categories__all i {
 	font-size: 16px;
 	color: #ffffff;
 	margin-right: 10px;
 }
-
 .hero__categories__all span {
 	font-size: 18px;
 	font-weight: 700;
 	color: #ffffff;
 }
+
+/* number 1 */
+
+.hero__categories__all1 {
+	background: #FE6B00;
+	position: relative;
+	padding: 10px 25px 10px 40px;
+	cursor: pointer;
+}
+.hero__categories__all1 i {
+	font-size: 16px;
+	color: #ffffff;
+	margin-right: 10px;
+}
+.hero__categories__all1 span {
+	font-size: 18px;
+	font-weight: 700;
+	color: #ffffff;
+}
+
+/* number 2 */
+
+.hero__categories__all2 {
+	background: #FE6B00;
+	position: relative;
+	padding: 10px 25px 10px 40px;
+	cursor: pointer;
+}
+.hero__categories__all2 i {
+	font-size: 16px;
+	color: #ffffff;
+	margin-right: 10px;
+}
+.hero__categories__all2 span {
+	font-size: 18px;
+	font-weight: 700;
+	color: #ffffff;
+}
+
+/* number 3 */
+
+.hero__categories__all3 {
+	background: #FE6B00;
+	position: relative;
+	padding: 10px 25px 10px 40px;
+	cursor: pointer;
+}
+.hero__categories__all3 i {
+	font-size: 16px;
+	color: #ffffff;
+	margin-right: 10px;
+}
+.hero__categories__all3 span {
+	font-size: 18px;
+	font-weight: 700;
+	color: #ffffff;
+}
+
+/* number 4 */
+
+.hero__categories__all4 {
+	background: #FE6B00;
+	position: relative;
+	padding: 10px 25px 10px 40px;
+	cursor: pointer;
+}
+.hero__categories__all4 i {
+	font-size: 16px;
+	color: #ffffff;
+	margin-right: 10px;
+}
+.hero__categories__all4 span {
+	font-size: 18px;
+	font-weight: 700;
+	color: #ffffff;
+}
+
+
+.main__categories__all {
+	background: #FE6B00;
+	position: relative;
+	padding: 10px 25px 10px 40px;
+	cursor: pointer;
+}
+
+.main__categories__all i {
+	font-size: 16px;
+	color: #ffffff;
+	margin-right: 10px;
+}
+
+.main__categories__all span {
+	font-size: 18px;
+	font-weight: 700;
+	color: #ffffff;
+}
+
 
 .hero__categories__all:after {
 	position: absolute;
@@ -616,18 +724,72 @@ ol {
 	color: #ffffff;
 }
 
-.hero__categories ul {
+/* number 1 */
+.hero__categories1 ul {
 	border: 1px solid #ebebeb;
 	padding-left: 40px;
 	padding-top: 10px;
 	padding-bottom: 12px;
+	display: none;
 }
-
-.hero__categories ul li {
+.hero__categories1 ul li {
 	list-style: none;
 }
+.hero__categories1 ul li a {
+	font-size: 16px;
+	color: #1c1c1c;
+	line-height: 39px;
+	display: block;
+}
 
-.hero__categories ul li a {
+/* number 2 */
+.hero__categories2 ul {
+	border: 1px solid #ebebeb;
+	padding-left: 40px;
+	padding-top: 10px;
+	padding-bottom: 12px;
+	display: none;
+}
+.hero__categories2 ul li {
+	list-style: none;
+}
+.hero__categories2 ul li a {
+	font-size: 16px;
+	color: #1c1c1c;
+	line-height: 39px;
+	display: block;
+}
+
+/* number 3 */
+.hero__categories3 ul {
+	border: 1px solid #ebebeb;
+	padding-left: 40px;
+	padding-top: 10px;
+	padding-bottom: 12px;
+	display: none;
+}
+.hero__categories3 ul li {
+	list-style: none;
+}
+.hero__categories3 ul li a {
+	font-size: 16px;
+	color: #1c1c1c;
+	line-height: 39px;
+	display: block;
+}
+
+/* number 4 */
+.hero__categories4 ul {
+	border: 1px solid #ebebeb;
+	padding-left: 40px;
+	padding-top: 10px;
+	padding-bottom: 12px;
+	display: none;
+}
+.hero__categories4 ul li {
+	list-style: none;
+}
+.hero__categories4 ul li a {
 	font-size: 16px;
 	color: #1c1c1c;
 	line-height: 39px;
@@ -639,8 +801,13 @@ ol {
 	margin-bottom: 30px;
 }
 
+.hero__search {
+	overflow: hidden;
+	padding: 45px 0 70px 15px;
+}
+
 .hero__search__form {
-	width: 610px;
+	width: 500px;
 	height: 50px;
 	border: 1px solid #ebebeb;
 	position: relative;

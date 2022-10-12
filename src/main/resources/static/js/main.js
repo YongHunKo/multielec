@@ -100,6 +100,22 @@
         $('.hero__categories ul').slideToggle(400);
     });
 
+    $('.hero__categories__all1').on('click', function(){
+        $('.hero__categories1 ul').slideToggle(400);
+    });        
+
+    $('.hero__categories__all2').on('click', function(){
+        $('.hero__categories2 ul').slideToggle(400);
+    }); 
+    
+    $('.hero__categories__all3').on('click', function(){
+        $('.hero__categories3 ul').slideToggle(400);
+    });     
+
+    $('.hero__categories__all4').on('click', function(){
+        $('.hero__categories4 ul').slideToggle(400);
+    }); 
+
     /*--------------------------
         Latest Product Slider
     ----------------------------*/
