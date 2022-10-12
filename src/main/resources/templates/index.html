@@ -99,7 +99,7 @@ $(document).ready(function(){
                             <li><a href="/cust/register">회원가입</a></li>
                         </ul>
                         <ul th:if="${session.logincust != null}">
-                        	<li><a th:href="@{/cart(id=${session.logincust.id})}">cart</a></li>
+                        	<li><a th:href="@{/cart(id=${session.logincust.custid})}">cart</a></li>
                             <li><a th:href="@{/custdetail(id=${session.logincust.custid})}" th:text="${session.logincust.custname}">접속한 사용자 이름</a></li>
                             <li><a href="/logout">로그아웃</a></li>
                         </ul>                        
