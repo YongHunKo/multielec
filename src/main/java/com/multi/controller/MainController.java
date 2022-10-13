@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CustDTO;
 import com.multi.dto.ItemDTO;
+import com.multi.dto.ReviewDTO;
 import com.multi.mapper.ItemMapper;
 import com.multi.service.CustService;
 import com.multi.service.ItemService;
+import com.multi.service.ReviewService;
 
 @Controller
 public class MainController {
@@ -21,6 +23,8 @@ public class MainController {
 	CustService custservice;
 	@Autowired
 	ItemService itemservice;
+	@Autowired
+	ReviewService reviewservice;
 	@Autowired
 	ItemMapper itemmapper;
 	
@@ -71,9 +75,13 @@ public class MainController {
 	@RequestMapping("/itemdetail")
 	public String itemdetail(Model model, Integer itemid) {
 		ItemDTO list = null;
+		ReviewDTO list2 = null;
 		try {
 			list = itemservice.get(itemid);
+			list2 = reviewservice.get(itemid);
 			model.addAttribute("itemdetail",list);
+			model.addAttribute("itemreview",list2);
+			
 			model.addAttribute("center","/detail");
 		} catch (Exception e) {
 			e.printStackTrace();

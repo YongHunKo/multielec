@@ -54,6 +54,12 @@ $(document).ready(function(){
    		<tr>
 			<td th:text="'Item Price:'+${itemdetail.price}"></td>
    		</tr>
+   		<tr>
+			<td>상품 리뷰</td>
+   		</tr>
+   		<tr>
+			<td th:text="${itemreview.custid}+' : '+${itemreview.rvtxt}"></td>
+   		</tr>
    	</tbody>
    </table>
    </div>
@@ -77,8 +83,6 @@ $(document).ready(function(){
         <button type="button" class="btn btn-default btn-sm" id="buy_btn">
           <span class="glyphicon glyphicon-shopping-cart"></span>구매하기
         </button>        
-</div>
-
     <!--Modal-->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -98,3 +102,5 @@ $(document).ready(function(){
             </div>
         </div>
     </div>
+</div>
+
