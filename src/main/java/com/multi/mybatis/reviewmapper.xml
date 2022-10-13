@@ -6,21 +6,22 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="select" parameterType="Integer" resultType="ReviewDTO">
-		SELECT * FROM review WHERE rvid= #{rvid}
-		
-		
+		SELECT * FROM review WHERE rvid= #{rvid}	
+	</select>
+	<select id="itemreview" parameterType="Integer" resultType="ReviewDTO">
+		SELECT rv.custid, rv.rvtxt, rvdate FROM review rv
+		INNER JOIN item it ON rv.itemid = it.itemid
+		WHERE rv.itemid = #{itemid}
 	</select>
 	<select id="selectall" resultType="ReviewDTO">
-		SELECT * FROM review
-		
+		SELECT * FROM review	
 	</select>
 	<insert id="insert" parameterType="ReviewDTO">
 		INSERT INTO review VALUES (NULL, #{itemid}, #{custid}, #{rvtxt}, sysdate())
 	</insert>
 	<update id="update" parameterType="ReviewDTO">
 		UPDATE review SET itemid = #{itemid}, custid = #{custid},  
-		rvtxt=#{rvtxt}, rvdate=sysdate() WHERE rvid = #{rvid}
-		
+		rvtxt=#{rvtxt}, rvdate=sysdate() WHERE rvid = #{rvid}	
 	</update>
 	<delete id="delete" parameterType="Integer">
 		DELETE FROM review WHERE rvid = #{rvid}
