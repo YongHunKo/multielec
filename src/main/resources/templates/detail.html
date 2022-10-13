@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
 	$('#up_btn').click(function(){
 		var num = $('#num').val();
 		var result = Number(num) +1;
@@ -14,7 +14,7 @@ $(document).ready(function(){
 		var result = Number(num) -1;
 		$('#num').val(result);
 	});
-	$('#cart_btn').click(function(){
+ 	$('#cart_btn').click(function(){
 		var itemid = $('#itemid').text();
 		var itemnum = $('#num').val();
 		var custid = '[[${session.logincust.custid}]]';
@@ -33,6 +33,22 @@ $(document).ready(function(){
 			}
 		});
 	});
+ 	
+ 	$('#buy_btn').click(function(){
+		var itemid = $('#itemid').text();
+		var itemnum = $('#num').val();
+		var custid = '[[${session.logincust.custid}]]';
+		if(itemnum=='0'){
+			alert('수량 입력');
+			return;
+		}
+		$('#num').attr({
+			'method':'post',
+			'action':'/pay'
+		});
+		$('#num').submit();
+	});
+
 });
 </script>
    <div class="card-body">
@@ -57,7 +73,7 @@ $(document).ready(function(){
    		<tr>
 			<td>상품 리뷰</td>
    		</tr>
-   		<tr>
+   		<tr th:if="${itemreview != null}">
 			<td th:text="${itemreview.custid}+' : '+${itemreview.rvtxt}"></td>
    		</tr>
    	</tbody>
@@ -76,9 +92,9 @@ $(document).ready(function(){
           <span class="glyphicon glyphicon-arrow-down"></span> 감소
         </button>
         
-        <button type="button" class="btn btn-default btn-sm" id="cart_btn">
+         <button type="button" class="btn btn-default btn-sm" id="cart_btn">
           <span class="glyphicon glyphicon-shopping-cart"></span>카트에 담기
-        </button>  
+        </button>
               
         <button type="button" class="btn btn-default btn-sm" id="buy_btn">
           <span class="glyphicon glyphicon-shopping-cart"></span>구매하기
@@ -94,10 +110,10 @@ $(document).ready(function(){
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">장바구니 장바구니</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/logout">Logout</a>
+                    <a class="btn btn-primary" href="#">버튼</a>
                 </div>
             </div>
         </div>
