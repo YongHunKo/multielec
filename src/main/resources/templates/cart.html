@@ -1,0 +1,59 @@
+<meta charset="utf-8">
+<style>
+	table > tbody > tr > td > img {
+		width:100px;
+	} 
+	table > tbody > tr > td > img:hover {
+		width:99px;
+		border:1px solid red;
+	} 
+</style>
+
+<script>
+function del(cartid){
+	var custid = '[[${session.logincust.custid}]]';
+	var c = confirm('삭제 하시겠습니까 ?');
+	if(c == true){
+		location.href='/deletecart?id='+cartid+'&custid='+custid;
+	}
+}
+
+</script>
+
+
+<div class="container-fluid">
+  <h2>Cart List</h2>
+  <p></p>            
+  <table class="table">
+    <thead>
+      <tr>
+      	<th>No</th>
+        <th>Image</th>
+        <th>Item Name</th>
+        <th>Price</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="c : ${mycart}">
+        <td id="cartid" th:text="${c.cartid}">NO</td>
+        <td> <img th:src="'/img/'+${c.img}"> </td>
+        <td th:text="${c.itemname}">Item Name</td>
+        <td th:text="${c.price}">Price</td>
+        <td th:text="${c.cnt}">Count</td>
+        <td> 
+        	<button th:onclick="del([[${c.cartid}]]);" type="button" class="btn btn-default btn-sm">
+          		<span class="glyphicon glyphicon-trash"></span> Delete 
+        	</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+

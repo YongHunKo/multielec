@@ -18,29 +18,29 @@ public class CartController {
 
 	
 	@RequestMapping("/cart")
-	public String cart(Model model, String custid) {
+	public String cart(Model model, String id) {
 		List<CartDTO> list = null;
 		try {
-			list = cart_service.cartall(custid);
+			list = cart_service.cartall(id);
 			model.addAttribute("mycart",list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		model.addAttribute("center", "cart");
 		return "index";
+	
 	}
-	 
-
+	
 	@RequestMapping("/deletecart")
-	public String deletecart(Model model, int cateid, String custid) {
+	public String deletecart(Model model, int id, String custid) {
 		try {
-			cart_service.remove(cateid);
+			cart_service.remove(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:cart?id=" + custid;
+		return "redirect:cart?id="+custid;
 	}
-
+	
 	@RequestMapping("/addcart")
 	public Object addcart(CartDTO cart) {
 		try {
@@ -48,7 +48,12 @@ public class CartController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		return "";
 	}
 }
+
+
+
+
+	

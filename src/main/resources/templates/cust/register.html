@@ -1,8 +1,42 @@
 <script>
 $(document).ready(function(){
-	$('reigster_form > button').click(function(){
-		$('#register_')
+	$('#register_btn').click(function(){
+		$('#register_form').attr({
+			'method':'post',
+			'action':'/cust/registerimpl'
+		});
+		$('#register_form').submit();
 	});
+	
+	$('#custpwd2').keyup(function(){
+		var custpwd = $('#custpwd').val();
+		var custpwd2 = $('#custpwd2').val();
+		if(custpwd == custpwd2){
+			$('#pspan').text('Correct');
+		}else{
+			$('#pspan').text('Incorrect');
+			
+		}
+		
+	});
+	
+	$('#custid').keyup(function(){
+		var custid = $(this).val();
+		$.ajax({
+			url:'/checkid',
+			data:{'cid':custid},
+			success:function(result){
+				if(result == 't'){
+					$('#ispan').text('가능');
+				}else{
+					$('#ispan').text('불가능');
+				}
+					
+			}
+				
+		});
+	});
+		
 });
 </script>
 <div class="container">
@@ -10,14 +44,16 @@ $(document).ready(function(){
 		<div class="form-group">
 			<label for="id">ID:</label>
 			<input type="text" class="form-control" id="custid" placeholder="아이디 입력" name="custid">
+			<span id="ispan"></span>
 		</div>
 		<div class="form-group">
 			<label for="pwd">PWD:</label>
-			<input type="password" class="form-control" id="pwd" placeholder="비밀번호 입력" name="custpwd">
+			<input type="password" class="form-control" id="custpwd" placeholder="비밀번호 입력" name="custpwd">
 		</div>
 		<div class="form-group">
 			<label for="pwd">PWD2:</label>
 			<input type="password" class="form-control" id="custpwd2" placeholder="비밀번호 확인" name="custpwd2">
+			<span id="pspan"></span>
 		</div>
 		<div class="form-group">
 			<label for="name">name:</label>
@@ -32,10 +68,6 @@ $(document).ready(function(){
 			<input type="text" class="form-control" id="age" name="age">
 		</div>
 		<div class="form-group">
-			<label for="birth">birth:</label>
-			<input type="text" class="form-control" id="birth" name="birth">
-		</div>
-		<div class="form-group">
 			<label for="tel">tel:</label>
 			<input type="text" class="form-control" id="tel" name="tel">
 		</div>
@@ -44,7 +76,7 @@ $(document).ready(function(){
 			<input type="text" class="form-control" id="addr" name="addr">
 		</div>
 	</form>
-	<button class="btn btn-default">회원가입</button>
+	<button id="register_btn" class="btn btn-default">회원가입</button>
 </div>
 <!-- 성별과 나이 생일 고민하기 -->
 <!-- https://hgko1207.github.io/2019/01/18/javascript-postcode/ 우편번호는 이거를 사용하고 싶음 -->
