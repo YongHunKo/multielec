@@ -4,13 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.multi.dto.CartDTO;
 import com.multi.dto.CustDTO;
+import com.multi.service.CartService;
 import com.multi.service.CustService;
 
 @RestController
 public class AController {
 	@Autowired
 	CustService custservice;
+	@Autowired
+	CartService cartservice;
+	
 	@RequestMapping("/checkid")
 	public Object checkid(String cid) {
 		String result = "";
@@ -26,6 +31,16 @@ public class AController {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	@RequestMapping("/addcart")
+	public Object addcart(CartDTO cart) {
+		try {
+			cartservice.register(cart);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
 
 }
