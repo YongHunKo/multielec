@@ -61,10 +61,11 @@ public class CartController {
 		try {
 			list = cart_service.cartall(id);
 			model.addAttribute("mycart",list);
-			model.addAttribute("center","/payment");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		model.addAttribute("center","/payment");
 		return "index";
 	}
 	

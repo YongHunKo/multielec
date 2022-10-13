@@ -14,17 +14,17 @@ public class PaymentController {
 	@Autowired
 	ItemService service;
 	
-	@RequestMapping("payment")
-	public String payment(Model model) {
-		List<ItemDTO> list = null;
-		try {
-			list = service.finditem(301);
-			model.addAttribute("list",list);
-			model.addAttribute("center","/payment");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "index";
-	}
+//	@RequestMapping("payment")
+//	public String payment(Model model) {
+//		List<ItemDTO> list = null;
+//		try {
+//			list = service.finditem(301);
+//			model.addAttribute("list",list);
+//			model.addAttribute("center","/payment");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return "index";
+//	}
 
 }
