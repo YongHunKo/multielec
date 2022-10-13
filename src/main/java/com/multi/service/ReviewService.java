@@ -42,9 +42,12 @@ public class ReviewService implements MyService<Integer,ReviewDTO> {
 	}
 
 	@Override
-	public List<ReviewDTO> getall() throws Exception {
-		
+	public List<ReviewDTO> getall() throws Exception {		
 		return mapper.selectall();
+	}
+	
+	public List<ReviewDTO> itemreview(Integer itemid) throws Exception {		
+		return mapper.itemreview(itemid);
 	}
 
 }
