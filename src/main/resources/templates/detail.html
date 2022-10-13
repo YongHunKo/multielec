@@ -33,22 +33,6 @@
 			}
 		});
 	});
- 	
- 	$('#buy_btn').click(function(){
-		var itemid = $('#itemid').text();
-		var itemnum = $('#num').val();
-		var custid = '[[${session.logincust.custid}]]';
-		if(itemnum=='0'){
-			alert('수량 입력');
-			return;
-		}
-		$('#num').attr({
-			'method':'post',
-			'action':'/pay'
-		});
-		$('#num').submit();
-	});
-
 });
 </script>
    <div class="card-body">
@@ -94,11 +78,7 @@
         
          <button type="button" class="btn btn-default btn-sm" id="cart_btn">
           <span class="glyphicon glyphicon-shopping-cart"></span>카트에 담기
-        </button>
-              
-        <button type="button" class="btn btn-default btn-sm" id="buy_btn">
-          <span class="glyphicon glyphicon-shopping-cart"></span>구매하기
-        </button>        
+        </button>     
     <!--Modal-->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

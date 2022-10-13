@@ -11,7 +11,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM orderlist
 	</select>
 	<insert id="insert" parameterType="OrderlistDTO">
-		INSERT INTO orderlist VALUES (#{orderid},#{custid},#{cnt},#{orderdate},#{totalprice})
+		INSERT INTO orderlist VALUES (null,#{custid},#{cnt},#{orderdate},#{totalprice})
+     	<selectKey keyProperty="orderid" resultType="Integer" order="AFTER"> 
+                SELECT LAST_INSERT_ID()
+      	</selectKey> 
 	</insert>
 	<update id="update" parameterType="OrderlistDTO">
 		UPDATE orderlist SET custid=#{custid}, cnt=#{cnt}, orderdate=#{orderdate}, totalprice=#{totalprice} WHERE orderid=#{orderid}

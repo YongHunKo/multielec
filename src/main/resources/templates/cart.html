@@ -18,6 +18,7 @@ function del(cartid){
 	}
 }
 
+
 </script>
 
 
@@ -34,7 +35,7 @@ function del(cartid){
         <th>Count</th>
         <th>	
         	<button type="button" class="btn btn-default btn-sm" id="buy_btn">
-          		<span class="glyphicon glyphicon-shopping-cart"></span>구매하기
+          	<a th:href="@{/cartpayment(id=${custdetail.custid})}"><span class="glyphicon glyphicon-shopping-cart"></span>구매하기</a>
         	</button>
          </th>	
       </tr>
