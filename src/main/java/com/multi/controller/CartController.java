@@ -40,17 +40,6 @@ public class CartController {
 		}
 		return "redirect:cart?id="+custid;
 	}
-	
-	@RequestMapping("/addcart")
-	public Object addcart(CartDTO cart) {
-		try {
-			cart_service.register(cart);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return "";
-	}
 }
 
 
