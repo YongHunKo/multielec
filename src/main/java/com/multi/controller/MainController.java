@@ -81,4 +81,41 @@ public class MainController {
 		return "index";
 	}
 	
+	@RequestMapping("/custdetail")
+	public String custdetail(Model model, String id) {
+		CustDTO cust = null;
+		try {
+			cust = custservice.get(id);
+			model.addAttribute("custdetail", cust);
+			model.addAttribute("center","/cust/custdetail");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
+	
+	@RequestMapping("/custupdate")
+	public String custupdate(Model model, String id) {
+		CustDTO cust = null;
+		try {
+			cust = custservice.get(id);
+			model.addAttribute("custupdate", cust);
+			model.addAttribute("center", "/cust/custupdate");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
+	
+	@RequestMapping("/custupdateimpl")
+	public String custupdateimpl(Model model, CustDTO cust, HttpSession session) {
+		try {
+			custservice.modify(cust);
+			session.setAttribute("logincust", cust);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:custdetail?id="+cust.getCustid();
+	}
+	
 }

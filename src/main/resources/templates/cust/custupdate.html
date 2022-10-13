@@ -1,0 +1,54 @@
+<meta charset="utf-8">
+
+<script>
+$(document).ready(function () {
+
+	$('#update_btn').click(function() {
+		var c = confirm('수정 하시겠습니까?');
+		if(c == true){
+			$('#cust_form').attr({
+				'method':'post',
+				'action': '/custupdateimpl'
+			});
+		
+			$('#cust_form').submit();
+	   	}else{
+		   return;
+	   	}
+		
+	});
+});
+</script>
+
+<!-- Detail Area -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h1 class="h3 mb-0 text-gray-800">회원정보 수정</h1>
+    </div>
+    <div class="card-body">
+    	<form id="cust_form">
+		    <div class="form-group">
+		      <label for="id">아이디:</label>
+		      <input type="text" readonly=readonly class="form-control" id="custid" th:value="${custupdate.custid}" name="custid">
+		      <span id="ispan"></span>
+		    </div>
+		    <div class="form-group">
+		      <label for="pwd">패스워드:</label>
+		      <input type="text" class="form-control" id="custpwd" th:value="${custupdate.custpwd}" name="custpwd">
+		    </div>
+		    <div class="form-group">
+		      <label for="name">이름:</label>
+		      <input type="text" class="form-control" id="custname" th:value="${custupdate.custname}" name="custname">
+		    </div>
+		    <div class="form-group">
+		      <label for="tel">전화번호:</label>
+		      <input type="text"  class="form-control" id="tel" th:value="${custupdate.tel}" name="tel">
+		    </div>
+		    <div class="form-group">
+		      <label for="addr">주소:</label>
+		      <input type="text"  class="form-control" id="addr" th:value="${custupdate.addr}" name="addr">
+		    </div>		    
+		  </form>
+		  <button id="update_btn" class="btn btn-default">UPDATE</button>
+    </div>
+</div>

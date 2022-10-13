@@ -21,7 +21,7 @@ public class CustDTO {
 	private String gender;
 	private Integer age;
 	private Date custrdate;
-	private Date birth;
+	private String birth;
 	private String tel;
 	private String addr;
 

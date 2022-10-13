@@ -15,7 +15,7 @@ class UpdateCust {
 	@Test
 	void contextLoads() {
 	    try {
-            service.modify(new CustDTO("id01", "pwd02", "강동우", "M", 30, null, null, null, "서울 강남구"));
+            service.modify(new CustDTO("id01", "pwd02", "동우", null, null, null, null, "01012341234", "서울 강남구"));
             System.out.println("update_OK");
         } catch (Exception e) {
             e.printStackTrace();

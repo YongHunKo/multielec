@@ -1,0 +1,51 @@
+<meta charset="utf-8">
+
+
+<!-- Detail Area -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h1 class="h3 mb-0 text-gray-800">회원정보</h1>
+    </div>
+    <div class="card-body">
+    	<form id="cust_form">
+		    <div class="form-group">
+		      <label for="id">아이디:</label>
+		      <input type="text" readonly=readonly class="form-control" id="custid" th:value="${custdetail.custid}" name="custid">
+		      <span id="ispan"></span>
+		    </div>
+		    <div class="form-group">
+		      <label for="pwd">패스워드:</label>
+		      <input type="text" readonly=readonly class="form-control" id="custpwd" th:value="${custdetail.custpwd}" name="custpwd">
+		    </div>
+		    <div class="form-group">
+		      <label for="name">이름:</label>
+		      <input type="text" readonly=readonly class="form-control" id="custname" th:value="${custdetail.custname}" name="custname">
+		    </div>
+		    <div class="form-group">
+		      <label for="gender">성별:</label>
+		      <input type="text" readonly=readonly class="form-control" id="gender" th:value="${custdetail.gender}" name="gender">
+		    </div>
+		    <div class="form-group">
+		      <label for="age">나이:</label>
+		      <input type="text" readonly=readonly class="form-control" id="age" th:value="${custdetail.age}" name="age">
+		    </div>
+		    <div class="form-group">
+		      <label for="rdate">회원가입 날짜:</label>
+		      <input type="text" readonly=readonly class="form-control" id="custrdate" th:value="${#dates.format(custdetail.custrdate, 'yyyy-MM-dd')}" name="custrdate">
+		    </div>
+		    <div class="form-group">
+		      <label for="birth">생일:</label>
+		      <input type="text" readonly=readonly class="form-control" id="birth" th:value="${custdetail.birth}" name="birth">
+		    </div>
+		    <div class="form-group">
+		      <label for="tel">전화번호:</label>
+		      <input type="text" readonly=readonly class="form-control" id="tel" th:value="${custdetail.tel}" name="tel">
+		    </div>
+		    <div class="form-group">
+		      <label for="addr">주소:</label>
+		      <input type="text" readonly=readonly class="form-control" id="addr" th:value="${custdetail.addr}" name="addr">
+		    </div>		    		    		    		    		    		    
+		  </form>
+		  <button id="update_btn" class="btn btn-default"><a th:href="@{/custupdate(id=${custdetail.custid})}">회원정보 수정</a></button>
+    </div>
+</div>
