@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="finditem" parameterType="Integer" resultType="ItemDTO">
 		SELECT * FROM item WHERE cateid=#{cateid}
 	</select>
-	<select id="searchitem" resultType="ItemDTO">
+	<select id="searchitem" parameterType="String" resultType="ItemDTO">
 		SELECT * FROM item WHERE itemname LIKE CONCAT('%',#{txt},'%')
 	</select>
 </mapper>

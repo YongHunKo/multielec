@@ -59,7 +59,7 @@ $(document).ready(function(){
 	
 	$('#search_btn').click(function() {
 		$('#search_form').attr({
-			'method':'post',
+			'method':'get',
 			'action':'/searchimpl',
 		});
 		$('#search_form').submit();
@@ -96,14 +96,24 @@ $(document).ready(function(){
                     </div>
                 </div>
                 
-                <div class="hero__search">
+<!--                 <div class="hero__search">
                     <div class="hero__search__form">
                         <form id="search_form" >
                             <input id="search_input" type="text" placeholder="What do yo u need?">
                             <button id="search_btn" type="button" class="site-btn">SEARCH</button>
                         </form>
                     </div>
-                </div>
+                </div> -->
+                     Topbar Search
+                    <form id="search_form">
+                        <div class="input-group">
+                            <input name="txt" type="text" placeholder="제품 검색하기">
+                            <div class="input-group-append">
+                                <button id="search_btn" class="site-btn" type="button">SEARCH</button>
+                            </div>
+                        </div>
+                    </form>          
+                
                 
                 <div class="col-lg-3">
                     <div class="header__cart">
