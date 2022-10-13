@@ -14,7 +14,9 @@
                 <tbody>
                     <tr th:each="i : ${list}">
                         <td >
-                        	img
+				        <a th:href="@{/itemdetail(itemid=${i.itemid})}">
+				        	<img th:src="'/img/item/'+${i.img}">
+				        </a>                        	
                         </td>
                         <td><a th:href="@{/itemdetail(itemid=${i.itemid})}" th:text="${i.itemid}">id</a></td>
                         <td th:text="${i.itemname}">name</td>
