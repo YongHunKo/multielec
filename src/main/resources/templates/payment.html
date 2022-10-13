@@ -1,28 +1,3 @@
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>선택한 제품 화면</th>
-                        <th>제품 이름</th>
-                        <th>가격</th>
-                        <th>수량</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr th:each="i : ${list}">
-                        <td >
-                        	img
-                        </td>
-                        <td th:text="${i.itemname}">name</td>
-                        <td th:text="${i.price}">price</td>
-                        <td th:text="${i.likecnt}">likecnt</td>
-                    </tr>          
-                </tbody>
-            </table>
-        </div>
-    </div>
     
     
     <div>
