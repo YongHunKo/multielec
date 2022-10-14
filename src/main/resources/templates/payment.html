@@ -18,46 +18,82 @@ $(document).ready(function(){
 	});
 });
 </script>
+
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<body>
-	<div>
-    	<h2>결제 대기 상품</h2>
-	</div>    
- </body>
-
- <br> 
- <br>
- <br> 
-  <table class="table">
-    <thead>
-      <tr>
-      	<th>No</th>
-        <th>Image</th>
-        <th>Item Name</th>
-        <th>Price</th>
-        <th>Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="c : ${mycart}">
-        <td id="cartid" th:text="${c.cartid}">NO</td>
-        <td> <img th:src="'/img/'+${c.img}"> </td>
-        <td id="itemid" th:text="${c.itemname}">Item Name</td>
-        <td id="price" th:text="${c.price}">Price</td>
-        <td id="cnt" th:text="${c.cnt}">Count</td>
-        <td id="custid" th:text="${c.custid}">custid</td>
-      </tr>
-    </tbody>
-  </table>
-    
 
 
+<!-- Content Row -->
 
-	<div>
-    	이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름&nbsp; <input type="text"><br>
-    	연&nbsp;락&nbsp;처&nbsp; <input type="tel"><br>
-	</div>    
 
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+	    <h1 class="h4 mb-0 text-gray-800">결제 정보</h1>
+	</div>
+
+     <!-- Hist Chart -->
+     <div class="col-md-12 mb-4">
+         <div class="card shadow mb-4">
+
+             <!-- Card Body -->
+             <div class="card-body">
+        	<div id="container1">
+					  <table class="table table-hover">
+					    <thead>
+					      <tr>
+					      	<th>No</th>
+					        <th>Image</th>
+					        <th>Item Name</th>
+					        <th>Price</th>
+					        <th>Count</th>
+					        <th>	
+					         </th>	
+					      </tr>
+					    </thead>
+						   <tbody>
+						      <tr th:each="c : ${mycart}">
+						        <td id="cartid" th:text="${c.cartid}">NO</td>
+						        <td> <img th:src="'/img/item/'+${c.img}"> </td>
+						        <td id="itemid" th:text="${c.itemname}">Item Name</td>
+						        <td id="price" th:text="${c.price}">Price</td>
+						        <td id="cnt" th:text="${c.cnt}">Count</td>
+						        <td id="custid" th:text="${c.custid}">custid</td>
+						      </tr>
+						    </tbody>
+					  </table>
+        	</div>
+             </div>
+             
+         </div>
+     </div>
+
+     <div class="col-md-12 mb-4">
+         <div class="card shadow mb-4">
+             <!-- Card Body -->
+             <div class="card-body">
+                <div id="container2">
+			 <h4>수령자 정보</h4>
+			 <hr>
+				<form action="/action_page.php">
+				    <div class="form-group">
+				      <label for="usr">이름:</label>
+				      <input type="text" class="form-control" id="usr" name="username">
+				    </div>
+				    <div class="form-group">
+				      <label for="pwd">연락처:</label>
+				      <input type="password" class="form-control" id="pwd" name="password">
+				    </div>
+				    <div class="form-group">
+				      <label for="pwd">주소:</label>
+				      <input type="password" class="form-control" id="pwd" name="password">
+				    </div>				    
+				    <button id="send_btn" type="button" class="btn btn-primary">결제</button>
+				  </form>               
+
+                
+                </div>
+             </div>
+         </div>
+     </div>
+     
 
 
  <div class="form-group m-form__group row">
