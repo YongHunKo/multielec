@@ -14,7 +14,7 @@ function execDaumPostcode() {
 $(document).ready(function(){
 	$('#pay_btn').click(function(){
 		var custid=$('#custid').text();
-		location.href="/paymentimpl?custid="+custid;
+		location.href="/paymentimpl?custid="+custid+'&cnt='+cnt;
 	});
 });
 </script>

@@ -12,5 +12,6 @@ import com.multi.frame.MyMapper;
 @Mapper
 public interface OrderlistMapper extends MyMapper<Integer, OrderlistDTO>{
 	public List<OrderlistDTO> orderlistall(String custid) throws Exception;
+	public List<OrderlistDTO> registerall(String custid) throws Exception;
 
 }
