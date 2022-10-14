@@ -50,7 +50,8 @@ $(document).ready(function(){
 					    </thead>
 						   <tbody>
 						      <tr th:each="c : ${mycart}">
-						        <td> <img th:src="'/img/item/'+${c.img}"> </td>
+						        <td> <img th:src="'/img/item/'+${c.img}" style="width: 350px; min-width: 350px;">
+						        </td>
 						        <td id="itemid" th:text="${c.itemname}">Item Name</td>
 						        <td id="price" th:text="${c.price}">Price</td>
 						        <td id="cnt" th:text="${c.cnt}">Count</td>
