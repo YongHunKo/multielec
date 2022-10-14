@@ -15,7 +15,11 @@ $(document).ready(function(){
 	$('#pay_btn').click(function(){
 		var custid=$('#custid').text();
 		var cnt=$('#cnt').text();
-		location.href="/paymentimpl?custid="+custid+'&cnt='+cnt;
+		var shipname=$('#shipname').text();
+		var shiptel=$('#shiptel').text();
+		var shipaddr=$('#shipaddr').text();
+		//위에 ship 텍스트들이 값이 안들어옴 왜일까 이게아니라 로그인임플처럼 넘겨야할거같다
+		location.href="/paymentimpl?custid="+custid+'&shipname='+shipname+'&shiptel='+shiptel+'&shipaddr='+shipaddr;
 	});
 });
 </script>
@@ -72,18 +76,20 @@ $(document).ready(function(){
                 <div id="container2">
 			 <h4>수령자 정보</h4>
 			 <hr>
-				<form action="/action_page.php">
+				<form action="/action_page.php" id="ship_form">
 				    <div class="form-group">
-				      <label for="usr">이름:</label>
-				      <input type="text" class="form-control" id="usr" name="username">
+				      <label for="shipname">이름:</label>
+				      <input type="text" class="form-control" id="shipname" name="shipname">
 				    </div>
 				    <div class="form-group">
-				      <label for="pwd">연락처:</label>
-				      <input type="password" class="form-control" id="pwd" name="password">
+				      <label for="shiptel">연락처:</label>
+				      <input type="text" class="form-control" id="shiptel" name="shiptel">
 				    </div>
 				    <div class="form-group">
-				      <label for="pwd">주소:</label>
-				       <div class="form-group m-form__group row">
+				      <label for="shipaddr">주소:</label>
+				      <input type="text" class="form-control" id="shipaddr" name="shipaddr">
+				      <!-- 임시로 ship에 들어가는지 테스트하기 위한 input -->
+				      <div class="form-group m-form__group row">
   <div class="col-md-2">
     <input type="text" class="form-control m-input" name="postcode" id="postcode" placeholder="우편번호" readonly />
   </div>

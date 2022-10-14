@@ -13,10 +13,12 @@ import com.multi.dto.CartDTO;
 import com.multi.dto.CustDTO;
 import com.multi.dto.OrderdetailDTO;
 import com.multi.dto.OrderlistDTO;
+import com.multi.dto.ShipDTO;
 import com.multi.service.CartService;
 import com.multi.service.CustService;
 import com.multi.service.OrderdetailService;
 import com.multi.service.OrderlistService;
+import com.multi.service.ShipService;
 
 @Controller
 public class CartController {
@@ -29,6 +31,8 @@ public class CartController {
 	OrderlistService orderlist_service;
 	@Autowired
 	OrderdetailService orderdetail_service;
+	@Autowired
+	ShipService ship_service;
 	
 	@RequestMapping("/cart")
 	public String cart(Model model, String id) {
@@ -78,7 +82,7 @@ public class CartController {
 	}
 	
 	@RequestMapping("/paymentimpl")
-	public String paymentimpl(Model model, String custid) {
+	public String paymentimpl(Model model, String custid, String shipname, String shiptel, String shipaddr) {
 		List<CartDTO> list = null;
 		try {
 			list= cart_service.registerall(custid);
@@ -92,8 +96,11 @@ public class CartController {
 				//오더리스트에 넣는것들은 다 끝
 				orderlist_service.register(order);
 				int r = order.getOrderid();
-				OrderdetailDTO orderdetail = new OrderdetailDTO(null, r, itemid, itemname, null, price, cnt);
+				OrderdetailDTO orderdetail = new OrderdetailDTO(null, r, itemid, itemname, "배송준비", price, cnt);
+				ShipDTO ship = new ShipDTO(null, r, shipname, shipaddr, shiptel);
+				
 				orderdetail_service.register(orderdetail);
+				ship_service.register(ship);
 			}
 			for(CartDTO o:list) {
 				cart_service.remove(o.getCartid());
@@ -101,6 +108,7 @@ public class CartController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 //		model.addAttribute("center","/paymentok");
 		return "index";
 	}
