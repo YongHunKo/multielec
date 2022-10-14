@@ -13,7 +13,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM cart
 	</select>
 	<select id="registerall" resultType="CartDTO">
-		SELECT * FROM cart WHERE custid=#{custid}
+		SELECT * FROM cart ca
+		INNER JOIN item it ON ca.itemid = it.itemid
+		WHERE custid=#{custid}
 	</select>
 	
 	<insert id="insert" parameterType="CartDTO">

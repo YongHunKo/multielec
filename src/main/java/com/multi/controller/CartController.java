@@ -84,10 +84,15 @@ public class CartController {
 			list= cart_service.registerall(custid);
 			for(CartDTO o:list) {
 				int cnt =o.getCnt();
-				OrderlistDTO order = new OrderlistDTO(null, custid,cnt, null, null, null, null, null, null, null);
+				int price = o.getPrice();
+				int itemid = o.getItemid();
+				String itemname = o.getItemname();
+				int totalprice =cnt*price;
+				OrderlistDTO order = new OrderlistDTO(null, custid,cnt, null, totalprice, null, null, null, null, null);
+				//오더리스트에 넣는것들은 다 끝
 				orderlist_service.register(order);
 				int r = order.getOrderid();
-				OrderdetailDTO orderdetail = new OrderdetailDTO(null, r, null, null, null, null, null);
+				OrderdetailDTO orderdetail = new OrderdetailDTO(null, r, itemid, itemname, null, price, cnt);
 				orderdetail_service.register(orderdetail);
 			}
 			for(CartDTO o:list) {
