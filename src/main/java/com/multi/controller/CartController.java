@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CartDTO;
 import com.multi.dto.CustDTO;
+import com.multi.dto.OrderdetailDTO;
 import com.multi.dto.OrderlistDTO;
 import com.multi.service.CartService;
 import com.multi.service.CustService;
+import com.multi.service.OrderdetailService;
 import com.multi.service.OrderlistService;
 
 @Controller
@@ -25,6 +27,8 @@ public class CartController {
 	CustService cust_service;
 	@Autowired
 	OrderlistService orderlist_service;
+	@Autowired
+	OrderdetailService orderdetail_service;
 	
 	@RequestMapping("/cart")
 	public String cart(Model model, String id) {
@@ -74,13 +78,22 @@ public class CartController {
 	}
 	
 	@RequestMapping("/paymentimpl")
-	public String paymentimpl(Model model, String custid, Integer cnt) {
-		OrderlistDTO order = new OrderlistDTO(null, custid,cnt, null, null, null, null, null, null, null);
-		System.out.println(order);
+	public String paymentimpl(Model model, String custid) {
+		List<CartDTO> list = null;
 		try {
-			orderlist_service.register(order);
+			list= cart_service.registerall(custid);
+			for(CartDTO o:list) {
+				int cnt =o.getCnt();
+				OrderlistDTO order = new OrderlistDTO(null, custid,cnt, null, null, null, null, null, null, null);
+				orderlist_service.register(order);
+				int r = order.getOrderid();
+				OrderdetailDTO orderdetail = new OrderdetailDTO(null, r, null, null, null, null, null);
+				orderdetail_service.register(orderdetail);
+			}
+			for(CartDTO o:list) {
+				cart_service.remove(o.getCartid());
+			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 //		model.addAttribute("center","/paymentok");

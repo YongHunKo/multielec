@@ -46,5 +46,9 @@ public class CartService implements MyService<Integer,CartDTO>{
 		return mapper.cartall(custid);
 	}
 	
+	public List<CartDTO> registerall(String custid) throws Exception {
+		return mapper.registerall(custid);
+	}
+	
 
 }
