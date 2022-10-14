@@ -73,17 +73,17 @@ public class CartController {
 		return "index";
 	}
 	
-	@RequestMapping("/paymentimpl")
-	public String paymentimpl(Model model, OrderlistDTO order) {
-		try {
-			orderlist_service.register(new OrderlistDTO(null,order.getCustid(), order.getCnt(),null,null));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		model.addAttribute("center","/paymentok");
-		return "index";
-	}
+//	@RequestMapping("/paymentimpl")
+//	public String paymentimpl(Model model, OrderlistDTO order) {
+//		try {
+//			orderlist_service.register(new OrderlistDTO(null,null,null,null,null));
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		model.addAttribute("center","/paymentok");
+//		return "index";
+//	}
 }
 
 
