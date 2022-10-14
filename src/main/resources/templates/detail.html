@@ -16,6 +16,7 @@
 	});
  	$('#cart_btn').click(function(){
 		var itemid = $('#itemid').text();
+		alert(itemid);
 		var itemnum = $('#num').val();
 		var custid = '[[${session.logincust.custid}]]';
 		if(itemnum=='0'){
@@ -35,6 +36,79 @@
 	});
 });
 </script>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+        <div class="card o-hidden border-0  my-0">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image">
+                    <img th:src="'/img/item/'+${itemdetail.img}">
+                    </div>
+                    
+                    <div class="col-lg-7">
+                        <div class="p-0">
+
+                           <form class="user">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" 
+                                       id="itemid" th:value="${itemdetail.itemid}" readonly="readonly">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" 
+                                        th:value="${itemdetail.itemname}" readonly="readonly">
+                                </div>
+                                <div class="form-group">
+                                 <input type="text" class="form-control form-control-user" 
+                                        th:value="${itemdetail.price}" readonly="readonly" >                                   
+                                </div>
+                                <hr>
+                                
+							<input type="number" value="0" class="form-control" id="num" readonly="readonly">
+						
+					        <button type="button" class="btn btn-default btn-sm" id="up_btn">
+								<span class="material-icons">expand_less</span>
+					        </button>
+					
+					        <button type="button" class="btn btn-default btn-sm" id="down_btn">
+								<span class="material-icons">keyboard_arrow_down</span>
+					        </button>
+                          </form>
+                            
+                            	<hr>
+                                <a type="button" href="login.html" class="btn btn-primary btn-user btn-block" id="cart_btn">
+                                <span class="material-icons">add_shopping_cart</span>
+                                </a>                            	
+							<hr>
+                            <div class="form-group" th:if="${itemreview != null}">
+                             <input type="text" class="form-control form-control-user" 
+                                    th:value="${itemreview.custid}+' : '+${itemreview.rvtxt}" >                                   
+                            </div>	
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+</body>
+<!-- 
+
    <div class="card-body">
    <table>
    	<thead>
@@ -69,16 +143,17 @@
 	<input type="number" value="0" class="form-control" id="num" readonly="readonly">
 	
         <button type="button" class="btn btn-default btn-sm" id="up_btn">
-          <span class="glyphicon glyphicon-arrow-up"></span> 증가
+		<span class="material-icons">expand_less</span>
         </button>
 
         <button type="button" class="btn btn-default btn-sm" id="down_btn">
-          <span class="glyphicon glyphicon-arrow-down"></span> 감소
+		<span class="material-icons">keyboard_arrow_down</span>
         </button>
         
          <button type="button" class="btn btn-default btn-sm" id="cart_btn">
-          <span class="glyphicon glyphicon-shopping-cart"></span>카트에 담기
-        </button>     
+		<span class="material-icons">shopping_cart</span>
+        </button> -->
+             
     <!--Modal-->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
