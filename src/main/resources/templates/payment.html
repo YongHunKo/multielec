@@ -1,13 +1,23 @@
 <script>
+/** 우편번호 찾기 */
+function execDaumPostcode() {
+    daum.postcode.load(function(){
+        new daum.Postcode({
+            oncomplete: function(data) {
+              // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+              $("#postcode").val(data.zonecode);
+              $("#address").val(data.roadAddress);
+            }
+        }).open();
+    });
+}
 $(document).ready(function(){
 	$('#pay_btn').click(function(){
-		var custid = '[[$session.logincust.custid]]';
 		var cnt = $('#num').text();
 		var itemid = $('#itemid').text();
 		$.ajax({
 			url:'/paymentimpl',
-			data:{
-				'custid':custid,
+			data:{			
 				'itemid':itemid,
 				'cnt':cnt}
 			});
@@ -46,12 +56,12 @@ $(document).ready(function(){
     
 
 
-<body>
+
 	<div>
     	이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름&nbsp; <input type="text"><br>
     	연&nbsp;락&nbsp;처&nbsp; <input type="tel"><br>
 	</div>    
- </body>
+
 
 
  <div class="form-group m-form__group row">
@@ -92,36 +102,23 @@ $(document).ready(function(){
 <!--autoload=false 파라미터를 이용하여 자동으로 로딩되는 것을 막습니다.-->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 
-<script>
-/** 우편번호 찾기 */
-function execDaumPostcode() {
-    daum.postcode.load(function(){
-        new daum.Postcode({
-            oncomplete: function(data) {
-              // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-              $("#postcode").val(data.zonecode);
-              $("#address").val(data.roadAddress);
-            }
-        }).open();
-    });
-}
-</script>
 
-<body>
+
+
 	<p>결제수단 선택</p>
 		<link rel="stylesheet" href="css/pay_button_select.css">
 		<script src="js/pay_button_select.js"></script>
 		<input type="button" id="btn1" value="휴대폰 소액결제">
 		<input type="button" id="btn2" value="무통장 입금">
 		<input type="button" id="btn3" value="신용/체크 카드 결제">
-</body>		
+	
 <br>
 <br>
 <br>
 <br>
 
 
-<body>
+
 <input type="button" id="pay_btn" value="결제하기">
 <div class="modal hidden">
   <div class="bg"></div>

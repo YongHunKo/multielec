@@ -76,7 +76,7 @@ public class CartController {
 	@RequestMapping("/paymentimpl")
 	public String paymentimpl(Model model, OrderlistDTO order) {
 		try {
-			orderlist_service.register(new OrderlistDTO(null,order.getCustid(), order.getCnt(), order.getOrderdate(),null));
+			orderlist_service.register(new OrderlistDTO(null,order.getCustid(), order.getCnt(),null,null));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
