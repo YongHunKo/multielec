@@ -13,17 +13,12 @@ function execDaumPostcode() {
 }
 $(document).ready(function(){
 	$('#pay_btn').click(function(){
-		var cnt = $('#num').text();
-		var itemid = $('#itemid').text();
-		$.ajax({
-			url:'/paymentimpl',
-			data:{			
-				'itemid':itemid,
-				'cnt':cnt}
-			});
-		});
+		var custid=$('#custid').text();
+		location.href="/paymentimpl?custid="+custid;
+	});
 });
 </script>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <body>
 	<div>
     	<h2>결제 대기 상품</h2>
@@ -50,6 +45,7 @@ $(document).ready(function(){
         <td id="itemid" th:text="${c.itemname}">Item Name</td>
         <td id="price" th:text="${c.price}">Price</td>
         <td id="cnt" th:text="${c.cnt}">Count</td>
+        <td id="custid" th:text="${c.custid}">custid</td>
       </tr>
     </tbody>
   </table>
