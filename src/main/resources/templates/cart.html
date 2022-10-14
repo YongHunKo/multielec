@@ -25,7 +25,7 @@ function del(cartid){
 <div class="container-fluid">
   <h2>장바구니</h2>
   <p></p>            
-  <table class="table">
+  <table class="table table-hover">
     <thead>
       <tr>
       	<th>No</th>
@@ -43,7 +43,7 @@ function del(cartid){
     <tbody>
       <tr th:each="c : ${mycart}">
         <td id="cartid" th:text="${c.cartid}">NO</td>
-        <td> <img th:src="'/img/'+${c.img}"> </td>
+        <td> <img th:src="'/img/item/'+${c.img}"> </td>
         <td th:text="${c.itemname}">Item Name</td>
         <td th:text="${c.price}">Price</td>
         <td th:text="${c.cnt}">Count</td>
