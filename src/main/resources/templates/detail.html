@@ -15,8 +15,7 @@
 		$('#num').val(result);
 	});
  	$('#cart_btn').click(function(){
-		var itemid = $('#itemid').text();
-		alert(itemid);
+		var itemid = $('#itemid').val();
 		var itemnum = $('#num').val();
 		var custid = '[[${session.logincust.custid}]]';
 		if(itemnum=='0'){
@@ -79,7 +78,7 @@
                           </form>
                             
                             	<hr>
-                                <a type="button" href="login.html" class="btn btn-primary btn-user btn-block" id="cart_btn">
+                                <a type="button" href="#" class="btn btn-primary btn-user btn-block" id="cart_btn">
                                 <span class="material-icons">add_shopping_cart</span>
                                 </a>                            	
 							<hr>
@@ -165,10 +164,11 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">장바구니 장바구니</div>
+                <div class="modal-body">장바구니로 가시겠습니까?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="#">버튼</a>
+                    <a class="btn btn-primary" th:href="@{/cart(id=${session.logincust.custid})}">장바구니로</a>
+                    <a class="btn btn-primary" href="/">홈으로</a>
                 </div>
             </div>
         </div>
