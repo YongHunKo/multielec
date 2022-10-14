@@ -20,4 +20,11 @@ public class OrderlistDTO {
 	private Date orderdate;
 	private Integer totalprice;
 
+	//추가되는거
+	
+	private String shipsearch;
+	private String itemname;
+	private String img;
+	private Integer itemprice;
+	private Integer itemcnt;
 }

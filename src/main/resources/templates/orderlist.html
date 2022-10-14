@@ -1,0 +1,57 @@
+<meta charset="utf-8">
+<style>
+	table > tbody > tr > td > img {
+		width:100px;
+	} 
+	table > tbody > tr > td > img:hover {
+		width:99px;
+		border:1px solid red;
+	} 
+</style>
+
+<script>
+function del(orderid){
+	var custid = '[[${session.logincust.custid}]]';
+	var c = confirm('삭제 하시겠습니까 ?');
+	if(c == true){
+		location.href='/deleteorderlist?id='+orderid+'&custid='+custid;
+	}
+}
+</script>
+
+<div class="container-fluid">
+  <h2>구매이력</h2>
+  <p></p>            
+  <table class="table table-hover">
+    <thead>
+      <tr>
+      	<th>No</th>
+      	<th>Img</th>
+        <th>ItemName</th>
+        <th>ItemPrice</th>
+        <th>Count</th>
+        <th>OrderDate</th>
+        <th>ShipSearch</th>        
+        <th>TotalPrice</th>
+        
+        	
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="o : ${myordercart}">
+        <td id="orderid" th:text="${o.orderid}">NO</td>
+        <td> <img th:src="'/img/item/'+${o.img}"> </td>
+        <td th:text="${o.itemname}">ItemName</td>
+        <td th:text="${o.itemprice}">ItemPrice</td>
+        <td th:text="${o.itemcnt}">Count</td>
+        <td th:text="${o.orderdate}">OrderDate</td>
+        <td th:text="${o.shipsearch}">ShipSearch</td>
+        <td th:text="${o.totalprice}">TotalPrice</td>
+        <td> 
+        	<button th:onclick="del([[${o.orderid}]]);" type="button" class="btn btn-default btn-sm"></span>삭제하기
+        	</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

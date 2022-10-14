@@ -4,7 +4,14 @@
 <!-- Detail Area -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h1 class="h3 mb-0 text-gray-800">회원정보</h1>
+        <h1 class="h3 mb-0 text-gray-800">회원정보
+            <th>	
+        		<button type="button" class="btn btn-default btn-sm">
+          		<a th:href="@{/orderlist(id=${custdetail.custid})}"></span>구매 이력</a>
+        		</button>
+         </th>
+         
+         </h1>
     </div>
     <div class="card-body">
     	<form id="cust_form">

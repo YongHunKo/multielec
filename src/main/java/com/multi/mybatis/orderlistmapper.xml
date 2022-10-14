@@ -11,16 +11,24 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM orderlist
 	</select>
 	<insert id="insert" parameterType="OrderlistDTO">
-		INSERT INTO orderlist VALUES (null,#{custid},#{cnt},#{orderdate},#{totalprice})
+		INSERT INTO orderlist VALUES (null,#{custid},#{cnt}, sysdate(), #{totalprice})
      	<selectKey keyProperty="orderid" resultType="Integer" order="AFTER"> 
                 SELECT LAST_INSERT_ID()
       	</selectKey> 
 	</insert>
 	<update id="update" parameterType="OrderlistDTO">
-		UPDATE orderlist SET custid=#{custid}, cnt=#{cnt}, orderdate=#{orderdate}, totalprice=#{totalprice} WHERE orderid=#{orderid}
+		UPDATE orderlist SET custid=#{custid}, cnt=#{cnt}, orderdate=sysdate(), totalprice=#{totalprice} WHERE orderid=#{orderid}
 	</update>
 	<delete id="delete" parameterType="Integer">
 		DELETE FROM orderlist WHERE orderid=#{orderid}
 	</delete>
 	
+	<select id="orderlistall" parameterType="String" resultType="OrderlistDTO">
+		select odl.orderid, odl.custid, odl.orderdate, odt.shipsearch, odt.itemprice, odt.itemcnt, odt.itemcnt*odt.itemprice as totalprice, it.itemname, 
+		it.img from orderlist odl
+		INNER JOIN orderdetail odt ON odl.orderid = odt.orderid
+		INNER JOIN item it ON odt.itemid = it.itemid
+		INNER JOIN cust cu ON odl.custid = cu.custid
+		WHERE odl.custid= #{custid}
+	</select>
 </mapper>

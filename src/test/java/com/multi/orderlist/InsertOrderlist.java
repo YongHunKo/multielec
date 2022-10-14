@@ -18,7 +18,7 @@ class InsertOrderlist {
 
 	@Test
 	void contextLoads() {
-		OrderlistDTO order = new OrderlistDTO(0,"id11", 3, null, 40000);
+		OrderlistDTO order = new OrderlistDTO(0,"id11", 3, null, 40000,null,null,null,null,null);
 		try {
 			orderlist_service.register(order);
 			int r = order.getOrderid();
