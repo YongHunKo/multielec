@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CartDTO;
 import com.multi.dto.CustDTO;
+import com.multi.dto.OrderlistDTO;
 import com.multi.service.CartService;
 import com.multi.service.CustService;
+import com.multi.service.OrderlistService;
 
 @Controller
 public class CartController {
@@ -21,6 +23,8 @@ public class CartController {
 	CartService cart_service;
 	@Autowired
 	CustService cust_service;
+	@Autowired
+	OrderlistService orderlist_service;
 	
 	@RequestMapping("/cart")
 	public String cart(Model model, String id) {
@@ -70,8 +74,13 @@ public class CartController {
 	}
 	
 	@RequestMapping("/paymentimpl")
-	public String paymentimpl(Model model) {
-		
+	public String paymentimpl(Model model, OrderlistDTO order) {
+		try {
+			orderlist_service.register(new OrderlistDTO(null,order.getCustid(), order.getCnt(), order.getOrderdate(),null));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		model.addAttribute("center","/paymentok");
 		return "index";
 	}

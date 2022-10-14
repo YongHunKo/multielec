@@ -1,3 +1,19 @@
+<script>
+$(document).ready(function(){
+	$('#pay_btn').click(function(){
+		var custid = '[[$session.logincust.custid]]';
+		var cnt = $('#num').text();
+		var itemid = $('#itemid').text();
+		$.ajax({
+			url:'/paymentimpl',
+			data:{
+				'custid':custid,
+				'itemid':itemid,
+				'cnt':cnt}
+			});
+		});
+});
+</script>
 <body>
 	<div>
     	이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름&nbsp; <input type="text"><br>
@@ -22,9 +38,9 @@
       <tr th:each="c : ${mycart}">
         <td id="cartid" th:text="${c.cartid}">NO</td>
         <td> <img th:src="'/img/'+${c.img}"> </td>
-        <td th:text="${c.itemname}">Item Name</td>
-        <td th:text="${c.price}">Price</td>
-        <td th:text="${c.cnt}">Count</td>
+        <td id="itemid" th:text="${c.itemname}">Item Name</td>
+        <td id="price" th:text="${c.price}">Price</td>
+        <td id="cnt" th:text="${c.cnt}">Count</td>
       </tr>
     </tbody>
   </table>
@@ -98,13 +114,13 @@ function execDaumPostcode() {
 
 
 <body>
-<input type="button" id="" value="결제하기">
+<input type="button" id="pay_btn" value="결제하기">
 <div class="modal hidden">
   <div class="bg"></div>
   <div class="modalBox">
     <p>마이페이지에서 구매 이력을 확인하시겠습니까?</p>
-    <button type="botton" onclick="location.href='주소 입력'">구매이력 확인</button>
-    <button type="botton" onclick="location.href='주소 입력'">메인으로 돌아가기</button>
+    <button type="button" onclick="location.href='주소 입력'">구매이력 확인</button>
+    <button type="button" onclick="location.href='주소 입력'">메인으로 돌아가기</button>
   </div>
 </div>
 
