@@ -15,8 +15,7 @@
 		$('#num').val(result);
 	});
  	$('#cart_btn').click(function(){
-		var itemid = $('#itemid').text();
-		alert(itemid);
+		var itemid = $('#itemid').val();
 		var itemnum = $('#num').val();
 		var custid = '[[${session.logincust.custid}]]';
 		if(itemnum=='0'){
