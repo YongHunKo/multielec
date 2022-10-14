@@ -7,6 +7,22 @@
 		width:99px;
 		border:1px solid red;
 	} 
+	
+	table > tbody > tr > th > btn:hover {
+		width:99px;
+		border:1px solid red;
+	} 
+	
+
+
+.btn:hover{
+background-color: #FE6B00;
+color:white;
+	}
+
+
+	
+
 </style>
 
 <script>
@@ -24,7 +40,7 @@ function del(cartid){
 
 <div class="container-fluid">
   <h2>장바구니</h2>
-  <p></p>            
+  <p></p>      
   <table class="table table-hover">
     <thead>
       <tr>
@@ -34,8 +50,8 @@ function del(cartid){
         <th>Price</th>
         <th>Count</th>
         <th>	
-        	<button type="button" class="btn btn-default btn-sm" id="buy_btn">
-          	<a th:href="@{/payment(id=${custdetail.custid})}"><span class="glyphicon glyphicon-shopping-cart"></span>구매하기</a>
+        	<button type="button" class="btn btn-sm">
+          	<a th:href="@{/payment(id=${custdetail.custid})}"><span class="material-icons-outlined color">credit_card</span>구매하기</a>
         	</button>
          </th>	
       </tr>
@@ -48,8 +64,8 @@ function del(cartid){
         <td th:text="${c.price}">Price</td>
         <td th:text="${c.cnt}">Count</td>
         <td> 
-        	<button th:onclick="del([[${c.cartid}]]);" type="button" class="btn btn-default btn-sm">
-          		<span class="glyphicon glyphicon-trash"></span>삭제하기
+        	<button type="button" th:onclick="del([[${c.cartid}]]);" class="btn btn-sm" >
+          		<span class="material-icons">delete</span>삭제하기
         	</button>
         </td>
       </tr>

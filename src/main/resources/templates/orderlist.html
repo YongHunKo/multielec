@@ -7,6 +7,12 @@
 		width:99px;
 		border:1px solid red;
 	} 
+
+.btn:hover{
+background-color: #FE6B00;
+color:white;
+	}
+	
 </style>
 
 <script>
@@ -47,8 +53,8 @@ function del(orderid){
         <td th:text="${o.orderdate}">OrderDate</td>
         <td th:text="${o.shipsearch}">ShipSearch</td>
         <td th:text="${o.totalprice}">TotalPrice</td>
-        <td> 
-        	<button th:onclick="del([[${o.orderid}]]);" type="button" class="btn btn-default btn-sm"></span>삭제하기
+         <td> 
+        	<button type="button" th:onclick="del([[${o.orderid}]]);" class="btn btn-sm" ><span class="material-icons">delete</span>삭제하기
         	</button>
         </td>
       </tr>
