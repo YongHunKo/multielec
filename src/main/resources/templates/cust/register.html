@@ -1,4 +1,5 @@
 <script>
+
 $(document).ready(function(){
 	$('#register_btn').click(function(){
 		$('#register_form').attr({
@@ -7,7 +8,14 @@ $(document).ready(function(){
 		});
 		$('#register_form').submit();
 	});
-	
+
+    $("#custid").keyup(function(event){
+        if (!(event.keyCode >=37 && event.keyCode<=40)) {
+            var inputVal = $(this).val();
+            $(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
+        }
+    });
+
 	$('#custpwd2').keyup(function(){
 		var custpwd = $('#custpwd').val();
 		var custpwd2 = $('#custpwd2').val();
@@ -49,6 +57,7 @@ $(document).ready(function(){
 		<div class="form-group">
 			<label for="pwd">비밀번호 :</label>
 			<input type="password" class="form-control" id="custpwd" placeholder="비밀번호 입력" name="custpwd">
+			<span id="pspan2"></span>
 		</div>
 		<div class="form-group">
 			<label for="pwd">비밀번호 확인 :</label>
