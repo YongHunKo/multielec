@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Item Detail</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+</div>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    </div>
+    <div class="card-body">
+		<img th:src="'/img/'+${itemdetail.img}">
+		<h4 id="item_id" th:text="${itemdetail.itemid}"></h4>
+		<h4 th:text="'Item Name:'+${itemdetail.itemname}"></h4>
+		<h4 th:text="'Item Price:'+${itemdetail.price}"></h4>
+		<h4 th:text="'Item Register Date:'+${#dates.format(itemdetail.itemrdate, 'yyyy-MM-dd HH:mm:ss')}"></h4>
+    </div>
+</div>
+
+<!-- Page level plugins -->
+<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="/js/demo/datatables-demo.js"></script>

@@ -1,0 +1,56 @@
+<meta charset="utf-8">
+<style>
+
+	tbody > tr > td >img{
+		width:50px;
+	}
+</style>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Select Item</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+</div>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">모든 item 목록</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>IMGNAME</th>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>PRICE</th>
+                        <th>RDATE</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="i : ${list}">
+                        <td >
+                        	<a th:href="@{/item/itemdetail(id=${i.itemid})}">
+                        	<img th:src="'/img/'+${i.img}">
+                        </td>
+                        <td th:text=${i.itemid}>id</td>
+                        <td th:text=${i.itemname}>name</td>
+                        <td th:text=${i.price}>price</td>
+                        <td th:text=${i.itemrdate}>rdate</td>
+                    </tr>       
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Page level plugins -->
+<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="/js/demo/datatables-demo.js"></script>
