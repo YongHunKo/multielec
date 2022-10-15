@@ -55,6 +55,17 @@ function enterkey(){
 	};
 	
 };
+function enterkey2(){
+	if(window.event.keyCode == 13){
+		$('#search_form').attr({
+			'method':'get',
+			'action':'/searchimpl'
+		});
+		$('#search_form').submit();
+	};
+	
+};
+
 
 $(document).ready(function(){
 	$('#login_btn').click(function(){
@@ -73,6 +84,7 @@ $(document).ready(function(){
 		});
 		$('#search_form').submit();
 	});
+	
 	
 });
 </script>    
@@ -128,7 +140,9 @@ $(document).ready(function(){
                  <div class="hero__search">
                     <div class="hero__search__form">
                         <form id="search_form" >
-                            <input id="search_input" name="txt" type="text" placeholder="검색어를 입력해주세요">
+                            <input id="search_input" name="txt" type="text" placeholder="검색어를 입력해주세요" onkeyup="enterkey2()">
+                            <input type="text" style="display:none" onkeyup="enterkey2()">
+                            <!-- 더미를 주지 않으면 서치가 searchimpl?txt= 로 가는게 아니라 ?txt로 가버린다 -->
                             <button id="search_btn" type="button" class="site-btn"><span class="material-icons">search
 							</span></button>
                         </form>
