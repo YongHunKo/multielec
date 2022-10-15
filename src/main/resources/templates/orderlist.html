@@ -23,6 +23,16 @@ function del(orderid){
 		location.href='/deleteorderlist?id='+orderid+'&custid='+custid;
 	}
 }
+
+$(document).ready(function(){
+	$('#review_btn').click(function(){
+		var custid= '[[${session.logincust.custid}]]';
+		var itemid= 1;//$('#itemid').text();
+		//널값이 들어옴 .val()을 주면 undefined이 나옴
+		var rvtxt=$('#rvtxt').val();
+		location.href='/reviewimpl?custid='+custid+'&itemid='+itemid+'&rvtxt='+rvtxt;
+	});
+});
 </script>
 
 <div class="container-fluid">
@@ -53,12 +63,42 @@ function del(orderid){
         <td th:text="${o.orderdate}">OrderDate</td>
         <td th:text="${o.shipsearch}">ShipSearch</td>
         <td th:text="${o.totalprice}">TotalPrice</td>
+        <td style="display:none" th:text="${o.itemid}">itemid</td>
          <td> 
         	<button type="button" th:onclick="del([[${o.orderid}]]);" class="btn btn-sm" ><span class="material-icons">delete</span>삭제하기
-        	<button th:if="${o.shipsearch == '배송완료'}"type="button" class="btn btn-sm" >리뷰남기기
+        	<button th:if="${o.shipsearch == '배송완료'}"type="button" class="btn btn-sm" href="#" data-toggle="modal" data-target="#reviewModal">리뷰남기기
         	</button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+    <!-- review Modal-->
+    <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">해당 제품의 리뷰를 남겨주세요</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form id="review_form">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0" placeholder="리뷰를 남겨주세요!"
+                                aria-label="ID" aria-describedby="basic-addon2" id="rvtxt">
+                        </div>
+                    </form>
+                
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a id="review_btn" class="btn btn-primary" href="#">리뷰남기기/수정하기</a>
+                </div>
+            </div>
+        </div>
+    </div>

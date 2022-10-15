@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="orderlistall" parameterType="String" resultType="OrderlistDTO">
 		select odl.orderid, odl.custid, odl.cnt, odl.orderdate, odt.shipsearch, odt.itemprice, odt.itemcnt, odt.itemcnt*odt.itemprice as totalprice, it.itemname, 
-		it.img from orderlist odl
+		it.img, it.itemid from orderlist odl
 		INNER JOIN orderdetail odt ON odl.orderid = odt.orderid
 		INNER JOIN item it ON odt.itemid = it.itemid
 		INNER JOIN cust cu ON odl.custid = cu.custid

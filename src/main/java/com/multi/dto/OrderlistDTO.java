@@ -27,4 +27,5 @@ public class OrderlistDTO {
 	private String img;
 	private Integer itemprice;
 	private Integer itemcnt;
+	private Integer itemid;
 }

@@ -93,7 +93,7 @@ public class CartController {
 				int itemid = o.getItemid();
 				String itemname = o.getItemname();
 				int totalprice =cnt*price;
-				OrderlistDTO order = new OrderlistDTO(null, custid,cnt, null, totalprice, null, null, null, null, null);
+				OrderlistDTO order = new OrderlistDTO(null, custid,cnt, null, totalprice, null, null, null, null, null,null);
 				//오더리스트에 넣는것들은 다 끝
 				orderlist_service.register(order);
 				int r = order.getOrderid();

@@ -16,7 +16,7 @@ class UpdateOrderlist {
 	@Test
 	void contextLoads() {
 		try {
-			service.modify(new OrderlistDTO(1, "id01", 1, null, 111111,null,null,null,null,null));
+			service.modify(new OrderlistDTO(1, "id01", 1, null, 111111,null,null,null,null,null,null));
 			System.out.println("Update_OK");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
