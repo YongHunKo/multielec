@@ -15,9 +15,10 @@ $(document).ready(function(){
 	$('#pay_btn').click(function(){
 		var custid=$('#custid').text();
 		var cnt=$('#cnt').text();
-		var shipname=$('#shipname').text();
-		var shiptel=$('#shiptel').text();
-		var shipaddr=$('#shipaddr').text();
+		var shipname=$('#shipname').val();
+		//얘들은 텍스트박스에서 왔기때문에 애초에 텍스트데이터 ->따라서 변수로 가져오면 해결
+		var shiptel=$('#shiptel').val();
+		var shipaddr=$('#shipaddr').val();
 		//위에 ship 텍스트들이 값이 안들어옴 왜일까 이게아니라 로그인임플처럼 넘겨야할거같다
 		location.href="/paymentimpl?custid="+custid+'&shipname='+shipname+'&shiptel='+shiptel+'&shipaddr='+shipaddr;
 	});
@@ -59,7 +60,7 @@ $(document).ready(function(){
 						        <td id="itemid" th:text="${c.itemname}">Item Name</td>
 						        <td id="price" th:text="${c.price}">Price</td>
 						        <td id="cnt" th:text="${c.cnt}">Count</td>
-						        <td id="custid" th:text="${c.custid}">custid</td>
+						        <td style="display: none" id="custid" th:text="${c.custid}">custid</td>
 						      </tr>
 						    </tbody>
 					  </table>
