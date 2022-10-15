@@ -7,17 +7,11 @@
 		width:99px;
 		border:1px solid #FE6B00;
 	} 
-	
-
-
 .btn:hover{
 background-color: #FE6B00;
 color:white;
 	}
-
-
 	
-
 </style>
 
 <script>
@@ -29,8 +23,40 @@ function del(cartid){
 	}
 }
 
+$(document).ready(function(){
+	
+	var rowCnt = 0;
+	
+	var col1Idx = 0;	// 첫번째 col index
+	
+	var col1Sum = 0;	// 첫번째 col sum
+	
+	// loop row
+	$("#tbl_data tr").each(function(){
+	    // 첫번째 줄 건너뜀
+		if( rowCnt != 0 ){
+			// td dom 객체를 얻어옴
+			var sell = $(this).children("td");
+			// loop col
+			$(sell).each(function(){
+				var idx = $(this).index();
+				var val = $(this).text();
+				
+				if( idx == col1Idx ){
+					col1Sum += parseInt(val); 
+				}else if( idx == col2Idx ){
+					col2Sum += parseInt(val);
+				}else if( idx == col3Idx ){
+					col3Sum += parseInt(val);
+				}
+			});
+	    }
+		rowCnt++;
+	});
+	// 합계를 출력
+	$("#a_sum").text(col1Sum);
 
-
+});
 </script>
 
 
@@ -65,11 +91,24 @@ function del(cartid){
         </td>
       </tr>
     </tbody>
-    
-    <div class="container-fluid">    
-  <table class="table">
-      <td colspan="6">
-      	<p id="totalprice">합계금액 :</p>      
-     </td>
-  </table>
-</div>
+		<div class="container-fluid">
+			<table id="tbl_data" class="table">
+				<thead>
+					<tr>
+						<td colspan="2">합계 금액 :</td>
+					</tr>
+				<tbody>
+					<tr style="display: none" th:each="ca : ${mypricecart}">
+						<td th:text="${ca.totalprice}">합계금액</td>
+					</tr>
+				</thead>
+			</table>
+			</body>
+			<table>
+				<tr>
+					<td id="a_sum"></td>
+				</tr>
+			</table>
+		</div>
+		</body>
+		</html>

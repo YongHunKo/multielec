@@ -15,12 +15,13 @@ class InsertCart {
 	
 	@Test
 	void contextLoads() {
-		CartDTO cart = new CartDTO(null, "id11", 13, 3, null, null, null);
+		CartDTO cart = new CartDTO(null, "id11", 13, 3, null, null, null, null);
 		try {
 			service.register(cart);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("inserted");
 	}
 }
 

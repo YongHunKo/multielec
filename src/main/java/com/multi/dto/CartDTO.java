@@ -11,6 +11,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+
+
 public class CartDTO {
 	
 	
@@ -23,4 +25,8 @@ public class CartDTO {
 	private String itemname;
 	private Integer price;
 	private String img;
+	
+	private Integer totalprice;
+
 }
+

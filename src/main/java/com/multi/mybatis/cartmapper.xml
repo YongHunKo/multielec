@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="cartall" parameterType="String" resultType="CartDTO">
 		select ca.cartid, ca.custid, ca.itemid, ca.cnt, it.itemname, 
-		it.price, it.img from cart ca
+		it.price, it.img, ca.cnt*it.price as totalprice from cart ca
 		INNER JOIN item it ON ca.itemid = it.itemid
 		INNER JOIN cust cu ON ca.custid = cu.custid
 		WHERE ca.custid= #{custid}
