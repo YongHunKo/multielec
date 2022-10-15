@@ -15,6 +15,18 @@ $(document).ready(function(){
             $(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
         }
     });
+    
+    $("#custpwd").keyup(function(event){
+        var pattern1 = /[0-9]/;
+        var pattern2 = /[a-zA-Z]/;
+        var pattern3 = /[~!@\#$%<>^&*]/;
+        var custpwd = $(this).val();
+    	 if(!pattern1.test(custpwd)||!pattern2.test(custpwd)||!pattern3.test(custpwd)||custpwd.length<8){
+			$('#pspan2').text('Incorrect');    		 
+    	 }else{
+			$('#pspan2').text('Correct');    		     		 
+    	 }
+    });
 
 	$('#custpwd2').keyup(function(){
 		var custpwd = $('#custpwd').val();
