@@ -55,6 +55,7 @@ function del(orderid){
         <td th:text="${o.totalprice}">TotalPrice</td>
          <td> 
         	<button type="button" th:onclick="del([[${o.orderid}]]);" class="btn btn-sm" ><span class="material-icons">delete</span>삭제하기
+        	<button th:if="${o.shipsearch == '배송완료'}"type="button" class="btn btn-sm" >리뷰남기기
         	</button>
         </td>
       </tr>
