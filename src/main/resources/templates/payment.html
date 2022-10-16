@@ -45,21 +45,22 @@ $(document).ready(function(){
 					  <table class="table table-hover">
 					    <thead>
 					      <tr>
-					        <th>제품 사진</th>
-					        <th>제품명</th>
-					        <th>가격</th>
-					        <th>수량</th>
+					        <th style=text-align:center;>제품 사진</th>
+					        <th style=text-align:center;>제품명</th>
+					        <th style=text-align:center;>가격</th>
+					        <th style=text-align:center;>수량</th>
 					        <th>	
 					         </th>	
 					      </tr>
 					    </thead>
 						   <tbody>
 						      <tr th:each="c : ${mycart}">
-						        <td> <img th:src="'/img/item/'+${c.img}" style="width: 350px; min-width: 350px;">
+						        <td>
+						        	<img th:src="'/img/item/'+${c.img}" style="width: 350px; min-width: 350px;">
 						        </td>
-						        <td id="itemid" th:text="${c.itemname}">Item Name</td>
-						        <td id="price" th:text="${c.price}">Price</td>
-						        <td id="cnt" th:text="${c.cnt}">Count</td>
+						        <td style= text-align:center;vertical-align:middle; id="itemid" th:text="${c.itemname}">Item Name</td>
+						        <td style= text-align:center;vertical-align:middle; id="price" th:text="${c.price}">Price</td>
+						        <td style= text-align:center;vertical-align:middle; id="cnt" th:text="${c.cnt}">Count</td>
 						        <td style="display: none" id="custid" th:text="${c.custid}">custid</td>
 						      </tr>
 						    </tbody>
@@ -124,8 +125,9 @@ $(document).ready(function(){
 
 <!--autoload=false 파라미터를 이용하여 자동으로 로딩되는 것을 막습니다.-->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
-				    </div>				    
-				    <button id="pay_btn" type="button" class="btn btn-primary">결제확인</button>
+				    <div style="display: flex; justify-content: center;">
+				    <button id="pay_btn" type="button" class="btn btn-primary" style="height:60px; width:800px; font-size:30px;">구매하기</button>
+				    </div>
 				  </form>               
 
                 
