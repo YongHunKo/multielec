@@ -5,12 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.ReviewDTO;
+import com.multi.service.OrderdetailService;
 import com.multi.service.ReviewService;
 
 @Controller
 public class ReviewController {
 	@Autowired
 	ReviewService review_service;
+	@Autowired
+	OrderdetailService orderdetail_service;
+
 	@RequestMapping("/reviewimpl")
 	public String reviewimpl(String custid, Integer itemid, String rvtxt) {
 		System.out.println(rvtxt);

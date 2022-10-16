@@ -28,4 +28,6 @@ public class OrderlistDTO {
 	private Integer itemprice;
 	private Integer itemcnt;
 	private Integer itemid;
+	private String rvtxt;
+	private String rvrdate;
 }

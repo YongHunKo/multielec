@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.multi.dto.OrderdetailDTO;
+import com.multi.dto.OrderlistDTO;
 import com.multi.frame.MyService;
 import com.multi.mapper.OrderdetailMapper;
 @Service
@@ -46,5 +47,10 @@ public class OrderdetailService implements MyService<Integer, OrderdetailDTO>{
         // TODO Auto-generated method stub
         return mapper.selectall();
     }
+
+	public List<OrderdetailDTO> orderlistall(String custid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

@@ -49,6 +49,9 @@ public class OrderlistService implements MyService<Integer, OrderlistDTO>{
 	public List<OrderlistDTO> orderlistall(String custid) throws Exception {
 		return mapper.orderlistall(custid);
 	}
+	public List<OrderlistDTO> orderlistall2(String custid) throws Exception {
+		return mapper.orderlistall2(custid);
+	}
 	public List<OrderlistDTO> registerall(String custid) throws Exception {
 		return mapper.registerall(custid);
 	}

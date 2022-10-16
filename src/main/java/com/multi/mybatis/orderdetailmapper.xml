@@ -16,6 +16,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<update id="update" parameterType="OrderdetailDTO">
 		UPDATE orderdetail SET orderid=#{orderid}, itemid=#{itemid}, orderitem=#{orderitem}, shipsearch=#{shipsearch}, itemprice=#{itemprice}, itemcnt=#{itemcnt} WHERE orderdetailno=#{orderdetailno}
 	</update>
+	<update id="shipupdate" parameterType="OrderdetailDTO">
+		UPDATE orderdetail SET  shipsearch="배송완료" WHERE orderdetailno=#{orderdetailno}
+	</update>
 	<delete id="delete" parameterType="Integer">
 		DELETE FROM orderdetail WHERE orderdetailno=#{orderdetailno}
 	</delete>

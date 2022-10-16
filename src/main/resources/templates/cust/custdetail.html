@@ -13,11 +13,16 @@ color:white;
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h1 class="h3 mb-0 text-gray-800">회원정보
-            <th>	
+          <th>	
         		<button type="button" class="btn btn-sm">
           		<a th:href="@{/orderlist(id=${custdetail.custid})}"><span class="material-icons-outlined color">list_alt</span>주문목록</a>
         		</button>
-         </th>
+          </th>
+          <th>	
+        		<button type="button" class="btn btn-sm">
+          		<a th:href="@{/reviewlist(id=${custdetail.custid})}">리뷰 남기기</a>
+        		</button>
+          </th>
          
          </h1>
     </div>
