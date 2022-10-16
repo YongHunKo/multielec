@@ -83,8 +83,18 @@
                                 </a>                            	
 							<hr>
                             <div class="form-group" th:if="${itemreview != null}">
-                             <input type="text" class="form-control form-control-user" 
-                                    th:value="${itemreview.custid}+' : '+${itemreview.rvtxt}" >                                   
+                            	<table>
+                            		<thead>
+                                        <tr>
+                                        	<th>리뷰</th>
+                            			</tr>
+                            		</thead>
+                            		<tbody>
+                            			<tr th:each="i : ${itemreview}">
+                            				<td th:text="${i.custid}+' : '+${i.rvtxt}"></td>
+                            			</tr>
+                            		</tbody>
+                            	</table>                              
                             </div>	
                         </div>
                     </div>

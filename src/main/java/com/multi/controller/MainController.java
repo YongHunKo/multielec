@@ -75,10 +75,10 @@ public class MainController {
 	@RequestMapping("/itemdetail")
 	public String itemdetail(Model model, Integer itemid) {
 		ItemDTO list = null;
-		ReviewDTO list2 = null;
+		List<ReviewDTO> list2 = null;
 		try {
 			list = itemservice.get(itemid);
-			list2 = reviewservice.get(itemid);
+			list2 = reviewservice.itemreview(itemid);
 			model.addAttribute("itemdetail",list);
 			model.addAttribute("itemreview",list2);
 			

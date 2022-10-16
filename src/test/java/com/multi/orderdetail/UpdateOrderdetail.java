@@ -17,7 +17,7 @@ class UpdateOrderdetail {
 	@Test
 	void contextLoads() {
 		try {
-			service.modify(new OrderdetailDTO(11, 5, 10, "item10", "배송완료", 1000, 3));
+			service.modify(new OrderdetailDTO(34, 73, 22, "갤패드미니", "배송완료", 693000, 1));
 			System.out.println("update_OK");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

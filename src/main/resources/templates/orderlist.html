@@ -27,7 +27,7 @@ function del(orderid){
 $(document).ready(function(){
 	$('#review_btn').click(function(){
 		var custid= '[[${session.logincust.custid}]]';
-		var itemid= 1;//$('#itemid').text();
+		var itemid= $('#itemid').text();
 		//널값이 들어옴 .val()을 주면 undefined이 나옴
 		var rvtxt=$('#rvtxt').val();
 		location.href='/reviewimpl?custid='+custid+'&itemid='+itemid+'&rvtxt='+rvtxt;
@@ -63,7 +63,7 @@ $(document).ready(function(){
         <td th:text="${o.orderdate}">OrderDate</td>
         <td th:text="${o.shipsearch}">ShipSearch</td>
         <td th:text="${o.totalprice}">TotalPrice</td>
-        <td style="display:none" th:text="${o.itemid}">itemid</td>
+        <td id="itemid" style="display:none" th:text="${o.itemid}">itemid</td>
          <td> 
         	<button type="button" th:onclick="del([[${o.orderid}]]);" class="btn btn-sm" ><span class="material-icons">delete</span>삭제하기
         	<button th:if="${o.shipsearch == '배송완료'}"type="button" class="btn btn-sm" href="#" data-toggle="modal" data-target="#reviewModal">리뷰남기기
