@@ -59,7 +59,7 @@
 function enterkey(){
 	if(window.event.keyCode == 13){
 		$('#login_form').attr({
-			'method':'get',
+			'method':'post',
 			'action':'/loginimpl'
 		});
 		$('#login_form').submit();
@@ -69,7 +69,7 @@ function enterkey(){
 function enterkey2(){
 	if(window.event.keyCode == 13){
 		$('#search_form').attr({
-			'method':'get',
+			'method':'post',
 			'action':'/searchimpl'
 		});
 		$('#search_form').submit();
@@ -81,7 +81,7 @@ function enterkey2(){
 $(document).ready(function(){
 	$('#login_btn').click(function(){
 		$('#login_form').attr({
-			'method':'get',
+			'method':'post',
 			'action':'/loginimpl'
 		});
 		$('#login_form').submit();
@@ -90,7 +90,7 @@ $(document).ready(function(){
 	
 	$('#search_btn').click(function() {
 		$('#search_form').attr({
-			'method':'get',
+			'method':'post',
 			'action':'/searchimpl',
 		});
 		$('#search_form').submit();

@@ -71,9 +71,12 @@ public class CartController {
 	@RequestMapping("/payment")
 	public String payment(Model model, String id) {
 		List<CartDTO> list = null;
+		CustDTO cust = null;
 		try {
 			list = cart_service.cartall(id);
+			cust = cust_service.get(id);
 			model.addAttribute("mycart",list);
+			model.addAttribute("mycust",cust);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

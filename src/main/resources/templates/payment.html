@@ -97,15 +97,15 @@ function check(){
 				<form action="/action_page.php" id="ship_form">
 				    <div class="form-group">
 				      <label for="shipname">이름:</label>
-				      <input type="text" class="form-control" id="shipname" name="shipname">
+				      <input type="text" class="form-control" id="shipname" name="shipname" th:value="${mycust.custname}">
 				    </div>
 				    <div class="form-group">
 				      <label for="shiptel">연락처:</label>
-				      <input type="text" class="form-control" id="shiptel" name="shiptel">
+				      <input type="text" class="form-control" id="shiptel" name="shiptel" th:value="${mycust.tel}">
 				    </div>
 				    <div class="form-group">
 				      <label for="shipaddr">주소:</label>
-				      <input type="text" class="form-control" id="shipaddr" name="shipaddr">
+				      <input type="text" class="form-control" id="shipaddr" name="shipaddr" th:value="${mycust.addr}">
 				      <!-- 임시로 ship에 들어가는지 테스트하기 위한 input -->
 				      <div class="form-group m-form__group row">
 	
