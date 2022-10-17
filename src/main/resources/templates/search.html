@@ -12,35 +12,28 @@
 </style>
 
 
-<!-- Begin Page Content -->
-<div class="container-fluid">
-
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">검색 결과</h1>
-
     <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary"></h6>
-        </div>
+
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Item Image</th>
-                            <th>Item ID</th>
-                            <th>Item Name</th>
-                            <th>Item price</th>
-                            <th>Date</th>
+                            <th>상품 이미지</th>
+                            <th style="display:none">Item ID</th>
+                            <th>상품명</th>
+                            <th>가격&nbsp(원)</th>
+                            <th>등록일</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="i : ${list}">
                             <td><a th:href="@{/itemdetail(itemid=${i.itemid})}"><img th:src="'/img/item/'+${i.img}"></a></td>
-                            <td><a th:href="@{/detail(id=${i.itemid})}" th:text="${i.itemid}">item_id</a></td>
+                            <td th:href="@{/detail(id=${i.itemid})}" th:text="${i.itemid}" style="display:none">item_id</td>
                             <td th:text="${i.itemname}">item_name</td>
-                            <td th:text="${i.price}">item_price</td>
+                            <td th:text="${#numbers.formatInteger(i.price, 3, 'COMMA')}">item_price</td>
                             <td th:text="${#dates.format(i.itemrdate, 'yyyy-MM-dd')}">rdate</td>
                         </tr>
 
@@ -48,10 +41,11 @@
                 </table>
             </div>
         </div>
-    </div>
+    
 
-</div>
+
 <!-- /.container-fluid -->
+
 
 <!-- Page level plugins -->
 <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
