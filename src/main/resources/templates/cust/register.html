@@ -22,7 +22,7 @@ $(document).ready(function(){
         var pattern3 = /[~!@\#$%<>^&*]/;
         var custpwd = $(this).val();
     	 if(!pattern1.test(custpwd)||!pattern2.test(custpwd)||!pattern3.test(custpwd)||custpwd.length<8){
-			$('#pspan2').text('Incorrect');    		 
+			$('#pspan2').text('8자이상 영문 , 숫자, 특수문자를 사용하세요.');    		 
     	 }else{
 			$('#pspan2').text('Correct');    		     		 
     	 }
