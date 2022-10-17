@@ -1,0 +1,82 @@
+<meta charset="utf-8">
+
+<script>
+$(document).ready(function () {
+
+	$('#delete_btn').click(function() {
+		var c = confirm('정말 회원을 탈퇴하시겠습니까? *회원 탈퇴시 회원 데이터가 전부사라집니다*');
+		if(c == true){
+			$('#cust_form').attr({
+				'method':'post',
+				'action': '/custdeleteimpl'
+			});
+		
+			$('#cust_form').submit();
+	   	}else{
+		   return;
+	   	}
+		
+	});
+	$('#custid').keyup(function(){
+		var custid = $(this).val();
+		var custid2 = "[[${session.logincust.custid}]]";
+		$.ajax({
+			url:'/checkid',
+			data:{'cid':custid},
+			success:function(result){
+				if(result == 'f'){
+					if(custid == custid2){
+						$('#ispan').text('가능');						
+					}else{
+						$('#ispan').text(' ');						
+					}
+				}else{
+						$('#ispan').text(' ');						
+					
+				}
+					
+			}
+				
+		});
+	});
+	$('#custpwd').keyup(function(){
+		var custpwd = $(this).val();
+		var custid2 = "[[${session.logincust.custid}]]";
+		$.ajax({
+			url:'/checkpwd',
+			data:{'cid':custid2,'cpwd':custpwd}, 
+			success:function(result){
+				if(result == 't'){
+						$('#pspan').text('가능');						
+				}else{
+						$('#pspan').text(' ');				
+				}
+					
+			}
+				
+		});
+	});
+});
+</script>
+
+<!-- Detail Area -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h1 class="h3 mb-0 text-gray-800">회원 탈퇴하기</h1>
+    </div>
+    <div class="card-body">
+    	<form id="cust_form">
+		    <div class="form-group">
+		      <label for="id">아이디:</label>
+		      <input type="text" class="form-control" id="custid" name="custid">
+		      <span id="ispan"></span>
+		    </div>
+		    <div class="form-group">
+		      <label for="pwd">패스워드:</label>
+		      <input type="text" class="form-control" id="custpwd" name="custpwd">
+		      <span id="pspan"></span>
+		    </div>	    
+		  </form>
+		  <button id="delete_btn" class="btn btn-default">DELETE</button>
+    </div>
+</div>

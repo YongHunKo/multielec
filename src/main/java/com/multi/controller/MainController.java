@@ -13,8 +13,10 @@ import com.multi.dto.CustDTO;
 import com.multi.dto.ItemDTO;
 import com.multi.dto.ReviewDTO;
 import com.multi.mapper.ItemMapper;
+import com.multi.service.CartService;
 import com.multi.service.CustService;
 import com.multi.service.ItemService;
+import com.multi.service.OrderlistService;
 import com.multi.service.ReviewService;
 
 @Controller
@@ -27,6 +29,12 @@ public class MainController {
 	ReviewService reviewservice;
 	@Autowired
 	ItemMapper itemmapper;
+	@Autowired
+	OrderlistService orderlist_service;
+	@Autowired
+	CartService cart_service;
+	@Autowired
+	ReviewService review_service;
 	
 	@RequestMapping("/")
 	public String main() {
@@ -115,6 +123,19 @@ public class MainController {
 		return "index";
 	}
 	
+	@RequestMapping("/custdelete")
+	public String custdelete(Model model, String id) {
+		CustDTO cust = null;
+		try {
+			cust = custservice.get(id);
+			model.addAttribute("custdelete", cust);
+			model.addAttribute("center", "/cust/custdelete");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
+	
 	@RequestMapping("/custupdateimpl")
 	public String custupdateimpl(Model model, CustDTO cust, HttpSession session) {
 		try {
@@ -124,6 +145,19 @@ public class MainController {
 			e.printStackTrace();
 		}
 		return "redirect:custdetail?id="+cust.getCustid();
+	}
+	
+	@RequestMapping("/custdeleteimpl")
+	public String custdeleteimpl(Model model, String custid,HttpSession session) {
+		try {
+			custservice.remove(custid);
+			if(session != null) {
+				session.invalidate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:";
 	}
 	
 }
