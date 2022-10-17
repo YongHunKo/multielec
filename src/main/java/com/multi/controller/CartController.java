@@ -97,7 +97,7 @@ public class CartController {
 				//오더리스트에 넣는것들은 다 끝
 				orderlist_service.register(order);
 				int r = order.getOrderid();
-				OrderdetailDTO orderdetail = new OrderdetailDTO(null, r, itemid, itemname, "배송준비", price, cnt);
+				OrderdetailDTO orderdetail = new OrderdetailDTO(null, r, itemid, itemname, "배송완료", price, cnt);
 				ShipDTO ship = new ShipDTO(null, r, shipname, shipaddr, shiptel);
 				
 				orderdetail_service.register(orderdetail);

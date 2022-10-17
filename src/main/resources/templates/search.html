@@ -5,6 +5,9 @@
 	table > tbody > tr > td > img{
 	width:150px;
 	}
+	a > img{
+	width:100px;
+	}
 	
 </style>
 
@@ -34,7 +37,7 @@
                     </thead>
                     <tbody>
                         <tr th:each="i : ${list}">
-                            <td><img th:src="'/img/item/'+${i.img}"></td>
+                            <td><a th:href="@{/itemdetail(itemid=${i.itemid})}"><img th:src="'/img/item/'+${i.img}"></a></td>
                             <td><a th:href="@{/detail(id=${i.itemid})}" th:text="${i.itemid}">item_id</a></td>
                             <td th:text="${i.itemname}">item_name</td>
                             <td th:text="${i.price}">item_price</td>

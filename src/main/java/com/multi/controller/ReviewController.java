@@ -17,14 +17,10 @@ public class ReviewController {
 
 	@RequestMapping("/reviewimpl")
 	public String reviewimpl(String custid, Integer itemid, String rvtxt) {
-		System.out.println(rvtxt);
-		System.out.println(itemid);
-		System.out.println(custid);
 		ReviewDTO review = new ReviewDTO(null, itemid, custid, rvtxt, null);
 		try {
 			review_service.register(review);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

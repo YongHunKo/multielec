@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>있는건 다있다 멀티전자</title>
+    <title>전자제품 온라인 쇼핑몰 멀티전자</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -59,7 +59,7 @@
 function enterkey(){
 	if(window.event.keyCode == 13){
 		$('#login_form').attr({
-			'method':'post',
+			'method':'get',
 			'action':'/loginimpl'
 		});
 		$('#login_form').submit();
@@ -81,7 +81,7 @@ function enterkey2(){
 $(document).ready(function(){
 	$('#login_btn').click(function(){
 		$('#login_form').attr({
-			'method':'post',
+			'method':'get',
 			'action':'/loginimpl'
 		});
 		$('#login_form').submit();
