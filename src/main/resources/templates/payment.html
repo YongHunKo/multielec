@@ -23,6 +23,22 @@ $(document).ready(function(){
 		location.href="/paymentimpl?custid="+custid+'&shipname='+shipname+'&shiptel='+shiptel+'&shipaddr='+shipaddr;
 	});
 });
+
+function check(){
+    if(document.getElementById("shipname").value==""){
+        alert("이름을 입력하세요");
+        return;
+    }
+    if(document.getElementById("shiptel").value==""){
+        alert("연락처를 입력하세요");
+        return;
+    }
+    if(document.getElementById("shipaddr").value==""){
+        alert("주소를 입력하세요");
+        return;
+    }
+    frm.submit(); //직접 submit()이라는 메소드를 호출. 액션을 들고 가줌
+}
 </script>
 
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
@@ -92,7 +108,8 @@ $(document).ready(function(){
 				      <input type="text" class="form-control" id="shipaddr" name="shipaddr">
 				      <!-- 임시로 ship에 들어가는지 테스트하기 위한 input -->
 				      <div class="form-group m-form__group row">
-  <div class="col-md-2">
+	
+<!--   <div class="col-md-2">
     <input type="text" class="form-control m-input" name="postcode" id="postcode" placeholder="우편번호" readonly />
   </div>
 
@@ -119,42 +136,19 @@ $(document).ready(function(){
   
   <div class=box-right "col-md-2 postcode-btn">
     <button type="button" class="btn btn-info m-btn--air" onclick="execDaumPostcode()">우편번호 찾기</button>
-  </div>
+  </div> -->
   
 </div>
 
 <!--autoload=false 파라미터를 이용하여 자동으로 로딩되는 것을 막습니다.-->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+
 				    <div style="display: flex; justify-content: center;">
-				    <button id="pay_btn" type="button" class="btn btn-primary" style="height:60px; width:800px; font-size:30px;">구매하기</button>
-				    </div>
-				  </form>               
+				    <a onClick="alert('결제가 완료되었습니다.')">
+				    <button id="pay_btn" type="button" class="btn btn-info" style="height:60px; width:300px; font-size:30px;">구매하기</button>
+  					</div>
+  					
+				  </form>
 
-                
-                </div>
-             </div>
-         </div>
-     </div>
-     
-
-
-
-
-
-<br>
-<br>
-<br>
-<br>
-
-
-
-<div class="modal hidden">
-  <div class="bg"></div>
-  <div class="modalBox">
-    <p>마이페이지에서 구매 이력을 확인하시겠습니까?</p>
-    <button type="button" onclick="location.href='주소 입력'">구매이력 확인</button>
-    <button type="button" onclick="location.href='주소 입력'">메인으로 돌아가기</button>
-  </div>
-</div>
 
 </body>
