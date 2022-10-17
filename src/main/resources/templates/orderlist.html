@@ -1,18 +1,22 @@
 <meta charset="utf-8">
 <style>
-	table > tbody > tr > td > img {
-		width:100px;
-	} 
-	table > tbody > tr > td > img:hover {
-		width:99px;
-		border:1px solid #FE6B00;
-	} 
+table>tbody>tr>td>img {
+	width: 100px;
+}
 
-.btn:hover{
-background-color: #FE6B00;
-color:white;
-	}
-	
+table>tbody>tr>td>img:hover {
+	width: 99px;
+	border: 1px solid #FE6B00;
+}
+
+table th, td {
+	text-align: center;
+}
+
+.btn:hover {
+	background-color: #FE6B00;
+	color: white;
+}
 </style>
 
 <script>
@@ -26,39 +30,41 @@ function del(orderid){
 </script>
 
 <div class="container-fluid">
-  <h2>구매이력</h2>
-  <p></p>            
-  <table class="table table-hover">
-    <thead>
-      <tr>
-      	<th>No</th>
-      	<th>Img</th>
-        <th>ItemName</th>
-        <th>ItemPrice</th>
-        <th>Count</th>
-        <th>OrderDate</th>
-        <th>ShipSearch</th>        
-        <th>TotalPrice</th>
-        
-        	
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="o : ${myordercart}">
-        <td id="orderid" th:text="${o.orderid}">NO</td>
-        <td> <img th:src="'/img/item/'+${o.img}"> </td>
-        <td th:text="${o.itemname}">ItemName</td>
-        <td th:text="${o.itemprice}">ItemPrice</td>
-        <td th:text="${o.itemcnt}">Count</td>
-        <td th:text="${#dates.format(o.orderdate, 'yyyy-MM-dd HH:mm:ss')}">OrderDate</td>
-        <td th:text="${o.shipsearch}">ShipSearch</td>
-        <td th:text="${o.totalprice}">TotalPrice</td>
-        <td id="itemid" style="display:none" th:text="${o.itemid}">itemid</td>
-         <td> 
-        	<button type="button" th:onclick="del([[${o.orderid}]]);" class="btn btn-dark btn-sm" ><span class="material-icons">delete</span>삭제하기
-        	</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+	<h2>구매이력</h2>
+	<p></p>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th></th>
+				<th>상품 이미지</th>
+				<th>상품명</th>
+				<th>수량</th>
+				<th>주문일</th>
+				<th>배송상태</th>
+				<th>총 상품금액</th>
+				<th></th>
+
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="o : ${myordercart}">
+				<td id="orderid" th:text="${o.orderid}"></td>
+				<td><img th:src="'/img/item/'+${o.img}"></td>
+				<td th:text="${o.itemname}">ItemName</td>
+				<td th:text="${o.itemcnt}">Count</td>
+				<td th:text="${#dates.format(o.orderdate, 'yyyy-MM-dd HH:mm:ss')}">OrderDate</td>
+				<td th:text="${o.shipsearch}">ShipSearch</td>
+				<td
+					th:text="${#numbers.formatInteger(o.totalprice, 3, 'COMMA')}+'원'">TotalPrice</td>
+				<td id="itemid" style="display: none" th:text="${o.itemid}">itemid</td>
+				<td>
+					<button type="button" th:onclick="del([[${o.orderid}]]);"
+						class="btn btn-dark btn-sm">
+						<span class="material-icons">delete</span>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>

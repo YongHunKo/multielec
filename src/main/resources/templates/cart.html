@@ -14,6 +14,10 @@ table>tbody>tr>td>img:hover {
 	color: white;
 }
 
+table th, td {
+	text-align: center;
+}
+
 table.totalprice th {
 	cellpadding: 0px
 }
@@ -89,8 +93,8 @@ table.table4 th {
 		funcSetCurrency($);
 		});
 	</script>
-	
-	<script>
+
+<script>
 	/* 수량버튼 */
 	$(".plus_btn").on("click", function(){
 		let quantity = $(this).parent("div").find("input").val();
@@ -113,45 +117,41 @@ table.table4 th {
 	});
 	</script>
 
-			
+
 <div class="container-fluid">
 	<h2>장바구니</h2>
 	<p></p>
-	
+
 	<table class="table table-hover">
 		<thead>
 			<tr>
-			
-				<th>No</th>
-				<th>Image</th>
-				<th>Item Name</th>
-				<th>Price(&#8361;)</th>
-				<th>Count</th>
-				<th>TotalPrice(&#8361;)</th>
-				<th>
-					<button type="button" class="btn btn-sm">
-						<a th:href="@{/payment(id=${custdetail.custid})}"><span
-							class="material-icons-outlined color">credit_card</span>구매하기</a>
-					</button>
-				</th>
+
+				<th></th>
+				<th>상품 이미지</th>
+				<th>상품명</th>
+				<th>상품금액</th>
+				<th>수량</th>
+				<th>총 상품금액</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="c : ${mycart}">
-			
-			
+
+
 				<td id="cartid" th:text="${c.cartid}">NO</td>
 				<td><img th:src="'/img/item/'+${c.img}"></td>
 				<td th:text="${c.itemname}">Item Name</td>
-				<td th:text="${#numbers.formatInteger(c.price, 3, 'COMMA')}"></td>
+				<td th:text="${#numbers.formatInteger(c.price, 3, 'COMMA')}+'원'"></td>
 				<td th:text="${c.cnt}">Count</td>
-				<td th:text="${#numbers.formatInteger(c.totalprice, 3, 'COMMA')}">TotalPrice</td>
+				<td
+					th:text="${#numbers.formatInteger(c.totalprice, 3, 'COMMA')}+'원'">TotalPrice</td>
 				<td>
 					<button type="button" th:onclick="del([[${c.cartid}]]);"
-						class="btn btn-sm">
+						class="btn btn-dark btn-sm">
 						<span class="material-icons">delete</span>
 					</button>
-					
+
 				</td>
 			</tr>
 		</tbody>
@@ -161,11 +161,11 @@ table.table4 th {
 	<table id="tbl_data" class="totalprice2">
 		<thead>
 			<tr>
-				<th> (&#8361;)&nbsp&nbsp&nbsp예상 결제 금액&nbsp&nbsp:&nbsp</th>
-				<th  id="a_sum"></th>
-				<th>원</th>
+				<th>&nbsp&nbsp총 결제금액&nbsp&nbsp:&nbsp</th>
+				<th id="a_sum"></th>
+				<th>원&nbsp</th>
 				<th>
-					<button type="button" class="btn btn-sm">
+					<button type="button" class="btnbtn btn-info btn-sm">
 						<a th:href="@{/payment(id=${custdetail.custid})}"><span
 							class="material-icons-outlined color">credit_card</span>구매하기</a>
 					</button>
@@ -173,20 +173,20 @@ table.table4 th {
 			</tr>
 		<tbody>
 			<tr style="display: none" th:each="ca : ${mypricecart}">
-				<td th:text="${ca.totalprice}">합계금액</td>
+				<td th:text="${ca.totalprice}">총 결제금액</td>
 			</tr>
 		</thead>
 	</table>
 </div>
 
-			<!-- 수량 조정 form -->
-			<form action="/cartupdate" method="post" class="quantity_update_form">
-				<input type="hidden" name="cartid" class="update_cartid">
-				<input type="hidden" name="cnt" class="update_cnt">
-				<input type="hidden" name="custid" value="${cust.custid}">
-			</form>		
-			
-		</div>
+<!-- 수량 조정 form -->
+<form action="/cartupdate" method="post" class="quantity_update_form">
+	<input type="hidden" name="cartid" class="update_cartid"> <input
+		type="hidden" name="cnt" class="update_cnt"> <input
+		type="hidden" name="custid" value="${cust.custid}">
+</form>
+
+</div>
 
 </body>
 </html>
