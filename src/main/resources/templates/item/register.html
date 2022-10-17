@@ -1,0 +1,51 @@
+<meta charset="utf-8">
+
+<script>
+$(document).ready(function(){
+	$('#register_btn').click(function(){
+		$('#item_form').attr({
+			'enctype':'multipart/form-data',//파일을 서버로 전송하는 선언
+			'method':'post',
+			'action':'/item/registerimpl'
+		});
+		$('#item_form').submit();
+		
+	});
+});
+</script>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Register Item</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+</div>
+
+<!-- Detail Area -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Register Item</h6>
+    </div>
+    <div class="card-body">
+	  <form id="item_form">
+	    <div class="form-group">
+	      <label for="name">Name:</label>
+	      <input type="text" class="form-control" id="itemname" name="itemname">
+	      <span id="ispan"></span>
+	    </div>
+	    <div class="form-group">
+	      <label for="cate">cateid:</label>
+	      <input type="number" class="form-control" id="cateid" name="cateid">
+	    </div>
+	    <div class="form-group">
+	      <label for="price">Price:</label>
+	      <input type="number" class="form-control" id="price" name="price">
+	    </div>
+	    <div class="form-group">
+	      <label for="img">Image:</label>
+	      <input type="file" class="form-control" id="img2" name="img2">
+	    </div>
+	  </form>       
+	    <button id= "register_btn" class="btn btn-default">REGISTER</button>
+    </div>
+</div>

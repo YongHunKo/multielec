@@ -1,0 +1,52 @@
+<meta charset="utf-8">
+<script>
+$(document).ready(function(){
+	$('#delete_btn').click(function(){
+		var c = confirm('삭제할래?');
+		if( c == true){
+			var id = $('#id').val();
+			location.href='/cust/delete?id='+id;
+		}
+	});
+	
+	$('#update_btn').click(function(){
+		$('#cust_form').attr({
+			'method':'post',
+			'action':'/cust/update'
+		});
+		$('#cust_form').submit();
+	});
+});
+</script>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Detail Customer</h1>
+</div>
+
+
+<!-- Detail Area -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Customer Information</h6>
+    </div>
+    <div class="card-body">
+	  <form id="cust_form">
+	    <div class="form-group">
+	      <label for="id">ID:</label>
+	      <input type="text" class="form-control" id="id" th:value="${c.id}" name="id" readonly="readonly">
+	      <span id="ispan"></span>
+	    </div>
+	    <div class="form-group">
+	      <label for="pwd">Password:</label>
+	      <input type="text" class="form-control" id="pwd" th:value="${c.pwd}" name="pwd">
+	    </div>
+	    <div class="form-group">
+	      <label for="name">NAME:</label>
+	      <input type="text" class="form-control" id="name" th:value="${c.name}" name="name">
+	    </div>
+	  </form>       
+	    <button id= "update_btn" class="btn btn-default">UPDATE</button>
+	    <button id= "delete_btn" class="btn btn-default">DELETE</button>
+    </div>
+</div>

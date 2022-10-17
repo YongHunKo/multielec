@@ -2,6 +2,8 @@ package com.multi.dto;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,5 +23,7 @@ public class ItemDTO {
     private String img;
     private Integer likecnt;
     private Date itemrdate;
+    
+    private MultipartFile img2;
 
 }

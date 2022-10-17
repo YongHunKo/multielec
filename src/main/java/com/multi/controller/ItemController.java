@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.ItemDTO;
+import com.multi.frame.Util;
 import com.multi.service.ItemService;
 
 @Controller
@@ -16,6 +17,10 @@ import com.multi.service.ItemService;
 public class ItemController {
 
 	String dir = "item/";
+    @Value("${admindir}")
+    String admindir;
+    @Value("${custdir}")
+    String custdir;	
 	
 	@Autowired
 	ItemService service;
@@ -51,4 +56,17 @@ public class ItemController {
 		model.addAttribute("center",dir+"register");
 		return "index";
 	}
+	
+	   @RequestMapping("/registerimpl")
+	    public String registerimpl(Model model, ItemDTO item) {
+	        String img = item.getImg2().getOriginalFilename();
+	        item.setImg(img);
+	        try {
+	            Util.saveFile(item.getImg2(), admindir, custdir);
+	            service.register(item);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return "redirect:get";
+	    }
 }
