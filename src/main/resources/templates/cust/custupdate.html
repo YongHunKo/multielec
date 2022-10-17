@@ -21,10 +21,10 @@ $(document).ready(function () {
 </script>
 
 <!-- Detail Area -->
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
+
+    
         <h1 class="h3 mb-0 text-gray-800">회원정보 수정</h1>
-    </div>
+    <hr>
     <div class="card-body">
     	<form id="cust_form">
 		    <div class="form-group">
@@ -49,6 +49,6 @@ $(document).ready(function () {
 		      <input type="text"  class="form-control" id="addr" th:value="${custupdate.addr}" name="addr">
 		    </div>		    
 		  </form>
-		  <button id="update_btn" class="btn btn-default">UPDATE</button>
+		  <button id="update_btn" class="btn btn-info">UPDATE</button>
     </div>
-</div>
+

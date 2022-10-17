@@ -2,30 +2,29 @@
 
 <style>
 
-.btn:hover{
-background-color: #FE6B00;
-color:white;
-	}
+
 	
 </style>
 
 <!-- Detail Area -->
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
+
         <h1 class="h3 mb-0 text-gray-800">회원정보
+        &nbsp
           <th>	
-        		<button type="button" class="btn btn-sm">
-          		<a th:href="@{/orderlist(id=${custdetail.custid})}"><span class="material-icons-outlined color">list_alt</span>주문목록</a>
+        		<button type="button" class="btn btn-info btn-sm">
+          		<a th:href="@{/orderlist(id=${custdetail.custid})}">주문목록</a>
         		</button>
           </th>
+          
           <th>	
-        		<button type="button" class="btn btn-sm">
+        		<button type="button" class="btn btn-info btn-sm">
           		<a th:href="@{/reviewlist(id=${custdetail.custid})}">리뷰 남기기</a>
         		</button>
           </th>
          
          </h1>
-    </div>
+         <hr>
+    
     <div class="card-body">
     	<form id="cust_form">
 		    <div class="form-group">
@@ -66,7 +65,7 @@ color:white;
 		      <input type="text" readonly=readonly class="form-control" id="addr" th:value="${custdetail.addr}" name="addr">
 		    </div>		    		    		    		    		    		    
 		  </form>
-		  <button id="update_btn" class="btn btn-default"><a th:href="@{/custupdate(id=${custdetail.custid})}">회원정보 수정</a></button>
-		  <button id="delete_btn" class="btn btn-default"><a th:href="@{/custdelete(id=${custdetail.custid})}">회원 탈퇴하기</a></button>
+		  <button id="update_btn" class="btn btn-info btn-sm"><a th:href="@{/custupdate(id=${custdetail.custid})}">회원정보 수정</a></button>
+		  &nbsp
+		  <button id="delete_btn" class="btn btn-dark btn-sm"><a th:href="@{/custdelete(id=${custdetail.custid})}">회원 탈퇴하기</a></button>
     </div>
-</div>

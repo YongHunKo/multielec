@@ -1,14 +1,19 @@
- 
+<style>
+table>tbody>tr>td>a>img {
+	width: 100px;
+}
+</style>
+
  <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>IMGNAME</th>
-                        <th>itemid</th>
-                        <th>itemname</th>
-                        <th>price</th>
-                        <th>likecnt</th>
+                        <th>상품 이미지</th>
+                        <th style="display:none">itemid</th>
+                        <th>상품명</th>
+                        <th>가격&nbsp(원)</th>
+                        <th>좋아요 수</th>
                     </tr>
                 </thead>
 
@@ -19,9 +24,9 @@
 				        	<img th:src="'/img/item/'+${i.img}">
 				        </a>                        	
                         </td>
-                        <td><a th:href="@{/itemdetail(itemid=${i.itemid})}" th:text="${i.itemid}">id</a></td>
+                        <td th:href="@{/itemdetail(itemid=${i.itemid})}" th:text="${i.itemid}" style="display:none">id</td>
                         <td th:text="${i.itemname}">name</td>
-                        <td th:text="${i.price}">price</td>
+                        <td th:text="${#numbers.formatInteger(i.price, 3, 'COMMA')}">price</td>
                         <td th:text="${i.likecnt}">likecnt</td>
                     </tr>          
                 </tbody>

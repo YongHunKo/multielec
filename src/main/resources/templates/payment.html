@@ -1,3 +1,9 @@
+<style>
+table>tbody>tr>td>img {
+	width: 100px;
+}
+</style>
+
 <script>
 /** 우편번호 찾기 */
 function execDaumPostcode() {
@@ -72,7 +78,7 @@ function check(){
 						   <tbody>
 						      <tr th:each="c : ${mycart}">
 						        <td>
-						        	<img th:src="'/img/item/'+${c.img}" style="width: 350px; min-width: 350px;">
+						        	<img th:src="'/img/item/'+${c.img}" >
 						        </td>
 						        <td style= text-align:center;vertical-align:middle; id="itemid" th:text="${c.itemname}">Item Name</td>
 						        <td style= text-align:center;vertical-align:middle; id="price" th:text="${c.price}">Price</td>

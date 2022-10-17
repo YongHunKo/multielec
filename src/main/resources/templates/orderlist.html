@@ -50,12 +50,12 @@ function del(orderid){
         <td th:text="${o.itemname}">ItemName</td>
         <td th:text="${o.itemprice}">ItemPrice</td>
         <td th:text="${o.itemcnt}">Count</td>
-        <td th:text="${o.orderdate}">OrderDate</td>
+        <td th:text="${#dates.format(o.orderdate, 'yyyy-MM-dd HH:mm:ss')}">OrderDate</td>
         <td th:text="${o.shipsearch}">ShipSearch</td>
         <td th:text="${o.totalprice}">TotalPrice</td>
         <td id="itemid" style="display:none" th:text="${o.itemid}">itemid</td>
          <td> 
-        	<button type="button" th:onclick="del([[${o.orderid}]]);" class="btn btn-sm" ><span class="material-icons">delete</span>삭제하기
+        	<button type="button" th:onclick="del([[${o.orderid}]]);" class="btn btn-dark btn-sm" ><span class="material-icons">delete</span>삭제하기
         	</button>
         </td>
       </tr>

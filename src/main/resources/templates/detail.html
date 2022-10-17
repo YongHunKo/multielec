@@ -58,11 +58,11 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" 
-                                        th:value="${itemdetail.itemname}" readonly="readonly">
+                                        th:value="'상품명: '+${itemdetail.itemname}" readonly="readonly">
                                 </div>
                                 <div class="form-group">
                                  <input type="text" class="form-control form-control-user" 
-                                        th:value="${itemdetail.price}" readonly="readonly" >                                   
+                                        th:value="'상품 가격: '+${#numbers.formatInteger(itemdetail.price, 3, 'COMMA')}+'원'" readonly="readonly" >                                   
                                 </div>
                                 <hr>
                                 
@@ -79,7 +79,7 @@
                             
                             	<hr>
                                 <a type="button" href="#" class="btn btn-info btn-user btn-block" id="cart_btn">
-                                <span class="material-icons">add_shopping_cart</span>
+                                <span class="material-icons">shopping_cart</span>
                                 </a>                            	
 							<hr>
                             <div class="form-group" th:if="${itemreview != null}">
@@ -131,7 +131,7 @@
                 <div class="modal-body">장바구니로 가시겠습니까?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">쇼핑 계속하기</button>
-                    <a class="btn btn-primary" th:href="@{/cart(id=${session.logincust.custid})}">장바구니로</a>
+                    <a class="btn btn-info" th:href="@{/cart(id=${session.logincust.custid})}">장바구니로</a>
                 </div>
             </div>
         </div>
