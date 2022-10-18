@@ -99,28 +99,7 @@ table.table4 th {
 $(document).ready(function(){
 	
 	/* 종합 정보 섹션 정보 삽입 */
-	setTotalInfo();	
-	
-	/* 이미지 삽입 */
-	$(".image_wrap").each(function(i, obj){
-	
-		const bobj = $(obj);
-		
-		if(bobj.data("bookid")){
-			const uploadPath = bobj.data("path");
-			const uuid = bobj.data("uuid");
-			const fileName = bobj.data("filename");
-			
-			const fileCallPath = encodeURIComponent(uploadPath + "/s_" + uuid + "_" + fileName);
-			
-			$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
-		} else {
-			$(this).find("img").attr('src', '/resources/img/goodsNoImage.png');
-		}
-		
-	});
-	
-	
+	setTotalInfo();		
 });	
 
 /* 체크여부에따른 종합 정보 변화 */
@@ -189,90 +168,33 @@ function setTotalInfo(){
 	$(".totalCount_span").text(totalCount);
 	// 총 종류
 	$(".totalKind_span").text(totalKind);
-	// 총 마일리지
-	$(".totalPoint_span").text(totalPoint.toLocaleString());
 	// 배송비
 	$(".delivery_price").text(deliveryPrice);	
 	// 최종 가격(총 가격 + 배송비)
 	$(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());		
 }
 
-/* 수량버튼 */
-$(".plus_btn").on("click", function(){
-	let Cnt = $(this).parent("div").find("input").val();
-	$(this).parent("div").find("input").val(++cnt);
-});
-$(".minus_btn").on("click", function(){
-	let Cnt = $(this).parent("div").find("input").val();
-	if(Cnt > 1){
-		$(this).parent("div").find("input").val(--cnt);		
-	}
-});
 
 
-/* 수량 수정 버튼 */
-$(".quantity_modify_btn").on("click", function(){
-	let cartId = $(this).data("cartid");
-	let Cnt = $(this).parent("td").find("input").val();
-	$(".update_cartId").val(cartid);
-	$(".update_Cnt").val(cnt);
-	$(".quantity_update_form").submit();
-	
-});
-
-/* 장바구니 삭제 버튼 */
-$(".delete_btn").on("click", function(e){
-	e.preventDefault();
-	const cartId = $(this).data("cartid");
-	$(".delete_cartId").val(cartid);
-	$(".quantity_delete_form").submit();
-});
-	
-/* 주문 페이지 이동 */	
-$(".order_btn").on("click", function(){
-	
-	let form_contents ='';
-	let orderNumber = 0;
-	
-	$(".cart_info_td").each(function(index, element){
-		
-		if($(element).find(".individual_cart_checkbox").is(":checked") === true){	//체크여부
-			
-			let itemid = $(element).find(".individual_itemId_input").val();
-			let cnt = $(element).find(".individual_Cnt_input").val();
-			
-			let itemid_input = "<input name='orders[" + orderNumber + "].itemId' type='hidden' value='" + itemid + "'>";
-			form_contents += bookId_input;
-			
-			let cnt_input = "<input name='orders[" + orderNumber + "].Cnt' type='hidden' value='" + cnt + "'>";
-			form_contents += cnt_input;
-			
-			orderNumber += 1;
-			
-		}
-	});	
-
-	$(".order_form").html(form_contents);
-	$(".order_form").submit();
-	
-});
 		
 
 
 </script>
 
+<form name="orderform" id="orderform" method="post" class="orderform" action="/Order">
 
-<div class="container-fluid">
+<div class="container-fluid" id="basket">
 	<h2>장바구니</h2>
 	<p></p>
+	
 <div class="all_check_input_div">
-					<input type="checkbox" class="all_check_input input_size_20" checked="checked"><span class="all_chcek_span">전체선택</span>
+					
 				</div>	
 	<table class="table table-hover">
 		<thead>
 			<tr>
 							<th class="td_width_1"></th>
-						
+							<th class="td_width_0">no</th>
 							<th class="td_width_2">상품이미지</th>
 							<th class="td_width_3">상품명</th>
 							<th class="td_width_4">가격</th>
@@ -285,7 +207,7 @@ $(".order_btn").on("click", function(){
 			<tr th:each="c : ${myInfo}">
 		
 								 <td class="td_width_1 cart_info_td">
-									<input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked">
+									<input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked" style="display:none">
 									<input type="hidden" class="individual_Price_input" th:value="${c.price}">
 									<input type="hidden" class="individual_Cnt_input" th:value="${c.cnt}">
 									<input type="hidden" class="individual_totalPrice_input" th:value="${c.price * c.cnt}">
@@ -293,20 +215,15 @@ $(".order_btn").on("click", function(){
 								</td> 
 								
 
-
+<td id="cartid" th:text="${c.cartid}">NO</td>
 				<td class="td_width_2"><img th:src="'/img/item/'+${c.img}">
 															
 								</td>
-								<td class="td_width_3"th:text="${c.itemname}">Item Name</td>
+								
+								<td class="td_width_3" th:text="${c.itemname}">Item Name</td>
 								<td class="td_width_4 price_td"th:text="${#numbers.formatInteger(c.price, 3, 'COMMA')}+'원'">
 								</td>
-								<td class="td_width_4 table_text_align_center">
-									<div class="table_text_align_center quantity_div">
-										<input type="number" th:value="${c.cnt}" class="quantity_input">	
-										
-									</div>
-									<a class="quantity_modify_btn" data-cartId="${c.cartid}">변경</a>
-								</td>
+								<td class="td_width_4" th:text="${c.cnt}">Count</td>
 								<td class="td_width_4 table_text_align_center" th:text="${#numbers.formatInteger(c.totalprice, 3, 'COMMA')}+'원'">TotalPrice
 								</td>
 								
@@ -404,20 +321,24 @@ $(".order_btn").on("click", function(){
 			</div>
 			<!-- 구매 버튼 영역 -->
 			<div class="content_btn_section">
-				<a type="button" class="order_btn">주문하기</a>
+				<th>
+					<button type="button" class="btnbtn btn-info btn-sm" id="order_btn"  style="display:none">>
+					<span class="material-icons-outlined color">credit_card</span>구매하기</a>
+					</button>
+				</th>
 			</div>
 			
 			<!-- 수량 조정 form -->
-			<form action="/cart/update" method="post" class="quantity_update_form">
+			<form action="/updatecart" method="post" class="quantity_update_form">
 				<input type="hidden" name="cartId" class="update_cartId">
 				<input type="hidden" name="Cnt" class="update_Cnt">
 				<input type="hidden" name="custId" value="${custid.custid}">
 			</form>	
 			
 			<!-- 삭제 form -->
-			<form action="/cart/delete" method="post" class="quantity_delete_form">
+			<form action="/deletecarts" method="post" class="quantity_delete_form">
 				<input type="hidden" name="cartId" class="delete_cartId">
-				<input type="hidden" name="memberId" value="${cust.custid}">
+				<input type="hidden" name="custId" value="${cust.custid}">
 			</form>		
 			<!-- 주문 form -->
 			<form action="/order/${cust.custid}" method="get" class="order_form">
@@ -433,4 +354,5 @@ $(".order_btn").on("click", function(){
 </div>	<!-- class="wrapper" -->
 
 </body>
+
 </html>

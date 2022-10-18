@@ -23,6 +23,7 @@ import com.multi.service.ShipService;
 
 @Controller
 public class CartController {
+	
 
 	@Autowired
 	CartService cart_service;
@@ -129,7 +130,7 @@ public class CartController {
 	
 	
 	/* 장바구니 수량 수정 */
-	@PostMapping("/cart/update")
+	@PostMapping("/updatecart")
 	public String updateCartPOST(CartDTO cart)  {
 		
 		try {
@@ -139,12 +140,12 @@ public class CartController {
 			e.printStackTrace();
 		}
 		
-		return "redirect:/cart/" + cart.getCustid();
+		return "redirect:cart?id"+cart.getCustid();
 		
 	}	
 	
 	/* 장바구니 수량 수정 */
-	@PostMapping("/cart/delete")
+	@PostMapping("/deletecarts")
 	public String deleteCartPOST(CartDTO cart) {
 		
 		try {
@@ -154,7 +155,7 @@ public class CartController {
 			e.printStackTrace();
 		}
 		
-		return "redirect:/cart/" + cart.getCustid();
+		return "redirect:cart?id"+cart.getCustid();
 		
 	}		
 	
