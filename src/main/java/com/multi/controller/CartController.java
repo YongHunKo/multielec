@@ -88,32 +88,41 @@ public class CartController {
 	@RequestMapping("/paymentimpl")
 	public String paymentimpl(Model model, String custid, String shipname, String shiptel, String shipaddr) {
 		List<CartDTO> list = null;
+		int cnt = 0;
+		int totalprice = 0;
+		int price = 0;
+		int itemid = 0;
+		String itemname = null;
 		try {
 			list= cart_service.registerall(custid);
 			for(CartDTO o:list) {
-				int cnt =o.getCnt();
-				int price = o.getPrice();
-				int itemid = o.getItemid();
-				String itemname = o.getItemname();
-				int totalprice =cnt*price;
+				cnt +=o.getCnt();
+				price = o.getPrice();
+				itemid = o.getItemid();
+				itemname = o.getItemname();
+				totalprice +=o.getCnt()*o.getPrice();
+				//여기서 for문을 나가야했나? 4조를 참고해보니 여기서 첫번째 for문을 끝내고 위 데이터들을 order에 저장한다
+			}
 				OrderlistDTO order = new OrderlistDTO(null, custid,cnt, null, totalprice, null, null, null, null, null,null, null,null);
 				//오더리스트에 넣는것들은 다 끝
 				orderlist_service.register(order);
 				int r = order.getOrderid();
-				OrderdetailDTO orderdetail = new OrderdetailDTO(null, r, itemid, itemname, "배송완료", price, cnt);
+				//그리고 여기서 두번째 for문을 list에 맞게 돌려서 처리한다
+			
+			for(CartDTO o:list) {
+				OrderdetailDTO orderdetail = new OrderdetailDTO(null, r, o.getItemid(), o.getItemname(), "배송완료", o.getPrice(), o.getCnt());
 				ShipDTO ship = new ShipDTO(null, r, shipname, shipaddr, shiptel);
 				
 				orderdetail_service.register(orderdetail);
 				ship_service.register(ship);
-			}
-			for(CartDTO o:list) {
 				cart_service.remove(o.getCartid());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-//		model.addAttribute("center","/paymentok");
+//		일단 원하는데로 들어가는게 확인되었다 근데 수량과 itemid나 다른것들이 안맞는다
+		//오더리스트는 된거같다 근데 이제 오더디테일에서 값이 같은걸로 들어간다
 		return "index";
 	}
 }
