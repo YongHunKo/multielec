@@ -5,13 +5,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 <mapper namespace="com.multi.mapper.CartMapper">
 	<select id="select" parameterType="Integer" resultType="CartDTO">
-	
 		SELECT * FROM cart WHERE cartid= #{cartid}
 	</select>
 	
 	<select id="selectall" resultType="CartDTO">
 		SELECT * FROM cart
 	</select>
+	
 	<select id="registerall" resultType="CartDTO">
 		SELECT * FROM cart ca
 		INNER JOIN item it ON ca.itemid = it.itemid
@@ -25,6 +25,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<update id="update" parameterType="CartDTO">
 		UPDATE cart SET custid=#{custid}, itemid=#{itemid}, cnt=#{cnt} WHERE cartid=#{cartid}
 	</update>
+	
 	<delete id="delete" parameterType="Integer">
 		DELETE FROM cart WHERE cartid=#{cartid}
 	</delete>
@@ -36,5 +37,42 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN cust cu ON ca.custid = cu.custid
 		WHERE ca.custid= #{custid}
 	</select>
+	
+	<!-- 카트 추가 -->
+	<insert id="addCart">
+		insert into cart(custid, itemid, cnt)
+		values(#{custid}, #{itemid}, #{cnt}) 
+	</insert>
+	
+	
+	<!-- 카트 삭제 -->
+	<delete id="deleteCart">
+		delete from cart where cartid = #{cartid}
+	</delete>
+	
+	<!-- 카트 수량 수정 -->
+	<update id="modifyCount">
+		update cart set cnt=#{cnt} where cartid = #{cartid}
+	</update>
+	
+	
+	<!-- 카트 목록 -->
+	<select id="getCart" resultType="CartDTO">
+	
+		select a.cartid, a.custid, a.itemid, a.cnt, b.itemname, b.price
+		from cart a left outer join item b on a.itemid = b.itemid
+		where custid = #{custid}	
+	
+	</select>
+	
+	<!-- 카트 확인 -->
+	<select id="checkCart" resultType="CartDTO">
+		select * from cart 
+		where custid = #{custid} and itemid = #{itemid}
+	</select>	
+	
+	<delete id="deleteOrderCart">
+		delete from cart where custid = #{custid} and itemid = #{itemid}
+	</delete>	
 
 </mapper>

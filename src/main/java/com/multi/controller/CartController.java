@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CartDTO;
@@ -41,7 +42,7 @@ public class CartController {
 		try {
 			list = cart_service.cartall(id);
 			cust = cust_service.get(id);
-			model.addAttribute("mycart",list);
+			model.addAttribute("myInfo",list);
 			model.addAttribute("mypricecart",list);
 			model.addAttribute("custdetail",cust);
 		} catch (Exception e) {
@@ -125,6 +126,38 @@ public class CartController {
 		//오더리스트는 된거같다 근데 이제 오더디테일에서 값이 같은걸로 들어간다
 		return "index";
 	}
+	
+	
+	/* 장바구니 수량 수정 */
+	@PostMapping("/cart/update")
+	public String updateCartPOST(CartDTO cart)  {
+		
+		try {
+			cart_service.modifyCount(cart);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "redirect:/cart/" + cart.getCustid();
+		
+	}	
+	
+	/* 장바구니 수량 수정 */
+	@PostMapping("/cart/delete")
+	public String deleteCartPOST(CartDTO cart) {
+		
+		try {
+			cart_service.deleteCart(cart.getCartid());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "redirect:/cart/" + cart.getCustid();
+		
+	}		
+	
 }
 
 
