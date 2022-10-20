@@ -129,35 +129,9 @@ public class CartController {
 	}
 	
 	
-	/* 장바구니 수량 수정 */
-	@PostMapping("/updatecart")
-	public String updateCartPOST(CartDTO cart)  {
-		
-		try {
-			cart_service.modifyCount(cart);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return "redirect:cart?id"+cart.getCustid();
-		
-	}	
 	
-	/* 장바구니 수량 수정 */
-	@PostMapping("/deletecarts")
-	public String deleteCartPOST(CartDTO cart) {
-		
-		try {
-			cart_service.deleteCart(cart.getCartid());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return "redirect:cart?id"+cart.getCustid();
-		
-	}		
+	
+	
 	
 }
 
