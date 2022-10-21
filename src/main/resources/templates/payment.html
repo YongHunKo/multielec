@@ -26,7 +26,7 @@ $(document).ready(function(){
 		var shiptel=$('#shiptel').val();
 		var shipaddr=$('#shipaddr').val();
 		//위에 ship 텍스트들이 값이 안들어옴 왜일까 이게아니라 로그인임플처럼 넘겨야할거같다
-		location.href="/paymentimpl?custid="+custid+'&shipname='+shipname+'&shiptel='+shiptel+'&shipaddr='+shipaddr;
+		location.href="[[@{/paymentimpl?custid=}]]"+custid+'&shipname='+shipname+'&shiptel='+shiptel+'&shipaddr='+shipaddr;
 	});
 });
 
@@ -78,7 +78,7 @@ function check(){
 						   <tbody>
 						      <tr th:each="c : ${mycart}">
 						        <td>
-						        	<img th:src="'/img/item/'+${c.img}" >
+						        	<img th:src="@{/img/item/}+${c.img}" >
 						        </td>
 						        <td style= text-align:center;vertical-align:middle; id="itemid" th:text="${c.itemname}">Item Name</td>
 						        <td style= text-align:center;vertical-align:middle; id="price" th:text="${c.price}">Price</td>
