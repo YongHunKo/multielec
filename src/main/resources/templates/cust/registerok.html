@@ -1,4 +1,4 @@
 <h1 class="h3 mb-0 text-gray-800">회원가입 완료</h1>
 <hr>
 <h2 th:text="${rid.custname}+' 님 환영합니다!'+'  회원님의 ID는 '+${rid.custid}+' 입니다.'">x타임리프로 rid.id와 rid.name 가져올 생각</h2>
-<a href="/">쇼핑계속하기</a>
+<a th:href="@{/}">쇼핑계속하기</a>
