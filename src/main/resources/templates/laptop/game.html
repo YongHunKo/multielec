@@ -21,7 +21,7 @@ table>tbody>tr>td>a>img {
                     <tr th:each="i : ${list}">
                         <td >
 				        <a th:href="@{/itemdetail(itemid=${i.itemid})}">
-				        	<img th:src="@{/img/item}'+${i.img}">
+				        	<img th:src="@{/img/item}+${i.img}">
 				        </a>
                         </td>
                         <td th:href="@{/itemdetail(itemid=${i.itemid})}" th:text="${i.itemid}" style="display:none">id</td>
