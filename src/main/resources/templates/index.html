@@ -171,7 +171,7 @@ $(document).ready(function(){
                         <ul th:if="${session.logincust != null}">
                             <li><a type="button" class="material-icons md maincolor" th:href="@{/custdetail(id=${session.logincust.custid})}" th:text="${session.logincust.custname}+'님'">person</a></li>
                         	<li><a th:href="@{/cart(id=${session.logincust.custid})}" class="material-icons md color">shopping_cart</a></li>
-                            <li><a type="button"  href="/logout" class="material-icons md color">logout</a></li>
+                            <li><a type="button"  th:href="@{/logout}" class="material-icons md color">logout</a></li>
                         </ul>                        
                     </div>
                 </div>                                 
