@@ -4,7 +4,7 @@ $(document).ready(function(){
 	$('#register_btn').click(function(){
 		$('#register_form').attr({
 			'method':'post',
-			'action':'/cust/registerimpl'
+			'action':'[[@{/cust/registerimpl}]]'
 		});
 		$('#register_form').submit();
 	});
@@ -43,7 +43,7 @@ $(document).ready(function(){
 	$('#custid').keyup(function(){
 		var custid = $(this).val();
 		$.ajax({
-			url:'/checkid',
+			url:'[[@{/checkid}]]',
 			data:{'cid':custid},
 			success:function(result){
 				if(result == 't'){

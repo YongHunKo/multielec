@@ -8,7 +8,7 @@ $(document).ready(function () {
 		if(c == true){
 			$('#cust_form').attr({
 				'method':'post',
-				'action': '/custdeleteimpl'
+				'action': '[[@{/custdeleteimpl}]]'
 			});
 		
 			$('#cust_form').submit();
@@ -21,7 +21,7 @@ $(document).ready(function () {
 		var custid = $(this).val();
 		var custid2 = "[[${session.logincust.custid}]]";
 		$.ajax({
-			url:'/checkid',
+			url:'[[@{/checkid}]]',
 			data:{'cid':custid},
 			success:function(result){
 				if(result == 'f'){
@@ -43,7 +43,7 @@ $(document).ready(function () {
 		var custpwd = $(this).val();
 		var custid2 = "[[${session.logincust.custid}]]";
 		$.ajax({
-			url:'/checkpwd',
+			url:'[[@{/checkpwd}]]',
 			data:{'cid':custid2,'cpwd':custpwd}, 
 			success:function(result){
 				if(result == 't'){
