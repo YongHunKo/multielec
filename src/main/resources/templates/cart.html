@@ -44,7 +44,7 @@ table.table4 th {
 		var custid = '[[${session.logincust.custid}]]';
 		var c = confirm('삭제 하시겠습니까 ?');
 		if (c == true) {
-			location.href = '/deletecart?id=' + cartid + '&custid=' + custid;
+			location.href = '[[@{/deletecart?id=}]]' + cartid + '[[@{&custid=}]]' + custid;
 		}
 	}
 	
@@ -214,7 +214,7 @@ table.table4 th {
 			</tr>
 		<tbody>
 			<tr style="display: none" th:each="ca : ${mypricecart}">
-				<td th:text="${ca.totalprice}">총 결제금액</td>
+				<td th:text="${ca.totalprice}">총  결제금액</td>
 			</tr>
 		</thead>
 	</table>
