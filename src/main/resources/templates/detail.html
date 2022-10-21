@@ -23,7 +23,7 @@
 			return;
 		}
 		$.ajax({
-			url:'/addcart',
+			url:'[[@{addcart}]]',
 			data:{
 				'custid':custid,
 				'itemid':itemid,
@@ -45,7 +45,7 @@
                 <div class="row">
                 
                     <div class="col-lg-5 d-none d-lg-block bg-register-image">
-                    <img th:src="'/img/item/'+${itemdetail.img}">
+                    <img th:src="@{img/item}'+${itemdetail.img}">
                     </div>
                     
                     <div class="col-lg-7">
@@ -106,14 +106,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src=@{vendor/jquery/jquery.min.js}></script>
+    <script src=@{vendor/bootstrap/js/bootstrap.bundle.min.js}></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src=@{vendor/jquery-easing/jquery.easing.min.js}></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src=@{js/sb-admin-2.min.js}></script>
 
 </body>
              
