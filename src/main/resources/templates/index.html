@@ -17,34 +17,34 @@
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"rel="stylesheet">
         
     <!-- Css Styles -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/elegant-icons.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/slicknav.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Filled|Material+Icons+Rounded|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet">
-    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
  
       
       
   <!-- 메인화면 상품 이미지 잘리는 에러 발생하여 주석 처리함  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->    
     
     <!-- Js Plugins -->
-    <script src="/js/jquery-3.3.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.nice-select.min.js"></script>
-    <script src="/js/jquery-ui.min.js"></script>
-    <script src="/js/jquery.slicknav.js"></script>
-    <script src="/js/mixitup.min.js"></script>
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/sb-admin-2.min.js"></script>
-    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>    
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>    
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/js/jquery-ui.min.js}"></script>
+    <script th:src="@{/js/jquery.slicknav.js}"></script>
+    <script th:src="@{/js/mixitup.min.js}"></script>
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/sb-admin-2.min.js}"></script>
+    <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>    
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>    
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -61,7 +61,7 @@ function enterkey(){
 	if(window.event.keyCode == 13){
 		$('#login_form').attr({
 			'method':'post',
-			'action':'/loginimpl'
+			'action':'[[@{/loginimpl}]]'
 		});
 		$('#login_form').submit();
 	};
@@ -71,7 +71,7 @@ function enterkey2(){
 	if(window.event.keyCode == 13){
 		$('#search_form').attr({
 			'method':'post',
-			'action':'/searchimpl'
+			'action':'[[@{/searchimpl}]]'
 		});
 		$('#search_form').submit();
 	};
@@ -83,7 +83,7 @@ $(document).ready(function(){
 	$('#login_btn').click(function(){
 		$('#login_form').attr({
 			'method':'post',
-			'action':'/loginimpl'
+			'action':'[[@{/loginimpl}]]'
 		});
 		$('#login_form').submit();
 		
@@ -92,7 +92,7 @@ $(document).ready(function(){
 	$('#search_btn').click(function() {
 		$('#search_form').attr({
 			'method':'post',
-			'action':'/searchimpl',
+			'action':'[[@{/searchimpl}]]',
 		});
 		$('#search_form').submit();
 	});
@@ -125,7 +125,7 @@ $(document).ready(function(){
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo" >
-                        <a href="/"><img src="/img/mainlogo.jpg" alt=""></a>
+                        <a th:href="@{/}"><img th:src="@{/img/mainlogo.jpg}" alt=""></a>
                     </div>
                 </div>
                 
@@ -165,8 +165,8 @@ $(document).ready(function(){
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul th:if="${session.logincust == null}">
-                            <li><a type="button" class="material-icons md maincolor" href="#" data-toggle="modal" data-target="#loginModal">로그인</a></li>
-                            <li><a type="button" class="material-icons md maincolor" href="/cust/register">회원가입</a></li>
+                            <li><a type="button" class="material-icons md maincolor" th:href="@{#}" data-toggle="modal" data-target="#loginModal">로그인</a></li>
+                            <li><a type="button" class="material-icons md maincolor" th:href="@{/cust/register}">회원가입</a></li>
                         </ul>
                         <ul th:if="${session.logincust != null}">
                             <li><a type="button" class="material-icons md maincolor" th:href="@{/custdetail(id=${session.logincust.custid})}" th:text="${session.logincust.custname}+'님'">person</a></li>
@@ -217,9 +217,9 @@ $(document).ready(function(){
                             <span>모바일</span>
                         </div>
                         <ul>
-                            <li><a href="/smartphone">스마트폰</a></li>
-                            <li><a href="/smartwatch">스마트 워치</a></li>
-                            <li><a href="/tablet">태블릿</a></li>
+                            <li><a th:href="@{/smartphone}">스마트폰</a></li>
+                            <li><a th:href="@{/smartwatch}">스마트 워치</a></li>
+                            <li><a th:href="@{/tablet}">태블릿</a></li>
                         </ul>
                     </div>
                     
@@ -229,8 +229,8 @@ $(document).ready(function(){
                             <span>노트북</span>
                         </div>
                         <ul>
-                            <li><a href="/office">사무용 노트북</a></li>
-                            <li><a href="/game">게이밍 노트북</a></li>
+                            <li><a th:href="@{/office}">사무용 노트북</a></li>
+                            <li><a th:href="@{/game}">게이밍 노트북</a></li>
                         </ul>
                     </div>
                     
@@ -299,7 +299,7 @@ $(document).ready(function(){
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="#"><img src="img/flogo.jpg" alt=""></a>
+                            <a th:href="@{#}"><img th:src="@{/img/flogo.jpg}" alt=""></a>
                         </div>
 
                     </div>
@@ -345,14 +345,14 @@ $(document).ready(function(){
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="/js/jquery-3.3.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.nice-select.min.js"></script>
-    <script src="/js/jquery-ui.min.js"></script>
-    <script src="/js/jquery.slicknav.js"></script>
-    <script src="/js/mixitup.min.js"></script>
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/main.js"></script>
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/js/jquery-ui.min.js}"></script>
+    <script th:src="@{/js/jquery.slicknav.js}"></script>
+    <script th:src="@{/js/mixitup.min.js}"></script>
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
     
     <!-- Login Modal-->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -377,7 +377,7 @@ $(document).ready(function(){
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a id="login_btn" class="btn btn-info" href="#">Login</a>
+                    <a id="login_btn" class="btn btn-info" th:href="@{#}">Login</a>
                 </div>
             </div>
         </div>
@@ -397,7 +397,7 @@ $(document).ready(function(){
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/logout">Logout</a>
+                    <a class="btn btn-primary" th:href="@{/logout}">Logout</a>
                 </div>
             </div>
         </div>
