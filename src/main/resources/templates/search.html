@@ -30,7 +30,7 @@
                     </thead>
                     <tbody>
                         <tr th:each="i : ${list}">
-                            <td><a th:href="@{/itemdetail(itemid=${i.itemid})}"><img th:src="'/img/item/'+${i.img}"></a></td>
+                            <td><a th:href="@{/itemdetail(itemid=${i.itemid})}"><img th:src="@{/img/item/}+${i.img}"></a></td>
                             <td th:href="@{/detail(id=${i.itemid})}" th:text="${i.itemid}" style="display:none">item_id</td>
                             <td th:text="${i.itemname}">item_name</td>
                             <td th:text="${#numbers.formatInteger(i.price, 3, 'COMMA')}">item_price</td>
@@ -48,8 +48,8 @@
 
 
 <!-- Page level plugins -->
-<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script th:src="@{/vendor/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
 
 <!-- Page level custom scripts -->
-<script src="/js/demo/datatables-demo.js"></script>
+<script th:src="@{/js/demo/datatables-demo.js}"></script>
