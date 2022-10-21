@@ -77,7 +77,7 @@ public class MainController {
 		if(session != null) {
 			session.invalidate();
 		}
-		return "redirect:";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/itemdetail")
