@@ -24,7 +24,7 @@ function del(orderid){
 	var custid = '[[${session.logincust.custid}]]';
 	var c = confirm('삭제 하시겠습니까 ?');
 	if(c == true){
-		location.href='[[@{/deleteorderlist?id=}]]'+orderid+'[[@{&custid=}]]'+custid;
+		location.href='[[@{/deleteorderlist?id=}]]'+orderid+'&custid='+custid;
 	}
 }
 </script>
