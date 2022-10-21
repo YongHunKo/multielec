@@ -19,7 +19,7 @@ $(document).ready(function(){
 		//이 값이 왜 계속 1로 들어올까 -> 1이 들어가는게 아니라 제일 위에 있는 itemid가 들어가는 거였음
 		//내가 적는 itemid
 		var rvtxt=$('#rvtxt').val();
-		location.href='[[@{/reviewimpl?custid=}]]'+custid+'[[@{&itemid=}]]'+itemid+'[[@{&rvtxt=}]]'+rvtxt;
+		location.href='[[@{/reviewimpl?custid=}]]'+custid+'&itemid='+itemid+'&rvtxt='+rvtxt;
 	});
 });
 </script>
