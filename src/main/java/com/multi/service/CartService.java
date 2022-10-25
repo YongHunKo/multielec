@@ -19,20 +19,10 @@ public class CartService implements MyService<Integer,CartDTO>{
 		mapper.insert(v);
 		
 	}
-	/* 장바구니 추가 */
-	public int addCart(CartDTO cart) throws Exception {
-		return mapper.addCart(cart);
-		
-	}
 
 	@Override
 	public void remove(Integer k) throws Exception {
 		mapper.delete(k);
-		
-	}
-	/* 카트 삭제 */
-	public int deleteCart(int cartid)throws Exception {
-		return mapper.deleteCart(cartid);
 		
 	}
 
@@ -41,12 +31,7 @@ public class CartService implements MyService<Integer,CartDTO>{
 		mapper.update(v);
 		
 	}
-	/* 카트 수량 수정 */
-	public int modifyCount(CartDTO cart) throws Exception {
-		return mapper.modifyCount(cart);
-		
-	}	
-	
+
 	@Override
 	public CartDTO get(Integer k) throws Exception {
 		return mapper.select(k);
@@ -65,10 +50,6 @@ public class CartService implements MyService<Integer,CartDTO>{
 		return mapper.registerall(custid);
 	}
 	
-	/* 장바구니 정보 리스트 */
-	public List<CartDTO> getCartList(String custid) throws Exception {
-		return mapper.getCartList(custid);	
-	}
-	
-	
+
 }
+	

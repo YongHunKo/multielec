@@ -1,4 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
 <meta charset="utf-8">
+<link rel="stylesheet" href="/resources/css/cart.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
+<!-- Page level plugins -->
+<script th:src="@{/vendor/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
+
+<!-- Page level custom scripts -->
+<script th:src="@{/js/demo/datatables-demo.js}"></script>
+</head>
+
 <style>
 table>tbody>tr>td>img {
 	width: 100px;
@@ -44,7 +59,7 @@ table.table4 th {
 		var custid = '[[${session.logincust.custid}]]';
 		var c = confirm('삭제 하시겠습니까 ?');
 		if (c == true) {
-			location.href = '[[@{/deletecart?id=}]]' + cartid + '&custid=' + custid;
+			location.href = '/deletecart?id=' + cartid + '&custid=' + custid;
 		}
 	}
 	
@@ -98,44 +113,40 @@ table.table4 th {
 
 <body>
 
-<div class="wrapper">
-	<div class="wrap">
-		<div class="top_gnb_area">
-			<ul class="list">
-				   
-			</ul>			
-		</div>
-		<div class="top_area">
-			
+	<div class="wrapper">
+		<div class="wrap">
+			<div class="top_gnb_area">
+				<ul class="list">
+
+				</ul>
 			</div>
-			<div class="login_area">
-			
-				
-			</div>
-			<div class="clearfix"></div>			
+			<div class="top_area"></div>
+			<div class="login_area"></div>
+			<div class="clearfix"></div>
 		</div>
 		<div class="content_area">
-			
+
 			<div class="container-fluid">
-			<h2>장바구니</h2>
-			<p></p>
+				<h2>장바구니</h2>
+				<p></p>
 			</div>
 			<!-- 장바구니 리스트 -->
 			<div class="content_middle_section"></div>
 			<!-- 장바구니 가격 합계 -->
 			<!-- cartInfo -->
 			<div class="content_totalCount_section">
-				
+
 				<!-- 체크박스 전체 여부 -->
 				<div class="all_check_input_div">
-					<input type="checkbox" class="all_check_input input_size_20" checked="checked"><span class="all_chcek_span">전체선택</span>
-				</div>				
-				
+					<input type="checkbox" class="all_check_input input_size_20"
+						checked="checked"><span class="all_chcek_span">전체선택</span>
+				</div>
+
 				<table class="subject_table">
-					
+
 					<tbody>
 
-						
+
 					</tbody>
 				</table>
 				<table class="table table-hover">
@@ -143,82 +154,90 @@ table.table4 th {
 					<tbody>
 						<c:forEach items="${cartInfo}" var="ci">
 							<tr>
-							<th class="td_width_1"></th>
-							<th class="td_width_0">no</th>
-							<th class="td_width_2">상품이미지</th>
-							<th class="td_width_3">상품명</th>
-							<th class="td_width_4">가격</th>
-							<th class="td_width_4">수량</th>
-							<th class="td_width_4">합계</th>
-							<th class="td_width_4">삭제</th>
-						</tr>
-		</thead>
-		<tbody>
-			<tr th:each="c : ${myInfo}">
-		
-								 <td class="td_width_1 cart_info_td">
-									<input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked">
-									<input type="hidden" class="individual_Price_input" th:value="${c.price}">
-									<input type="hidden" class="individual_Cnt_input" th:value="${c.cnt}">
-									<input type="hidden" class="individual_totalPrice_input" th:value="${c.price * c.cnt}">
-									<input type="hidden" class="individual_itemId_input" th:value="${c.itemid}">								
-								</td> 
-								
+								<th class="td_width_1"></th>
+								<th class="td_width_0">no</th>
+								<th class="td_width_2">상품이미지</th>
+								<th class="td_width_3">상품명</th>
+								<th class="td_width_4">가격</th>
+								<th class="td_width_4">수량</th>
+								<th class="td_width_4">합계</th>
+								<th class="td_width_4">삭제</th>
+							</tr>
+							</thead>
+							<tbody>
+								<tr th:each="c : ${myInfo}">
 
-								<td id="cartid" th:text="${c.cartid}">NO</td>
-								<td class="td_width_2"><img th:src="@{/img/item/}+${c.img}">
-															
-								</td>
-								
-								<td class="td_width_3" th:text="${c.itemname}">Item Name</td>
-								<td class="td_width_4 price_td"th:text="${#numbers.formatInteger(c.price, 3, 'COMMA')}+'원'">
-								</td>
-								<td class="td_width_4 table_text_align_center">
-									<div class="table_text_align_center quantity_div">
-										<input type="number" th:value="${c.cnt}" class="quantity_input" min="0">	
-									
-									</div>
-									<a class="quantity_modify_btn" data-cartId="${c.cartid}">수정</a>
-								</td>
-								<td class="td_width_4 table_text_align_center" th:text="${#numbers.formatInteger(c.totalprice, 3, 'COMMA')}+'원'">TotalPrice
-								</td>
-								
-								
-				<td>
-					<button type="button" th:onclick="del([[${c.cartid}]]);"
-						class="btn btn-dark btn-sm">
-						<span class="material-icons">delete</span>
-					</button>
+									<td class="td_width_1 cart_info_td"><input type="checkbox"
+										class="individual_cart_checkbox input_size_20"
+										checked="checked"> <input type="hidden"
+										class="individual_Price_input" th:value="${c.price}">
+										<input type="hidden" class="individual_Cnt_input"
+										th:value="${c.cnt}"> <input type="hidden"
+										class="individual_totalPrice_input"
+										th:value="${c.price * c.cnt}"> <input type="hidden"
+										class="individual_itemId_input" th:value="${c.itemid}">
+									</td>
 
-				</td>
-				
-			</tr>
+
+									<td id="cartid" th:text="${c.cartid}">NO</td>
+									<td class="td_width_2"><img th:src="'/img/item/'+${c.img}">
+
+									</td>
+
+									<td class="td_width_3" th:text="${c.itemname}">Item Name</td>
+									<td class="td_width_4 price_td"
+										th:text="${#numbers.formatInteger(c.price, 3, 'COMMA')}+'원'">
+									</td>
+
+									<td class="td_width_4 table_text_align_center">
+										<div class="table_text_align_center quantity_div">
+											<input type="text" th:value="${c.cnt}" class="quantity_input">
+											<button class="quantity_btn plus_btn">+</button>
+											<button class="quantity_btn minus_btn">-</button>
+										</div>
+
+										<button type="button" class="quantity_modify_btn"
+											th:data-cartid="${c.cartid}" th:data-custid="${c.custid}">수정
+										</button>
+									</td>
+									<td
+										th:text="${#numbers.formatInteger(c.totalprice, 3, 'COMMA')}+'원'">TotalPrice</td>
+
+									<td>
+										<button type="button" th:onclick="del([[${c.cartid}]]);"
+											class="btn btn-dark btn-sm">
+											<span class="material-icons">delete</span>
+										</button>
+
+									</td>
+
+								</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 				<table class="list_table">
 				</table>
 				<div class="container-fluid">
-	<table id="tbl_data" class="totalprice2">
-		<thead>
-			<tr>
-				<th>&nbsp&nbsp총 결제금액&nbsp&nbsp:&nbsp</th>
-				<th id="a_sum"></th>
-				<th>원&nbsp</th>
-				<th>
-					<button type="button" class="btnbtn btn-info btn-sm">
-						<a th:href="@{/payment(id=${custdetail.custid})}"><span
-							class="material-icons-outlined color">credit_card</span>구매하기</a>
-					</button>
-				</th>
-			</tr>
-		<tbody>
-			<tr style="display: none" th:each="ca : ${mypricecart}">
-				<td th:text="${ca.totalprice}">총  결제금액</td>
-			</tr>
-		</thead>
-	</table>
-</div>
+					<table id="tbl_data" class="totalprice2">
+						<thead>
+							<tr>
+								<th>&nbsp&nbsp총 결제금액&nbsp&nbsp:&nbsp</th>
+								<th id="a_sum"></th>
+								<th>원&nbsp</th>
+								<th>
+									<button type="button" class="btnbtn btn-info btn-sm">
+										<a th:href="@{/payment(id=${custdetail.custid})}"><span
+											class="material-icons-outlined color">credit_card</span>구매하기</a>
+									</button>
+								</th>
+							</tr>
+						<tbody>
+							<tr style="display: none" th:each="ca : ${mypricecart}">
+								<td th:text="${ca.totalprice}">총 결제금액</td>
+							</tr>
+						</thead>
+					</table>
+				</div>
 			</div>
 			<!-- 가격 종합 -->
 			<div class="content_total_section">
@@ -229,19 +248,16 @@ table.table4 th {
 								<table>
 									<tr>
 										<td>총 상품 가격</td>
-										<td>
-											<span class="totalPrice_span">70000</span> 원
-										</td>
+										<td><span class="totalPrice_span">70000</span> 원</td>
 									</tr>
 									<tr>
 										<td>배송비</td>
-										<td>
-											<span class="delivery_price">3000</span>원
-										</td>
-									</tr>									
+										<td><span class="delivery_price">3000</span>원</td>
+									</tr>
 									<tr>
 										<td>총 주문 상품수</td>
-										<td><span class="totalKind_span"></span>종 <span class="totalCount_span"></span>개</td>
+										<td><span class="totalKind_span"></span>종 <span
+											class="totalCount_span"></span>개</td>
 									</tr>
 								</table>
 							</td>
@@ -251,46 +267,54 @@ table.table4 th {
 										<td></td>
 										<td></td>
 									</tr>
-								</table>							
+								</table>
 							</td>
 						</tr>
 					</table>
-				
+
 					<table>
 						<tr>
 							<td>
 								<table>
 									<tbody>
 										<tr>
-											<td>
-												<strong>총 결제 예상 금액</strong>
-											</td>
-											<td>
-												<span class="finalTotalPrice_span">70000</span> 원
-											</td>
+											<td><strong>총 결제 예상 금액</strong></td>
+											<td><span class="finalTotalPrice_span">70000</span> 원</td>
 										</tr>
 									</tbody>
 								</table>
 							</td>
-							
+
 						</tr>
 					</table>
 				</div>
 			</div>
-			
-						
-			
-		</div>
-		
-		
-				<div class="clearfix"></div>
+			<!-- 구매 버튼 영역 -->
+			<div class="content_btn_section">
+				<a class="order_btn">주문하기</a>
 			</div>
-	
-		
-	</div>	<!-- class="wrap" -->
-</div>	<!-- class="wrapper" -->
 
-<script>
+			<!-- 수량 조정 form -->
+			<form action="/updatecart" method="post" class="quantity_update_form">
+				<input type="hidden" name="cartid" class="update_cartid"> 
+				<input type="hidden" name="cnt" class="update_cnt"> 
+				<input type="hidden" name="custid" th:value="${custid}" class="update_custid">
+			</form>
+
+
+			</form>
+			<!-- 주문 form -->
+			<form action="/order/${member.memberId}" method="get"
+				class="order_form"></form>
+
+
+		</div>
+	</div>
+	<!-- class="wrap" -->
+	</div>
+	<!-- class="wrapper" -->
+
+	<script>
 $(document).ready(function(){
 	
 	/* 종합 정보 섹션 정보 삽입 */
@@ -342,9 +366,7 @@ function setTotalInfo(){
 			// 총 갯수
 			totalCount += parseInt($(element).find(".individual_Cnt_input").val());
 			// 총 종류
-			totalKind += 1;
-			// 총 마일리지
-			totalPoint += parseInt($(element).find(".individual_totalPoint_input").val());			
+			totalKind += 1;	
 		}
 
 	});
@@ -369,8 +391,6 @@ function setTotalInfo(){
 	$(".totalCount_span").text(totalCount);
 	// 총 종류
 	$(".totalKind_span").text(totalKind);
-	// 총 마일리지
-	$(".totalPoint_span").text(totalPoint.toLocaleString());
 	// 배송비
 	$(".delivery_price").text(deliveryPrice);	
 	// 최종 가격(총 가격 + 배송비)
@@ -393,15 +413,47 @@ $(".minus_btn").on("click", function(){
 /* 수량 수정 버튼 */
 $(".quantity_modify_btn").on("click", function(){
 	let cartid = $(this).data("cartid");
+	//alert(cartid);
+	let custid = $(this).data("custid");
+	//alert(custid);
 	let cnt = $(this).parent("td").find("input").val();
-	$(".update_cartId").val(cartid);
-	$(".update_Cnt").val(cnt);
+	//alert(cnt);
+	$(".update_cartid").val(cartid);
+	$(".update_cnt").val(cnt);
+	$(".update_custid").val(custid);
 	$(".quantity_update_form").submit();
 	
 });
 
 
+/* 주문 페이지 이동 */	
+$(".order_btn").on("click", function(){
+	
+	let form_contents ='';
+	let orderNumber = 0;
+	
+	$(".cart_info_td").each(function(index, element){
 		
+		if($(element).find(".individual_cart_checkbox").is(":checked") === true){	//체크여부
+			
+			let bookId = $(element).find(".individual_bookId_input").val();
+			let bookCount = $(element).find(".individual_bookCount_input").val();
+			
+			let bookId_input = "<input name='orders[" + orderNumber + "].bookId' type='hidden' value='" + bookId + "'>";
+			form_contents += bookId_input;
+			
+			let bookCount_input = "<input name='orders[" + orderNumber + "].bookCount' type='hidden' value='" + bookCount + "'>";
+			form_contents += bookCount_input;
+			
+			orderNumber += 1;
+			
+		}
+	});	
+
+	$(".order_form").html(form_contents);
+	$(".order_form").submit();
+	
+});
 
 </script>
 
