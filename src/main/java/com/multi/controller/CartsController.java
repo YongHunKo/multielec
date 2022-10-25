@@ -30,10 +30,7 @@ public class CartsController {
 		cartsService.modifyCount(cart);
 		
 		return "redirect:cart?id=" + cart.getCustid();
-		//return "redirect:cart?id="+custid;
-		//return "index";
-		//지난번에 되었는데 잊어먹음
-		//임시책으로 index로 연결했다가 장바구니로 다시 들어와야함
+		
 		
 	}	
 	
