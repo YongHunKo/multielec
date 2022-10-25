@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="/resources/css/cart.css">
-<script src="https://code.jquery.com/jquery-3.4.1.js"
+<script src="https://code.jquery.com/jquery-3.4.1.js" 
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
 <!-- Page level plugins -->
@@ -64,7 +64,6 @@ table.table4 th {
 	}
 	
 
-
 	 $(document).ready(function() {
 
 		var rowCnt = 0;
@@ -112,20 +111,9 @@ table.table4 th {
 	</script>
 
 <body>
-
 	<div class="wrapper">
 		<div class="wrap">
-			<div class="top_gnb_area">
-				<ul class="list">
-
-				</ul>
-			</div>
-			<div class="top_area"></div>
-			<div class="login_area"></div>
-			<div class="clearfix"></div>
-		</div>
 		<div class="content_area">
-
 			<div class="container-fluid">
 				<h2>장바구니</h2>
 				<p></p>
@@ -135,24 +123,15 @@ table.table4 th {
 			<!-- 장바구니 가격 합계 -->
 			<!-- cartInfo -->
 			<div class="content_totalCount_section">
-
 				<!-- 체크박스 전체 여부 -->
 				<div class="all_check_input_div">
 					<input type="checkbox" class="all_check_input input_size_20"
 						checked="checked"><span class="all_chcek_span">전체선택</span>
 				</div>
-
-				<table class="subject_table">
-
-					<tbody>
-
-
-					</tbody>
-				</table>
 				<table class="table table-hover">
 					<caption></caption>
 					<tbody>
-						<c:forEach items="${cartInfo}">
+						<c:forEach items="${cartInfo}">	
 							<tr>
 								<th class="td_width_1"></th>
 								<th class="td_width_0">no</th>
@@ -166,36 +145,31 @@ table.table4 th {
 							</thead>
 							<tbody>
 								<tr th:each="c : ${myInfo}">
-
-									<td class="td_width_1 cart_info_td"><input type="checkbox"
-										class="individual_cart_checkbox input_size_20"
-										checked="checked"> <input type="hidden"
+									<td class="td_width_1 cart_info_td">
+									<input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked"> 
+										<input type="hidden"
 										class="individual_Price_input" th:value="${c.price}">
 										<input type="hidden" class="individual_Cnt_input"
-										th:value="${c.cnt}"> <input type="hidden"
+										th:value="${c.cnt}"> 
+										<input type="hidden"
 										class="individual_totalPrice_input"
-										th:value="${c.price * c.cnt}"> <input type="hidden"
+										th:value="${c.price * c.cnt}"> 
+										<input type="hidden"
 										class="individual_itemId_input" th:value="${c.itemid}">
 									</td>
-
-
 									<td id="cartid" th:text="${c.cartid}">NO</td>
 									<td class="td_width_2"><img th:src="'/img/item/'+${c.img}">
-
 									</td>
-
 									<td class="td_width_3" th:text="${c.itemname}">Item Name</td>
 									<td class="td_width_4 price_td"
 										th:text="${#numbers.formatInteger(c.price, 3, 'COMMA')}+'원'">
 									</td>
-
 									<td class="td_width_4 table_text_align_center">
 										<div class="table_text_align_center quantity_div">
 											<input type="text" th:value="${c.cnt}" class="quantity_input">
 											<button class="quantity_btn plus_btn">+</button>
 											<button class="quantity_btn minus_btn">-</button>
 										</div>
-
 										<button type="button" class="quantity_modify_btn"
 											th:data-cartid="${c.cartid}" th:data-custid="${c.custid}">수정
 										</button>
@@ -208,9 +182,7 @@ table.table4 th {
 											class="btn btn-dark btn-sm">
 											<span class="material-icons">delete</span>
 										</button>
-
 									</td>
-
 								</tr>
 						</c:forEach>
 					</tbody>
@@ -300,14 +272,11 @@ table.table4 th {
 				<input type="hidden" name="cnt" class="update_cnt"> 
 				<input type="hidden" name="custid" th:value="${custid}" class="update_custid">
 			</form>
-
-
-			</form>
+			
 			<!-- 주문 form -->
 			<form action="/order/${member.memberId}" method="get"
 				class="order_form"></form>
-
-
+				
 		</div>
 	</div>
 	<!-- class="wrap" -->
@@ -319,10 +288,6 @@ $(document).ready(function(){
 	
 	/* 종합 정보 섹션 정보 삽입 */
 	setTotalInfo();	
-	
-	
-	
-	
 });	
 
 /* 체크여부에따른 종합 정보 변화 */
@@ -345,7 +310,6 @@ $(".all_check_input").on("click", function(){
 	setTotalInfo($(".cart_info_td"));	
 	
 });
-
 
 /* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
 function setTotalInfo(){
@@ -380,7 +344,6 @@ function setTotalInfo(){
 	} else {
 		deliveryPrice = 3000;	
 	}
-	
 		finalTotalPrice = totalPrice + deliveryPrice;
 	
 	/* ※ 세자리 컴마 Javscript Number 객체의 toLocaleString() */
@@ -424,7 +387,6 @@ $(".quantity_modify_btn").on("click", function(){
 	$(".quantity_update_form").submit();
 	
 });
-
 
 /* 주문 페이지 이동 */	
 $(".order_btn").on("click", function(){
