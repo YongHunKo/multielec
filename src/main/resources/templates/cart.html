@@ -59,11 +59,10 @@ table.table4 th {
 		var custid = '[[${session.logincust.custid}]]';
 		var c = confirm('삭제 하시겠습니까 ?');
 		if (c == true) {
-			location.href = '/deletecart?id=' + cartid + '&custid=' + custid;
+			location.href = '[[@{/deletecart?id=}]]' + cartid + '&custid=' + custid;
 		}
 	}
 	
-
 	 $(document).ready(function() {
 
 		var rowCnt = 0;
@@ -146,19 +145,14 @@ table.table4 th {
 							<tbody>
 								<tr th:each="c : ${myInfo}">
 									<td class="td_width_1 cart_info_td">
-									<input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked"> 
-										<input type="hidden"
-										class="individual_Price_input" th:value="${c.price}">
-										<input type="hidden" class="individual_Cnt_input"
-										th:value="${c.cnt}"> 
-										<input type="hidden"
-										class="individual_totalPrice_input"
-										th:value="${c.price * c.cnt}"> 
-										<input type="hidden"
-										class="individual_itemId_input" th:value="${c.itemid}">
+										<input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked"> 
+										<input type="hidden" class="individual_Price_input" th:value="${c.price}">
+										<input type="hidden" class="individual_Cnt_input" th:value="${c.cnt}"> 
+										<input type="hidden" class="individual_totalPrice_input" th:value="${c.price * c.cnt}"> 
+										<input type="hidden" class="individual_itemId_input" th:value="${c.itemid}">
 									</td>
 									<td id="cartid" th:text="${c.cartid}">NO</td>
-									<td class="td_width_2"><img th:src="'/img/item/'+${c.img}">
+									<td class="td_width_2"><img th:src="@{/img/item/}+${c.img}">
 									</td>
 									<td class="td_width_3" th:text="${c.itemname}">Item Name</td>
 									<td class="td_width_4 price_td"
@@ -176,7 +170,6 @@ table.table4 th {
 									</td>
 									<td
 										th:text="${#numbers.formatInteger(c.totalprice, 3, 'COMMA')}+'원'">TotalPrice</td>
-
 									<td>
 										<button type="button" th:onclick="del([[${c.cartid}]]);"
 											class="btn btn-dark btn-sm">
@@ -256,7 +249,6 @@ table.table4 th {
 									</tbody>
 								</table>
 							</td>
-
 						</tr>
 					</table>
 				</div>
