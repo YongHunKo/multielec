@@ -2,19 +2,221 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="/resources/css/cart.css">
-<script src="https://code.jquery.com/jquery-3.4.1.js" 
-	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-	crossorigin="anonymous"></script>
-<!-- Page level plugins -->
-<script th:src="@{/vendor/datatables/jquery.dataTables.min.js}"></script>
-<script th:src="@{/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
-
-<!-- Page level custom scripts -->
-<script th:src="@{/js/demo/datatables-demo.js}"></script>
 </head>
 
 <style>
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding:0;
+}
+a{
+	text-decoration: none;
+}
+
+/* 제품 목록 네비 */
+.navi_bar_area{
+	width: 100%;
+    height: 70px;
+    background-color: #7696fd;
+}
+
+/* 홈페이지 메인 제품 목록  */
+.content_area{
+	width: 100%;
+    min-height: 1000px;
+}
+	 table{
+	 	border-collapse: collapse;
+	 	width: 100%;
+	 }
+	 .table_text_align_center{
+				text-align: center;
+	 }	
+	 caption{
+	    visibility: hidden;
+	    width: 0;
+	    height: 0;
+	    font-size: 0;
+	    line-height: 0;
+	    overflow: hidden; 
+	 }	  
+
+	 .content_subject{
+		height: 110px;
+	    line-height: 110px;
+	    background-color: #5080bd;
+	    margin-bottom: 60px; 
+	 
+	 }
+		 .content_subject span{ 
+		    padding-left: 30 px;
+		    display: inline-block;
+		    color: white;
+		    font-size: 50px;
+		    font-weight: bolder; 
+		 }
+	 
+	 .content_totalCount_section{
+	 	margin-bottom: 12px;
+	 }
+	 .content_btn_section{
+	 	margin-top: 20px;
+	 	text-align: right;
+	 }
+	 	.content_btn_section a{
+	    color: #fefeff;
+	    background-color: #365fdd;
+	    min-width: 125px;
+	    padding: 17px 25px;
+	    display: inline-block;
+	    height: 39px;
+	    font-size: 23px;
+	    font-weight: bold;
+	    text-align: center;
+	    margin-right: 14px;
+	    line-height: 39px; 	
+	 	}
+	 
+
+	 .subject_table{
+		font-size: 14px;
+	    line-height: 20px;
+	    width: 100%;
+	    text-align: center; 	
+	 }
+
+		 th{
+		text-align: center;
+	    color: #333;
+	    border-bottom: 1px solid #e7e7e7;
+	    border-top: 1px solid #3084d9;
+	    background: #f4f9fd;
+	    padding: 2px 0;	 
+		 }
+		.td_width_1{
+			width: 1%;
+		}	 	 	 
+		.td_width_2{
+			width: 20%;
+		}	 	 
+		.td_width_3{
+			width: 12%;
+		}	 
+		.td_width_4{
+			width: 15%;
+		}	
+		.cart_table{
+			font-size: 14px;
+			line-height: 20px;
+		}  
+			.cart_table tr{
+				height: 110px;
+			}
+			.price_td{
+				padding-left: 5px;
+			}
+				.red_color{
+					color : red;
+				}
+				.green_color{
+					color : green;
+				}
+			.cart_table td{
+				border-bottom: 1px solid #e7e7e7;
+			}
+			.quantity_div{
+				position: relative;
+			    width: 42px;
+			    height: 25px;
+			    text-align: left;
+			    margin: 5px auto;		
+			}
+			.quantity_input{
+				position: absolute;
+				width: 27px;
+			    height: 23px;
+			    text-align: center;
+			    border: 1px solid #c6c6c6;
+			    border-right: 0px;
+			    line-height: 19px;
+			    font-size: 16px;
+			    color: #4c4848;	
+			    left: 0;
+			}
+			.quantity_btn{
+				position: absolute;
+			    border: 1px solid #aaa;
+			    color: #FE6B00;
+			    width: 14px;
+			    height: 13px;
+			    padding: 0px;
+			    background-color: #fff;
+			    font-weight: bold;
+			    font-size: 15px;
+			    line-height: 6px;
+			    vertical-align: middle;	
+			}
+			.plus_btn{
+				top: 0;
+				right: 0
+			}
+			.minus_btn{
+				bottom: 0;
+				right: 0
+			}		
+			.quantity_modify_btn{
+				border: 1px solid #d0d0d0;
+			    height: 25px;
+			    line-height: 13px;
+			    background-color: #fff;
+			    text-align: center;
+			    width: 46px;
+			    display: inline-block;
+			    padding: 3px 6px 2px;
+			    margin-top: 3px;		
+			}
+			.table_text_align_center{
+				text-align: center;
+			}
+			
+		
+	.content_total_section{
+		    background-color: rgb(227, 237, 247);
+	}		
+		.total_wrap{
+			width: 80%;
+		    margin: auto;
+		    padding: 10px 0 10px 0;	
+		}
+			.total_wrap td{
+				width : 50%;
+			}
+			.finalTotalPrice_span{
+				color: #854A72;
+				font-size: 17px;
+				font-weight: bold;
+			}
+			
+			.boundary_div{
+				font-size: 0;
+			    border: 1px dotted #d1c7c7;
+			    margin: 5px 0 5px 0;		
+			}
+			
+		.input_size_20{
+			width:20px;
+			height:20px;
+		}
+		.all_check_input{
+			margin: 18px 0 18px 18px;
+		}
+		.all_chcek_span{
+			padding-left: 8px;
+	    	font-size: 20px;
+	    	font-weight: bold;		
+		}			
+
 table>tbody>tr>td>img {
 	width: 100px;
 }
@@ -115,7 +317,6 @@ table.table4 th {
 		<div class="content_area">
 			<div class="container-fluid">
 				<h2>장바구니</h2>
-				<p></p>
 			</div>
 			<!-- 장바구니 리스트 -->
 			<div class="content_middle_section"></div>
@@ -134,7 +335,7 @@ table.table4 th {
 							<tr>
 								<th class="td_width_1"></th>
 								<th class="td_width_0">no</th>
-								<th class="td_width_2">상품이미지</th>
+								<th class="td_width_2">이미지</th>
 								<th class="td_width_3">상품명</th>
 								<th class="td_width_4">가격</th>
 								<th class="td_width_4">수량</th>
@@ -236,7 +437,7 @@ table.table4 th {
 							</td>
 						</tr>
 					</table>
-
+					<div class="boundary_div">구분선</div>
 					<table>
 						<tr>
 							<td>
