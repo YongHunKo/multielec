@@ -259,7 +259,7 @@ table.table4 th {
 			</div>
 
 			<!-- 수량 조정 form -->
-			<form action="/updatecart" method="post" class="quantity_update_form">
+			<form th:action="@{/updatecart}" method="post" class="quantity_update_form">
 				<input type="hidden" name="cartid" class="update_cartid"> 
 				<input type="hidden" name="cnt" class="update_cnt"> 
 				<input type="hidden" name="custid" th:value="${custid}" class="update_custid">
