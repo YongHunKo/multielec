@@ -66,15 +66,14 @@ a{
 	 }
 	 	.content_btn_section a{
 	    color: #fefeff;
-	    background-color: #365fdd;
 	    min-width: 125px;
-	    padding: 17px 25px;
+	    padding: 8px 10px;
 	    display: inline-block;
 	    height: 39px;
 	    font-size: 23px;
 	    font-weight: bold;
 	    text-align: center;
-	    margin-right: 14px;
+	    margin-right: 5px;
 	    line-height: 39px; 	
 	 	}
 	 
@@ -384,7 +383,7 @@ table.table4 th {
 				<table class="list_table">
 				</table>
 				<div class="container-fluid">
-					<table id="tbl_data" class="totalprice2">
+					<table id="tbl_data" class="totalprice2" style="display: none">
 						<thead>
 							<tr>
 								<th>&nbsp&nbsp총 결제금액&nbsp&nbsp:&nbsp</th>
@@ -455,9 +454,13 @@ table.table4 th {
 				</div>
 			</div>
 			<!-- 구매 버튼 영역 -->
-			<div class="content_btn_section" style="display: none">
-				<a class="order_btn">주문하기</a>
-			</div>
+			<div class="content_btn_section" >
+						<button type="button" class="btnbtn btn-info btn-sm">
+							<a th:href="@{/payment(id=${custdetail.custid})}"><span
+								class="material-icons-outlined color">credit_card</span>구매하기</a>
+						</button>
+
+				</div>
 
 			<!-- 수량 조정 form -->
 			<form th:action="@{/updatecart}" method="post" class="quantity_update_form">
@@ -466,9 +469,6 @@ table.table4 th {
 				<input type="hidden" name="custid" th:value="${custid}" class="update_custid">
 			</form>
 			
-			<!-- 주문 form -->
-			<form action="/order/${member.memberId}" method="get"
-				class="order_form"></form>
 				
 		</div>
 	</div>
@@ -581,34 +581,7 @@ $(".quantity_modify_btn").on("click", function(){
 	
 });
 
-/* 주문 페이지 이동 */	
-$(".order_btn").on("click", function(){
-	
-	let form_contents ='';
-	let orderNumber = 0;
-	
-	$(".cart_info_td").each(function(index, element){
-		
-		if($(element).find(".individual_cart_checkbox").is(":checked") === true){	//체크여부
-			
-			let bookId = $(element).find(".individual_bookId_input").val();
-			let bookCount = $(element).find(".individual_bookCount_input").val();
-			
-			let bookId_input = "<input name='orders[" + orderNumber + "].bookId' type='hidden' value='" + bookId + "'>";
-			form_contents += bookId_input;
-			
-			let bookCount_input = "<input name='orders[" + orderNumber + "].bookCount' type='hidden' value='" + bookCount + "'>";
-			form_contents += bookCount_input;
-			
-			orderNumber += 1;
-			
-		}
-	});	
 
-	$(".order_form").html(form_contents);
-	$(".order_form").submit();
-	
-});
 
 </script>
 
