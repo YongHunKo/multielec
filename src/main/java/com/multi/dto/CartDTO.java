@@ -14,42 +14,40 @@ import lombok.ToString;
 
 
 public class CartDTO {
-	
-	
+
 	private Integer cartid;
 	private String custid;
 	private Integer itemid;
 	private Integer cnt;
 
-	
 	private String itemname;
 	private Integer price;
 	private String img;
-	
+
 	private Integer totalprice;
 
-//	
-//	public int getCartId() {
+
+//	public int getCartid() {
 //		return cartid;
 //	}
 //
-//	public void setCartId(int cartid) {
+//	public void setCartid(int cartid) {
 //		this.cartid = cartid;
 //	}
 //
-//	public String getCustId() {
+//	public String getCustid() {
 //		return custid;
 //	}
 //
-//	public void setCustId(String custid) {
+//	public void setCustid(String custid) {
 //		this.custid = custid;
 //	}
 //
-//	public int getItemId() {
+//	public int getItemid() {
 //		return itemid;
 //	}
 //
-//	public void setItemId(int itemid) {
+//	public void setItemid(int itemid) {
 //		this.itemid = itemid;
 //	}
 //
@@ -58,14 +56,14 @@ public class CartDTO {
 //	}
 //
 //	public void setCnt(int cnt) {
-//		this.cnt =cnt;
+//		this.cnt = cnt;
 //	}
 //
-//	public String getItemName() {
+//	public String getItemname() {
 //		return itemname;
 //	}
 //
-//	public void setItemName(String itemname) {
+//	public void setItemname(String itemname) {
 //		this.itemname = itemname;
 //	}
 //
@@ -77,20 +75,21 @@ public class CartDTO {
 //		this.price = price;
 //	}
 //
-//	public int getTotalPrice() {
+//	public int getTotalprice() {
 //		return totalprice;
-//	}	
+//	}
+
 
 	public void initSaleTotal() {
-		
-		this.totalprice = this.price*this.cnt;
-				
+
+		this.totalprice = this.price * this.cnt;
+
 	}
 
 	@Override
 	public String toString() {
-		return "CartDTO [cartId=" + cartid + ", custId=" + custid + ", ItemId=" + itemid + ", Cnt="
-				+ cnt + ", ItemName=" + itemname + ", Price=" + price + ", totalPrice=" + totalprice + "]";
+		return "CartDTO [cartid=" + cartid + ", custid=" + custid + ", itemid=" + itemid + ", cnt=" + cnt
+				+ ", itemname=" + itemname + ", price=" + price + ", img=" + img +", totalprice=" + totalprice + "]";
 	}
-}
 
+}

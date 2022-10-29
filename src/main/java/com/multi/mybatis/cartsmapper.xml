@@ -3,22 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.multi.mapper.CartsMapper">
-
-	<!-- 카트 추가 -->
-	<insert id="addCart">
 	
-		insert into cart(custid, itemid, cnt)
-		values(#{custid}, #{itemid}, #{cnt}) 
-	
-	</insert>
-	
-	
-	<!-- 카트 삭제 -->
-	<delete id="deleteCart">
-	
-		delete from cart where cartid = #{cartid}
-	
-	</delete>
 	
 	<!-- 카트 수량 수정 -->
 	<update id="modifyCount">
@@ -26,30 +11,6 @@
 		update cart set cnt=#{cnt} where cartid = #{cartid}
 	
 	</update>
-	
-	
-	<!-- 카트 목록 -->
-	<select id="getCart" resultType="com.multi.dto.CartDTO">
-	
-		select a.cartid, a.custid, a.itemid, a.cnt, b.itemname, b.price
-		from cart a left outer join item b on a.itemid = b.itemid
-		where custid = #{custid}	
-	
-	</select>
-	
-	<!-- 카트 확인 -->
-	<select id="checkCart" resultType="com.multi.dto.CartDTO">
-	
-		select * from cart 
-		where custid = #{custid} and itemid = #{itemid}
-	
-	</select>	
-	
-	<delete id="deleteOrderCart">
-	
-		delete from cart where custid = #{custid} and itemid = #{itemid}
-	
-	</delete>		
 	
 	
   </mapper>
