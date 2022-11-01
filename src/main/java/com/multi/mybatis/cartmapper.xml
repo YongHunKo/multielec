@@ -26,6 +26,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		UPDATE cart SET custid=#{custid}, itemid=#{itemid}, cnt=#{cnt} WHERE cartid=#{cartid}
 	</update>
 	
+	<!-- 카트 수량 수정 -->
+	<update id="modifyCount">
+		UPDATE cart SET cnt=#{cnt} WHERE cartid = #{cartid}
+	</update>
+	
 	<delete id="delete" parameterType="Integer">
 		DELETE FROM cart WHERE cartid=#{cartid}
 	</delete>

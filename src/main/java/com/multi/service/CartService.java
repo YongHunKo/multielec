@@ -50,6 +50,9 @@ public class CartService implements MyService<Integer,CartDTO>{
 		return mapper.registerall(custid);
 	}
 	
+	public Integer modifyCount(CartDTO cart) throws Exception {
+		return mapper.modifyCount(cart);
+	}		
 
 }
 	

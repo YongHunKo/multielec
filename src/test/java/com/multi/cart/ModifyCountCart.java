@@ -1,17 +1,17 @@
-package com.multi.carts;
+package com.multi.cart;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.multi.dto.CartDTO;
-import com.multi.service.CartsService;
+import com.multi.service.CartService;
 
 @SpringBootTest
 class ModifyCountCart {
 
 	@Autowired
-	CartsService service;
+	CartService service;
 	
 	@Test
 	void contextLoads() {

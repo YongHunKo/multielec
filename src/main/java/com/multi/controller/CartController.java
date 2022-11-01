@@ -128,6 +128,21 @@ public class CartController {
 		return "index";
 	}
 	
+	/* 장바구니 수량 수정 */
+	@PostMapping("/updatecart")
+	public String updateCartPOST(CartDTO cart,String custid) {
+		
+		try {
+			cart_service.modifyCount(cart);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "redirect:cart?id=" + cart.getCustid();
+		
+		
+	}	
 	
 	
 	
