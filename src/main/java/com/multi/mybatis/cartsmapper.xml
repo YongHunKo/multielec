@@ -7,9 +7,7 @@
 	
 	<!-- 카트 수량 수정 -->
 	<update id="modifyCount">
-	
-		update cart set cnt=#{cnt} where cartid = #{cartid}
-	
+		UPDATE cart SET cnt=#{cnt} WHERE cartid = #{cartid}
 	</update>
 	
 	

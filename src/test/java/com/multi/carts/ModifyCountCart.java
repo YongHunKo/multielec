@@ -5,13 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.multi.dto.CartDTO;
-import com.multi.service.CartsServiceImpl;
+import com.multi.service.CartsService;
 
 @SpringBootTest
 class ModifyCountCart {
 
 	@Autowired
-	CartsServiceImpl service;
+	CartsService service;
 	
 	@Test
 	void contextLoads() {

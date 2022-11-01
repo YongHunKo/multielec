@@ -12,11 +12,8 @@ import com.multi.frame.MyMapper;
 @Mapper
 public interface CartsMapper {
 
-	
-	
 	/* 카트 수량 수정 */
 	public Integer modifyCount(CartDTO cart);
 	
-		
-	
+
 }
