@@ -5,7 +5,7 @@
 </head>
 
 <style>
-@charset "UTF-8";
+
 *{
 	margin: 0;
 	padding:0;
@@ -234,15 +234,12 @@ table th, td {
 	text-align: center;
 }
 
-table.totalprice th {
-	cellpadding: 0px
-}
 
 table.table td {
 	border-bottom: solid #E9E9E9
 }
 
-table.table th {
+ table.table th {
 	border-top: solid #E9E9E9
 }
 
@@ -250,9 +247,7 @@ table.table th {
 	border-bottom: solid #E9E9E9
 }
 
-table.table4 th {
-	border-top: solid #E9E9E9
-}
+
 </style>
 
 <script>
@@ -263,53 +258,8 @@ table.table4 th {
 			location.href = '[[@{/deletecart?id=}]]' + cartid + '&custid=' + custid;
 		}
 	}
-	
-	/*  안쓰는코드인데 나중에 쓸까봐 남겨놓음
-	$(document).ready(function() {
-
-		var rowCnt = 0;
-
-		var col1Idx = 0; // 첫번째 col index
-
-		var col1Sum = 0; // 첫번째 col sum
-
-		// loop row
-		$("#tbl_data tr").each(function() {
-			// 첫번째 줄 건너뜀
-			if (rowCnt != 0) {
-				// td dom 객체를 얻어옴
-				var sell = $(this).children("td");
-				// loop col
-				$(sell).each(function() {
-					var idx = $(this).index();
-					var val = $(this).text();
-
-					if (idx == col1Idx) {
-						col1Sum += parseInt(val);
-					} else if (idx == col2Idx) {
-						col2Sum += parseInt(val);
-					} else if (idx == col3Idx) {
-						col3Sum += parseInt(val);
-					}
-				});
-			}
-			rowCnt++;
-		});
-		// 합계를 출력
-		$("#a_sum").text(col1Sum);
-
-	}); */
-	
-	var funcSetCurrency=function($){
-		$('#a_sum').each(function(){
-		if(!isNaN(Number($(this).text())) && $(this).text()) $(this).text(Number($(this).text()).toLocaleString().split('.')[0]);
-		});
-		};
-
-		$(document).ready(function(){
-		funcSetCurrency($);
-		});
-	</script>
+		
+</script>
 
 <body>
 	<div class="wrapper">
@@ -381,32 +331,6 @@ table.table4 th {
 						</c:forEach>
 					</tbody>
 				</table>
-				<!-- 안쓰는 코드인데 나중에 쓸까봐 남겨놓음
-				<table class="list_table">
-				</table>
-				<div class="container-fluid">
-					<table id="tbl_data" class="totalprice2" style="display: none">
-						<thead>
-							<tr>
-								<th>&nbsp&nbsp총 결제금액&nbsp&nbsp:&nbsp</th>
-								<th id="a_sum"></th>
-								<th>원&nbsp</th>
-								<th>
-									<button type="button" class="btnbtn btn-info btn-sm">
-										<a th:href="@{/payment(id=${custdetail.custid})}"><span
-											class="material-icons-outlined color">credit_card</span>구매하기</a>
-											 
-									</button>
-								</th>
-							</tr>
-						<tbody>
-							<tr style="display: none" th:each="ca : ${mypricecart}">
-								<td th:text="${ca.totalprice}">총 결제금액</td>
-							</tr>
-						</thead>
-					</table>
-				</div>
-			</div> -->
 			<!-- 가격 종합 -->
 			<div class="content_total_section">
 				<div class="total_wrap">
