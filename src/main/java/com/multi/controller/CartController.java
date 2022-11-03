@@ -44,7 +44,6 @@ public class CartController {
 			list = cart_service.cartall(id);
 			cust = cust_service.get(id);
 			model.addAttribute("myInfo",list);
-			model.addAttribute("mypricecart",list);
 			model.addAttribute("custdetail",cust);
 		} catch (Exception e) {
 			e.printStackTrace();
