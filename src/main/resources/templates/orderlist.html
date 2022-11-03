@@ -17,6 +17,19 @@ table th, td {
 	background-color: #FE6B00;
 	color: white;
 }
+
+table.table td {
+	border-bottom: solid #E9E9E9
+}
+
+ table.table th {
+	border-top: solid #E9E9E9
+}
+
+table.table th {
+	border-bottom: solid #E9E9E9
+}
+
 </style>
 
 <script>
@@ -50,7 +63,7 @@ function del(orderid){
 				<th>수량</th>
 				<th>주문일</th>
 				<th>배송상태</th>
-				<th>총 금액</th>
+				<th>구매금액</th>
 				<th>삭제</th>
 
 
@@ -58,15 +71,15 @@ function del(orderid){
 		</thead>
 		<tbody>
 			<tr th:each="o : ${myordercart}">
-				<td id="orderid" th:text="${o.orderid}"></td>
+				<td id="orderid" th:text="${o.orderid}">no</td>
 				<td><img th:src="@{/img/item/}+${o.img}"></td>
-				<td th:text="${o.itemname}">ItemName</td>
-				<td th:text="${o.itemcnt}">Count</td>
-				<td th:text="${#dates.format(o.orderdate, 'yyyy-MM-dd HH:mm:ss')}">OrderDate</td>
-				<td th:text="${o.shipsearch}">ShipSearch</td>
+				<td th:text="${o.itemname}">상품명</td>
+				<td th:text="${o.itemcnt}">수량</td>
+				<td th:text="${#dates.format(o.orderdate, 'yyyy-MM-dd HH:mm:ss')}">주문일</td>
+				<td th:text="${o.shipsearch}">배송상태</td>
 				<td
 					th:text="${#numbers.formatInteger(o.totalprice, 3, 'COMMA')}+'원'">TotalPrice</td>
-				<td id="itemid" style="display: none" th:text="${o.itemid}">itemid</td>
+				<td id="itemid" style="display: none" th:text="${o.itemid}">구매금액</td>
 				<td>
 					<button type="button" th:onclick="del([[${o.orderid}]]);"
 						class="btn btn-dark btn-sm">
